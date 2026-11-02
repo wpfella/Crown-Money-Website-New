@@ -44,9 +44,6 @@ export const Guides: React.FC = () => {
         description="Read expert Australian guides on paying off your mortgage faster, offset vs redraw accounts, cash-flow automation, debt recycling, and loan fees."
         canonicalUrl="https://crownmoney.com.au/guides"
       />
-      <Helmet>
-        <script type="application/ld+json">{JSON.stringify(guidesHubSchema)}</script>
-      </Helmet>
 
       {/* Hero Section */}
       <section className="bg-primary text-white py-20">

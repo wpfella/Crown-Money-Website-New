@@ -1,4 +1,29 @@
-# Google Ads Crawlers (Explicitly Allowlisted for Google Ads Quality & Destination Verification)
+# Crown Money Management — Official robots.txt
+# Canonical Domain: https://crownmoney.com.au
+
+User-agent: *
+Allow: /
+
+# Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Mobile
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Google-InspectionTool
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# Google Ads Quality & Destination Verification Crawlers
 User-agent: AdsBot-Google
 Allow: /
 
@@ -14,57 +39,45 @@ Allow: /
 User-agent: Mediapartners-Google
 Allow: /
 
-# Google Search & Inspection Crawlers
-User-agent: Googlebot
-Allow: /
-
-User-agent: Googlebot-Mobile
-Allow: /
-
-User-agent: Googlebot-Image
-Allow: /
-
-User-agent: Google-InspectionTool
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-# Allow all search engine crawlers and bots by default
-User-agent: *
-Allow: /
-
-# Explicitly allow AI models and search crawlers for AI Search (AEO & AI SEO)
-User-agent: GPTBot
+# AI Search & Real-Time Retrieval Bots (Explicitly Allowed for Citations & Grounding)
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: OAI-SearchBot
+User-agent: PerplexityBot
 Allow: /
 
-User-agent: PerplexityBot
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# AI Foundation Model & Knowledge Graph Crawlers
+User-agent: GPTBot
 Allow: /
 
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: Anthropic-ai
+User-agent: anthropic-ai
 Allow: /
 
-User-agent: Bingbot
+User-agent: Google-Extended
 Allow: /
 
-User-agent: Applebot
-Allow: /
-
-User-agent: ByteDance
+User-agent: Applebot-Extended
 Allow: /
 
 User-agent: CCBot
 Allow: /
 
-# Sitemaps
-Sitemap: https://crownmoney.com.au/sitemap.xml
+User-agent: Bytespider
+Allow: /
 
+Sitemap: https://crownmoney.com.au/sitemap.xml

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, ArrowRight, Clock, ShieldCheck, Calculator, CheckCircle, UserCheck } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Clock, ShieldCheck, Calculator, UserCheck, ExternalLink, BookOpen, CheckCircle2 } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { guidesData } from '../data/guidesData';
 import { NotFound } from './NotFound';
@@ -16,67 +15,15 @@ export const GuideDetail: React.FC = () => {
 
   const otherGuides = guidesData.filter((g) => g.slug !== guide.slug);
 
-  const articleSchema = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'Article',
-        headline: guide.title,
-        description: guide.metaDescription,
-        datePublished: guide.publishedDate,
-        dateModified: guide.updatedDate,
-        author: {
-          '@type': 'Person',
-          name: guide.author.name,
-          jobTitle: guide.author.role,
-          url: `https://crownmoney.com.au/author/${guide.author.slug}`
-        },
-        reviewedBy: {
-          '@type': 'Person',
-          name: guide.reviewedBy.name,
-          jobTitle: guide.reviewedBy.role,
-          url: `https://crownmoney.com.au/author/${guide.reviewedBy.slug}`
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: 'Crown Money Management',
-          url: 'https://crownmoney.com.au'
-        },
-        mainEntityOfPage: `https://crownmoney.com.au/guides/${guide.slug}`
-      },
-      {
-        '@type': 'FAQPage',
-        mainEntity: guide.faqs.map((faq) => ({
-          '@type': 'Question',
-          name: faq.question,
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: faq.answer
-          }
-        }))
-      },
-      {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://crownmoney.com.au/' },
-          { '@type': 'ListItem', position: 2, name: 'Guides', item: 'https://crownmoney.com.au/guides' },
-          { '@type': 'ListItem', position: 3, name: guide.title, item: `https://crownmoney.com.au/guides/${guide.slug}` }
-        ]
-      }
-    ]
-  };
-
   return (
     <div className="pt-10 pb-24 bg-white">
       <SEO
         title={guide.seoTitle}
         description={guide.metaDescription}
         ogType="article"
+        ogImage={guide.heroImage.src}
         canonicalUrl={`https://crownmoney.com.au/guides/${guide.slug}`}
       />
-      <Helmet>
-        <script type="application/ld+json">{JSON.stringify(articleSchema)}</script>
-      </Helmet>
 
       {/* Hero Header */}
       <section className="bg-primary text-white py-16 md:py-24">
@@ -91,6 +38,7 @@ export const GuideDetail: React.FC = () => {
             <span className="flex items-center gap-1">
               <Clock size={14} /> {guide.readTime}
             </span>
+            <span>Published: {guide.publishedDate}</span>
             <span>Last Updated: {guide.updatedDate}</span>
           </div>
           <h1 className="text-3xl md:text-5xl font-display font-bold leading-tight mb-6">
@@ -106,6 +54,8 @@ export const GuideDetail: React.FC = () => {
               <img
                 src={guide.author.image}
                 alt={guide.author.name}
+                width={48}
+                height={48}
                 className="w-12 h-12 rounded-full object-cover border-2 border-gold"
                 referrerPolicy="no-referrer"
               />
@@ -133,10 +83,27 @@ export const GuideDetail: React.FC = () => {
       </section>
 
       {/* Main Content */}
-      <article className="max-w-4xl mx-auto px-4 py-16">
+      <article className="max-w-4xl mx-auto px-4 py-14">
+        {/* Featured Visual / Diagram */}
+        <figure className="mb-12 rounded-3xl overflow-hidden border border-gray-200 bg-gray-50 shadow-md">
+          <img
+            src={guide.heroImage.src}
+            alt={guide.heroImage.alt}
+            width={1200}
+            height={630}
+            loading="lazy"
+            className="w-full max-h-[420px] object-cover"
+            referrerPolicy="no-referrer"
+          />
+          <figcaption className="p-4 text-xs text-gray-600 bg-crown-lavender/50 border-t border-gray-200 font-medium">
+            {guide.heroImage.caption}
+          </figcaption>
+        </figure>
+
+        {/* Sections + H3 Sub-Steps */}
         <div className="space-y-12">
           {guide.sections.map((section, idx) => (
-            <section key={idx} className="space-y-4">
+            <section key={idx} className="space-y-5">
               <h2 className="text-2xl md:text-3xl font-display font-bold text-primary">
                 {section.heading}
               </h2>
@@ -145,9 +112,91 @@ export const GuideDetail: React.FC = () => {
                   {paragraph}
                 </p>
               ))}
+              {section.subSections && section.subSections.length > 0 && (
+                <div className="grid grid-cols-1 gap-4 pt-3">
+                  {section.subSections.map((sub, sIdx) => (
+                    <div
+                      key={sIdx}
+                      className="bg-gray-50 border-l-4 border-gold rounded-r-2xl p-5 space-y-2"
+                    >
+                      <h3 className="text-lg font-display font-bold text-primary">
+                        {sub.title}
+                      </h3>
+                      <p className="text-gray-700 text-base leading-relaxed">
+                        {sub.content}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
             </section>
           ))}
         </div>
+
+        {/* Comparison Table */}
+        <section className="my-14 bg-white rounded-3xl border border-gray-200 shadow-sm overflow-hidden">
+          <div className="bg-primary text-white p-6">
+            <h2 className="text-xl md:text-2xl font-display font-bold">
+              {guide.comparisonTable.caption}
+            </h2>
+          </div>
+          <div className="overflow-x-auto p-6">
+            <table className="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr className="border-b-2 border-gray-200 text-primary font-bold">
+                  {guide.comparisonTable.headers.map((h, i) => (
+                    <th key={i} scope="col" className="py-3 px-4">
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100 text-gray-700">
+                {guide.comparisonTable.rows.map((row, rIdx) => (
+                  <tr
+                    key={rIdx}
+                    className={
+                      rIdx === guide.comparisonTable.rows.length - 1
+                        ? 'bg-crown-lavender/40 font-semibold text-primary'
+                        : 'hover:bg-gray-50'
+                    }
+                  >
+                    {row.map((cell, cIdx) => (
+                      <td key={cIdx} className="py-3.5 px-4">
+                        {cell}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* Contextual In-Body Links to Calculators & Verified Case Studies */}
+        <section className="my-14 bg-gray-50 rounded-3xl p-8 border border-gray-200">
+          <h2 className="text-2xl font-display font-bold text-primary mb-2 flex items-center gap-2">
+            <BookOpen size={22} className="text-gold" /> Interactive Calculators & Real Australian Case Studies
+          </h2>
+          <p className="text-sm text-gray-600 mb-6">
+            Test the strategies from this guide using our free Australian calculators or inspect verified client outcomes:
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {guide.contextualLinks.map((item, i) => (
+              <Link
+                key={i}
+                to={item.path}
+                className="bg-white p-5 rounded-2xl border border-gray-200 hover:border-gold hover:shadow-md transition-all group block"
+              >
+                <div className="font-bold text-primary group-hover:text-gold flex items-center justify-between gap-2 mb-1">
+                  <span>{item.label}</span>
+                  <ArrowRight size={16} className="shrink-0 group-hover:translate-x-1 transition-transform" />
+                </div>
+                <p className="text-xs text-gray-600 leading-relaxed">{item.description}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         {/* Interactive Calculator Callout */}
         <div className="my-14 bg-crown-lavender border-2 border-primary/10 rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -169,6 +218,28 @@ export const GuideDetail: React.FC = () => {
             Open {guide.relatedCalculator.name} <ArrowRight size={16} />
           </Link>
         </div>
+
+        {/* Official Australian Regulatory & Statistical Citations */}
+        <section className="my-14 bg-white rounded-3xl p-8 border border-gray-200 shadow-sm">
+          <h2 className="text-xl md:text-2xl font-display font-bold text-primary mb-4 flex items-center gap-2">
+            <CheckCircle2 size={20} className="text-gold" /> Official Australian Data Sources & References
+          </h2>
+          <ul className="space-y-4 text-sm text-gray-700">
+            {guide.citations.map((cit, idx) => (
+              <li key={idx} className="border-b border-gray-100 pb-4 last:border-0 last:pb-0">
+                <a
+                  href={cit.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-bold text-primary hover:text-gold inline-flex items-center gap-1.5 underline"
+                >
+                  {cit.label} <ExternalLink size={13} />
+                </a>
+                <p className="text-xs text-gray-600 mt-1 leading-relaxed">{cit.summary}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         {/* FAQ Section */}
         <section className="my-14">

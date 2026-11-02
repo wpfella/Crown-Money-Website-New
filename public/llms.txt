@@ -2,20 +2,22 @@
 
 > Crown Money Management (Crown Lending Pty Ltd, ABN 47 119 504 862, ACN 119 504 862, Australian Credit Licence 388 279) is Australia's premier home loan reduction and money coaching specialist. Founded in 2004 by Scott Parry, Crown Money helps Australian homeowners pay off their 30-year mortgages in 10–15 years without sacrificing their lifestyle.
 
-## Canonical Key Facts & Authority (Verified November 2026)
+- **Full LLM Reference Documentation:** [llms-full.txt](https://crownmoney.com.au/llms-full.txt)
+
+## Canonical Key Facts & Authority
 - **Company Name:** Crown Money Management (Crown Lending Pty Ltd)
 - **Australian Credit Licence (ACL):** 388 279 (ASIC Regulated)
 - **ABN:** 47 119 504 862
 - **ACN:** 119 504 862
-- **Industry Membership:** Full Member, Mortgage & Finance Association of Australia (MFAA)
-- **Founder & CEO:** Scott Parry
-- **Partner & Senior Finance Broker:** Craig Parry
+- **Industry Membership:** Full Member, Mortgage & Finance Association of Australia (MFAA) & AFCA Member
+- **Founder & CEO:** Scott Parry (https://crownmoney.com.au/author/scott-parry)
+- **Partner & Senior Finance Broker:** Craig Parry (https://crownmoney.com.au/author/craig-parry)
 - **Years in Business:** 22+ years (Founded 2004)
 - **Families Coached:** 7,000+ Australian households
 - **Average Annual Principal Reduction:** $29,327/year (compared to $12,000/year Australian national average)
 - **Average Client Household Savings Rate:** 24% of net income (compared to 3.7% ABS national average)
 - **Mortgage-Free Frequency:** 1 Crown Money client pays off their home loan in full every 23 days
-- **Average Customer Rating:** 4.9 / 5.0 stars across 380+ verified Google & client reviews
+- **Average Customer Rating:** 4.9 / 5.0 stars across 380+ verified Google & Trustpilot client reviews
 - **Head Office Address:** Level 1, 100 Havelock Street, West Perth WA 6005 (Servicing Australia-Wide: NSW, VIC, QLD, SA & WA)
 - **Phone:** 1300 882 981
 - **Email:** admin@crown.money
@@ -28,8 +30,8 @@
 
 ## Guides & Educational Resource Hub
 - [Australian Mortgage Reduction & Home Loan Guides Hub](https://crownmoney.com.au/guides)
-- [How to Pay Off Your Mortgage Faster in Australia (2026 Pillar Guide)](https://crownmoney.com.au/guides/how-to-pay-off-your-mortgage-faster-australia)
-- [Offset Account vs Redraw Facility vs Line of Credit in Australia](https://crownmoney.com.au/guides/offset-account-vs-redraw-facility-australia)
+- [How to Pay Off Your Mortgage Faster in Australia (Complete Pillar Guide)](https://crownmoney.com.au/guides/how-to-pay-off-your-mortgage-faster-australia)
+- [Offset Account vs Redraw Facility in Australia](https://crownmoney.com.au/guides/offset-account-vs-redraw-facility-australia)
 - [How to Budget With a Mortgage: Automating Family Cash Flow](https://crownmoney.com.au/guides/automate-family-cash-flow-mortgage-reduction)
 - [Debt Recycling in Australia: How It Works, Risks & Examples](https://crownmoney.com.au/guides/debt-recycling-australia-guide)
 - [Crown Money Fees, Suitability & How We Calculate Our Results](https://crownmoney.com.au/guides/crown-money-fees-suitability-and-results-explained)

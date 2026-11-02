@@ -12,26 +12,51 @@ async function startServer() {
   const PORT = 3000;
   const isProd = process.env.NODE_ENV === 'production';
 
-  // 1. Handle legacy 301 redirects before static or Vite middleware
+  // 1. Canonical URL normalization & legacy 301 redirects before static or Vite middleware
   app.use((req, res, next) => {
     if (req.method !== 'GET' && req.method !== 'HEAD') {
       return next();
     }
-    const cleanPath = req.path === '/' ? '/' : req.path.replace(/\/+$/, '');
-    const lowerPath = cleanPath.toLowerCase();
 
+    const rawPath = req.path || '/';
+    // Do not touch Vite internal or file-extension asset requests
+    if (
+      rawPath.startsWith('/@') ||
+      rawPath.startsWith('/src/') ||
+      rawPath.startsWith('/node_modules/') ||
+      /\.[a-zA-Z0-9]+$/.test(rawPath)
+    ) {
+      return next();
+    }
+
+    const cleanPath = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '');
+    const lowerPath = cleanPath.toLowerCase();
+    const querySuffix = req.url.includes('?') ? `?${req.url.split('?').slice(1).join('?')}` : '';
+
+    // Legacy 301 redirects
     if (LEGACY_REDIRECTS[lowerPath]) {
-      return res.redirect(301, LEGACY_REDIRECTS[lowerPath]);
+      return res.redirect(301, `${LEGACY_REDIRECTS[lowerPath]}${querySuffix}`);
     }
     if (lowerPath.startsWith('/blog/')) {
-      return res.redirect(301, '/guides');
+      return res.redirect(301, `/guides${querySuffix}`);
     }
+
+    // Enforce canonical no-trailing-slash URLs (e.g. /about/ -> 301 -> /about)
+    if (rawPath.length > 1 && rawPath.endsWith('/')) {
+      return res.redirect(301, `${cleanPath}${querySuffix}`);
+    }
+
     next();
   });
 
   if (!isProd) {
-    // Serve public files (robots.txt, sitemap.xml, llms.txt, assets)
-    app.use(express.static(path.resolve(__dirname, 'public'), { index: false }));
+    // Serve public files (robots.txt, sitemap.xml, llms.txt, llms-full.txt, assets) with redirect: false
+    app.use(
+      express.static(path.resolve(__dirname, 'public'), {
+        index: false,
+        redirect: false,
+      })
+    );
 
     const vite = await createViteServer({
       server: { middlewareMode: true },
@@ -43,7 +68,6 @@ async function startServer() {
     app.use('*', async (req, res, next) => {
       try {
         const url = req.originalUrl.split('?')[0] || '/';
-        // Do not intercept Vite internal or asset requests
         if (
           url.startsWith('/@') ||
           url.startsWith('/src/') ||
@@ -61,22 +85,38 @@ async function startServer() {
           return res.redirect(301, redirectTo);
         }
 
-        res.status(status).set({ 'Content-Type': 'text/html; charset=utf-8' }).end(html);
+        const cacheControl =
+          status === 200
+            ? 'public, max-age=300, s-maxage=3600, stale-while-revalidate=86400'
+            : 'no-store, no-cache, must-revalidate';
+
+        res
+          .status(status)
+          .set({
+            'Content-Type': 'text/html; charset=utf-8',
+            'Cache-Control': cacheControl,
+          })
+          .end(html);
       } catch (err) {
         next(err);
       }
     });
   } else {
     const distPath = path.resolve(__dirname, 'dist');
-    // Serve static assets (JS, CSS, sitemap.xml, robots.txt, etc.) without auto-serving index.html
+    // Serve static assets (JS, CSS, sitemap.xml, robots.txt, llms.txt, llms-full.txt)
+    // CRITICAL: redirect: false prevents express.static from issuing 301 /about -> /about/
     app.use(
       express.static(distPath, {
         index: false,
         extensions: false,
+        redirect: false,
       })
     );
 
-    const rawTemplate = fs.readFileSync(path.join(distPath, 'index.html'), 'utf-8');
+    const cleanTemplatePath = path.join(distPath, '_template.html');
+    const rawTemplate = fs.existsSync(cleanTemplatePath)
+      ? fs.readFileSync(cleanTemplatePath, 'utf-8')
+      : fs.readFileSync(path.join(distPath, 'index.html'), 'utf-8');
 
     app.get('*', (req, res) => {
       const url = req.path || '/';
@@ -86,7 +126,18 @@ async function startServer() {
         return res.redirect(301, redirectTo);
       }
 
-      res.status(status).set({ 'Content-Type': 'text/html; charset=utf-8' }).send(html);
+      const cacheControl =
+        status === 200
+          ? 'public, max-age=300, s-maxage=3600, stale-while-revalidate=86400'
+          : 'no-store, no-cache, must-revalidate';
+
+      res
+        .status(status)
+        .set({
+          'Content-Type': 'text/html; charset=utf-8',
+          'Cache-Control': cacheControl,
+        })
+        .send(html);
     });
   }
 

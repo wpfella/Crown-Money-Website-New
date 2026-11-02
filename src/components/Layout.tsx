@@ -68,78 +68,14 @@ const Header = ({ onChatToggle, onBookToggle }: { onChatToggle: () => void; onBo
               admin@crown.money
             </a>
           </div>
-          <div className="flex items-center space-x-4">
-            <a href="https://www.facebook.com/CrownMoneyManagement" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Facebook size={16} /></a>
-            <a href="https://www.instagram.com/crownmoneyofficial/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Instagram size={16} /></a>
-            <a href="https://twitter.com/Crown_Money" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Twitter size={16} /></a>
-            <a href="https://www.linkedin.com/company/crown-money" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Linkedin size={16} /></a>
-            <a href="https://www.youtube.com/@crownmoneyAU" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Youtube size={16} /></a>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Nav */}
-      <nav className={cn(
-        "w-full z-50 transition-all duration-300 fixed",
-        isScrolled ? "top-0 bg-white shadow-md py-3" : "top-0 md:top-10 bg-white py-5"
-      )}>
-        <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-          <Link to="/" className="flex items-center">
-            <img 
-              src="https://storage.googleapis.com/crown_money/Logo%20%26%20Icon/header-logo.svg" 
-              alt="Crown Money" 
-              className="h-12 w-auto"
-            />
-          </Link>
-
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-8">
-            <Link to="/" className={cn("text-sm font-medium hover:text-primary transition-colors", location.pathname === "/" ? "text-primary" : "text-gray-600")}>Home</Link>
-            <Link to="/about" className={cn("text-sm font-medium hover:text-primary transition-colors", location.pathname === "/about" ? "text-primary" : "text-gray-600")}>About Us</Link>
-            <Link to="/how-it-works" className={cn("text-sm font-medium hover:text-primary transition-colors", location.pathname === "/how-it-works" ? "text-primary" : "text-gray-600")}>How It Works</Link>
-            
-            {/* Tools Dropdown */}
+          <div className="flex items-center space-x-6">
+            {/* Client Logins in Top Bar */}
             <div className="relative group">
-              <button className={cn(
-                "text-sm font-medium hover:text-primary transition-colors flex items-center",
-                location.pathname.startsWith('/tools') || location.pathname === '/mortgage-reduction-calculator' ? "text-primary" : "text-gray-600"
-              )}>
-                Tools
-                <ChevronRight size={14} className="ml-1 rotate-90" />
-              </button>
-              <div className="absolute top-full left-0 mt-2 w-56 bg-white shadow-xl rounded-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 border border-gray-100">
-                {toolLinks.map((tool) => (
-                  <Link
-                    key={tool.name}
-                    to={tool.path}
-                    className="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors"
-                  >
-                    {tool.name}
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <Link to="/success-stories" className={cn("text-sm font-medium hover:text-primary transition-colors", location.pathname.startsWith("/success-stories") ? "text-primary" : "text-gray-600")}>Success Stories</Link>
-            <Link to="/reviews" className={cn("text-sm font-medium hover:text-primary transition-colors", location.pathname === "/reviews" ? "text-primary" : "text-gray-600")}>Reviews</Link>
-            <Link to="/guides" className={cn("text-sm font-medium hover:text-primary transition-colors", location.pathname.startsWith("/guides") ? "text-primary" : "text-gray-600")}>Guides</Link>
-            <a 
-              href="https://open.spotify.com/show/56u7gA4oHUb9h47iyd8uLs" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="text-sm font-medium text-gray-600 hover:text-primary transition-colors"
-            >
-              Podcast
-            </a>
-            <Link to="/contact" className={cn("text-sm font-medium hover:text-primary transition-colors", location.pathname === "/contact" ? "text-primary" : "text-gray-600")}>Contact</Link>
-            
-            {/* Client Logins Dropdown */}
-            <div className="relative group">
-              <button className="text-sm font-medium text-gray-600 hover:text-primary transition-colors flex items-center">
+              <button className="flex items-center text-xs font-semibold tracking-wide uppercase text-white/90 hover:text-accent transition-colors whitespace-nowrap">
                 Client Logins
-                <ChevronRight size={14} className="ml-1 rotate-90" />
+                <ChevronRight size={13} className="ml-1 rotate-90" />
               </button>
-              <div className="absolute top-full left-0 mt-2 w-48 bg-white shadow-xl rounded-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 border border-gray-100">
+              <div className="absolute top-full right-0 mt-2 w-48 bg-white shadow-xl rounded-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[60] border border-gray-100">
                 {clientLogins.map((login) => (
                   <a
                     key={login.name}
@@ -153,10 +89,102 @@ const Header = ({ onChatToggle, onBookToggle }: { onChatToggle: () => void; onBo
                 ))}
               </div>
             </div>
+            <div className="h-3.5 w-px bg-white/20" />
+            <div className="flex items-center space-x-4">
+              <a href="https://www.facebook.com/CrownMoneyManagement" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Facebook size={16} /></a>
+              <a href="https://www.instagram.com/crownmoneyofficial/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Instagram size={16} /></a>
+              <a href="https://twitter.com/Crown_Money" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Twitter size={16} /></a>
+              <a href="https://www.linkedin.com/company/crown-money" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Linkedin size={16} /></a>
+              <a href="https://www.youtube.com/@crownmoneyAU" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Youtube size={16} /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Nav */}
+      <nav className={cn(
+        "w-full z-50 transition-all duration-300 fixed",
+        isScrolled ? "top-0 bg-white shadow-md py-3" : "top-0 md:top-9 bg-white py-4"
+      )}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center gap-4">
+          <Link to="/" className="flex items-center shrink-0 mr-2 xl:mr-6">
+            <img 
+              src="https://storage.googleapis.com/crown_money/Logo%20%26%20Icon/header-logo.svg" 
+              alt="Crown Money" 
+              className="h-10 xl:h-12 w-auto"
+            />
+          </Link>
+
+          {/* Desktop Nav */}
+          <div className="hidden lg:flex items-center gap-4 xl:gap-7">
+            <Link to="/" className={cn("text-sm font-medium hover:text-primary transition-colors whitespace-nowrap", location.pathname === "/" ? "text-primary font-semibold" : "text-gray-600")}>Home</Link>
+            <Link to="/about" className={cn("text-sm font-medium hover:text-primary transition-colors whitespace-nowrap", location.pathname === "/about" ? "text-primary font-semibold" : "text-gray-600")}>About Us</Link>
+            <Link to="/how-it-works" className={cn("text-sm font-medium hover:text-primary transition-colors whitespace-nowrap", location.pathname === "/how-it-works" ? "text-primary font-semibold" : "text-gray-600")}>How It Works</Link>
+            
+            {/* Tools Dropdown */}
+            <div className="relative group">
+              <Link
+                to="/tools"
+                className={cn(
+                  "text-sm font-medium hover:text-primary transition-colors flex items-center whitespace-nowrap",
+                  location.pathname.startsWith('/tools') || location.pathname === '/mortgage-reduction-calculator' ? "text-primary font-semibold" : "text-gray-600"
+                )}
+              >
+                Tools
+                <ChevronRight size={14} className="ml-1 rotate-90" />
+              </Link>
+              <div className="absolute top-full left-0 mt-2 w-60 bg-white shadow-xl rounded-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 border border-gray-100">
+                {toolLinks.map((tool) => (
+                  <Link
+                    key={tool.name}
+                    to={tool.path}
+                    className="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors"
+                  >
+                    {tool.name}
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <Link to="/success-stories" className={cn("text-sm font-medium hover:text-primary transition-colors whitespace-nowrap", location.pathname.startsWith("/success-stories") ? "text-primary font-semibold" : "text-gray-600")}>Success Stories</Link>
+            <Link to="/reviews" className={cn("text-sm font-medium hover:text-primary transition-colors whitespace-nowrap", location.pathname === "/reviews" ? "text-primary font-semibold" : "text-gray-600")}>Reviews</Link>
+
+            {/* Guides & Podcast Dropdown */}
+            <div className="relative group">
+              <Link
+                to="/guides"
+                className={cn(
+                  "text-sm font-medium hover:text-primary transition-colors flex items-center whitespace-nowrap",
+                  location.pathname.startsWith("/guides") ? "text-primary font-semibold" : "text-gray-600"
+                )}
+              >
+                Guides
+                <ChevronRight size={14} className="ml-1 rotate-90" />
+              </Link>
+              <div className="absolute top-full left-0 mt-2 w-56 bg-white shadow-xl rounded-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 border border-gray-100">
+                <Link
+                  to="/guides"
+                  className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
+                >
+                  Mortgage Reduction Guides
+                </Link>
+                <a
+                  href="https://open.spotify.com/show/56u7gA4oHUb9h47iyd8uLs"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-primary transition-colors"
+                >
+                  <span>Crown Money Podcast</span>
+                  <ExternalLink size={13} className="text-gray-400" />
+                </a>
+              </div>
+            </div>
+
+            <Link to="/contact" className={cn("text-sm font-medium hover:text-primary transition-colors whitespace-nowrap", location.pathname === "/contact" ? "text-primary font-semibold" : "text-gray-600")}>Contact</Link>
 
             <button
               onClick={onBookToggle}
-              className="bg-gold text-primary px-6 py-2.5 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all shadow-md whitespace-nowrap"
+              className="bg-gold text-primary px-5 xl:px-6 py-2.5 rounded-full text-sm font-bold hover:bg-opacity-90 transition-all shadow-md whitespace-nowrap shrink-0 ml-1"
             >
               Book Free Session
             </button>

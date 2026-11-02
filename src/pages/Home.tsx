@@ -114,36 +114,25 @@ const FAQItem = ({ question, answer, isOpen, onClick }: FAQItemProps) => {
     <div className="border-b border-gray-100 last:border-0">
       <button
         onClick={onClick}
+        aria-expanded={isOpen}
         className="w-full py-6 flex items-center justify-between text-left hover:text-gold transition-colors group"
       >
-        <span className="text-lg font-bold text-primary group-hover:text-gold">{question}</span>
+        <h3 className="text-lg font-bold text-primary group-hover:text-gold">{question}</h3>
         <ChevronDown 
-          className={`text-gold transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} 
+          className={`text-gold transition-transform duration-300 shrink-0 ml-4 ${isOpen ? "rotate-180" : ""}`} 
           size={24} 
         />
       </button>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-          >
-            <div className="pb-6 text-gray-600 leading-relaxed markdown-body">
-              <ReactMarkdown 
-                remarkPlugins={[remarkGfm]}
-                components={{
-                  a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer" />
-                }}
-              >
-                {answer}
-              </ReactMarkdown>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div className={isOpen ? "block pb-6 text-gray-600 leading-relaxed markdown-body" : "hidden pb-6 text-gray-600 leading-relaxed markdown-body"}>
+        <ReactMarkdown 
+          remarkPlugins={[remarkGfm]}
+          components={{
+            a: ({ node, ...props }) => <a {...props} target="_blank" rel="noopener noreferrer" />
+          }}
+        >
+          {answer}
+        </ReactMarkdown>
+      </div>
     </div>
   );
 };
@@ -554,78 +543,9 @@ const FAQSection = () => {
 };
 
 export const Home = () => {
-  const homeSchema = {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "Organization",
-        "name": "Crown Money",
-        "url": "https://crownmoney.com.au",
-        "logo": "https://crownmoney.com.au/logo.png",
-        "sameAs": [
-          "https://www.facebook.com/crownmoney",
-          "https://www.linkedin.com/company/crown-money",
-          "https://www.instagram.com/crownmoney"
-        ]
-      },
-      {
-        "@type": "WebSite",
-        "name": "Crown Money",
-        "url": "https://crownmoney.com.au"
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://crownmoney.com.au"
-          }
-        ]
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": faqs.map(faq => ({
-          "@type": "Question",
-          "name": faq.question,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": faq.answer
-          }
-        }))
-      }
-    ]
-  };
-
-  const crownStats = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Crown Money Management",
-    "description": "Australian mortgage reduction specialist",
-    "foundingDate": "2004",
-    "areaServed": "Australia",
-    "knowsAbout": ["Mortgage Reduction", "Debt Consolidation", "Wealth Management"],
-    "stats": {
-      "averageAnnualMortgageReduction": "29327",
-      "currency": "AUD",
-      "averageSavingsRate": "24%",
-      "nationalAverageSavingsRate": "3.7%",
-      "debtFreeFrequency": "Every 23 days"
-    }
-  };
-
   return (
     <div>
       <SEO />
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify(homeSchema)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(crownStats)}
-        </script>
-      </Helmet>
       <Hero />
       <TrustSignals />
       <SocialProof />
@@ -669,17 +589,41 @@ export const Home = () => {
 
       {/* Conversational Extraction & Internal Resource Links Section (GEO & SEO) */}
       <section className="py-20 bg-crown-lavender">
-        <div className="max-w-5xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-6">
-            What is Crown Money?
-          </h2>
-          <p className="text-xl text-gray-700 font-bold leading-relaxed mb-8">
-            Crown Money Management is an Australian mortgage reduction specialist founded in 2004 (Crown Lending Pty Ltd ABN 47 119 504 862, ACL 388 279). Utilising our proprietary <Link to="/how-it-works" className="underline text-primary hover:text-gold">Home Ownership Programme (HOP)</Link> and cash-diet system, we act as financial personal trainers to help Australians become debt-free in up to half the time.
-          </p>
-          <p className="text-base text-gray-700 leading-relaxed max-w-3xl mx-auto mb-10">
-            Explore our <Link to="/guides/how-to-pay-off-your-mortgage-faster-australia" className="font-bold text-primary underline hover:text-gold">Complete Guide to Paying Off Your Mortgage Faster in Australia</Link>, compare <Link to="/guides/offset-account-vs-redraw-facility-australia" className="font-bold text-primary underline hover:text-gold">Offset Accounts vs Redraw Facilities</Link>, review our <Link to="/guides/crown-money-fees-suitability-and-results-explained" className="font-bold text-primary underline hover:text-gold">Transparent Fees & Results Methodology</Link>, or read <Link to="/success-stories" className="font-bold text-primary underline hover:text-gold">Verified Client Case Studies</Link> and <Link to="/reviews" className="font-bold text-primary underline hover:text-gold">380+ 5-Star Client Reviews</Link>. You can also test your numbers using our <Link to="/mortgage-reduction-calculator" className="font-bold text-primary underline hover:text-gold">Mortgage Reduction Calculator</Link>, <Link to="/tools/withdrawal-impact" className="font-bold text-primary underline hover:text-gold">Redraw & Offset Withdrawal Calculator</Link>, <Link to="/tools/wishlist-impact" className="font-bold text-primary underline hover:text-gold">Cost of Spending From Redraw Calculator</Link>, and <Link to="/tools/debt-recycling" className="font-bold text-primary underline hover:text-gold">Debt Recycling Calculator</Link>.
-          </p>
-          <div className="mt-6">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center max-w-4xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-6">
+              What is Crown Money?
+            </h2>
+            <p className="text-xl text-gray-700 font-bold leading-relaxed mb-6">
+              Crown Money Management is an Australian mortgage reduction specialist founded in 2004 (Crown Lending Pty Ltd ABN 47 119 504 862, ACN 119 504 862, ACL 388 279). Utilising our proprietary <Link to="/how-it-works" className="underline text-primary hover:text-gold">Home Ownership Programme (HOP)</Link> and 3-bucket cash-diet system, we act as financial personal trainers to help Australians become debt-free in up to half the time.
+            </p>
+            <p className="text-base text-gray-700 leading-relaxed mb-10">
+              Explore our <Link to="/guides/how-to-pay-off-your-mortgage-faster-australia" className="font-bold text-primary underline hover:text-gold">Complete Guide to Paying Off Your Mortgage Faster in Australia</Link>, compare <Link to="/guides/offset-account-vs-redraw-facility-australia" className="font-bold text-primary underline hover:text-gold">Offset Accounts vs Redraw Facilities</Link>, review our <Link to="/guides/crown-money-fees-suitability-and-results-explained" className="font-bold text-primary underline hover:text-gold">Transparent Fees & Results Methodology</Link>, or read <Link to="/success-stories" className="font-bold text-primary underline hover:text-gold">Verified Client Case Studies</Link> and <Link to="/reviews" className="font-bold text-primary underline hover:text-gold">380+ 5-Star Client Reviews</Link>. You can also test your numbers using our <Link to="/mortgage-reduction-calculator" className="font-bold text-primary underline hover:text-gold">Mortgage Reduction Calculator</Link>, <Link to="/tools/withdrawal-impact" className="font-bold text-primary underline hover:text-gold">Redraw & Offset Withdrawal Calculator</Link>, <Link to="/tools/wishlist-impact" className="font-bold text-primary underline hover:text-gold">Cost of Spending From Redraw Calculator</Link>, and <Link to="/tools/debt-recycling" className="font-bold text-primary underline hover:text-gold">Debt Recycling Calculator</Link>.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 text-left">
+            <div className="bg-white p-6 rounded-2xl border border-primary/10 shadow-sm">
+              <h3 className="text-lg font-display font-bold text-primary mb-2">How It Works (3-Bucket HOP)</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                100% of net salaries reduce daily mortgage interest immediately on payday, 52-week fixed bills are provisioned automatically, and your family receives a dedicated weekly living allowance—reviewed every 90 days by your personal Financial Coach.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-2xl border border-primary/10 shadow-sm">
+              <h3 className="text-lg font-display font-bold text-primary mb-2">Transparent Fee Structure</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Initial Discovery & Strategy Session: <strong>$0 (Free)</strong>. Standard mortgage brokerage is paid by the lender (disclosed in your CPD). Custom Money Management & Coaching establishment ranges from <strong>$0 to $4,950</strong>, backed by our 12-Month Guarantee with zero lock-in contracts.
+              </p>
+            </div>
+            <div className="bg-white p-6 rounded-2xl border border-primary/10 shadow-sm">
+              <h3 className="text-lg font-display font-bold text-primary mb-2">Adviser Credentials & Licensing</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Led by Founder <Link to="/author/scott-parry" className="font-bold text-primary underline">Scott Parry</Link> & Senior Finance Broker <Link to="/author/craig-parry" className="font-bold text-primary underline">Craig Parry</Link>. ASIC-regulated under <strong>Australian Credit Licence (ACL) 388 279</strong>, MFAA Full Member & AFCA Member.
+              </p>
+            </div>
+          </div>
+
+          <div className="text-center">
             <Link 
               to="/contact"
               className="inline-block bg-gold text-primary px-10 py-4 rounded-full font-bold hover:bg-opacity-90 transition-all shadow-xl"

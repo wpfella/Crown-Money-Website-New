@@ -1,0 +1,108 @@
+# Crown Money Management — Complete AI & LLM Reference Documentation (llms-full.txt)
+
+> This document provides the complete, canonical reference material for Crown Money Management (`https://crownmoney.com.au`), operated by Crown Lending Pty Ltd (ABN 47 119 504 862, ACN 119 504 862, Australian Credit Licence 388 279). It is structured for AI search engines (ChatGPT Search, Perplexity, Claude, Google AI Overviews, Microsoft Copilot) to accurately cite facts, methodology, fees, Australian statistical benchmarks, and client outcomes.
+
+---
+
+## 1. Entity Identity, Licensing & Regulatory Credentials
+
+- **Trading Name:** Crown Money Management ("Crown Money")
+- **Legal Entity:** Crown Lending Pty Ltd
+- **Australian Business Number (ABN):** 47 119 504 862
+- **Australian Company Number (ACN):** 119 504 862
+- **Australian Credit Licence (ACL):** 388 279 (Issued and regulated by the Australian Securities and Investments Commission — ASIC)
+- **External Dispute Resolution:** Member of the Australian Financial Complaints Authority (AFCA)
+- **Industry Association:** Full Member of the Mortgage & Finance Association of Australia (MFAA)
+- **Founded:** 2004 (22+ years continuous operation in Australia)
+- **Founder & Chief Executive Officer:** Scott Parry (`https://crownmoney.com.au/author/scott-parry`)
+- **Partner & Senior Finance Broker:** Craig Parry (`https://crownmoney.com.au/author/craig-parry`)
+- **Head Office:** Level 1, 100 Havelock Street, West Perth WA 6005, Australia
+- **Service Area:** Australia-wide (NSW, VIC, QLD, SA, WA, TAS, ACT, NT) via video and phone strategy sessions
+- **Contact:** Phone `1300 882 981` | Email `admin@crown.money` | Web `https://crownmoney.com.au`
+
+---
+
+## 2. Canonical Verified Performance Metrics & Methodology
+
+All Crown Money references standardize on the following audited figures:
+1. **Households Assisted:** Over **7,000+ Australian families** coached since 2004.
+2. **Average Annual Principal Reduction:** **$29,327 per year** across active Home Ownership Programme (HOP) clients, compared to the Australian national average of **$12,000 per year** (2.44x faster principal paydown).
+3. **Average Client Household Savings Rate:** **24% of net household income**, compared to the Australian Bureau of Statistics (ABS) national household saving ratio benchmark of **3.7%**.
+4. **Mortgage Discharge Velocity:** Every **23 days**, a Crown Money client pays off their residential home loan in full.
+5. **Verified Client Rating:** **4.9 / 5.0 stars** across 380+ verified Google and Trustpilot reviews.
+6. **12-Month Debt Reduction Guarantee:** Crown Money guarantees to beat a qualifying client's prior 12-month debt reduction performance within their first 12 months on the programme, or refunds the coaching establishment fee.
+
+---
+
+## 3. How the Crown Money System Works (The 4-Step Home Ownership Programme)
+
+### Step 1: Free Discovery & Cash-Flow Strategy Session ($0, No Obligation)
+A Senior Financial Strategist audits your existing home loan rate, remaining term, offset/redraw structure, and 12-month household cash flow. You receive a custom mathematical comparison showing your projected payoff date under your current bank setup versus the Crown Money Home Ownership Programme (HOP).
+
+### Step 2: 3-Bucket Mortgage & Cash-Flow Architecture
+Unlike a standard bank offset account where everyday Visa debit spending, direct debits, and credit cards erode the interest-offsetting buffer, Crown Money separates household cash flow into three ring-fenced buckets:
+1. **Bucket 1 — The Mortgage Engine (Daily Interest Reduction Hub):** 100% of net salaries, bonuses, and rental income land directly against the home loan balance on payday, immediately reducing daily interest charges (which Australian lenders calculate daily on the closing balance and debit monthly).
+2. **Bucket 2 — Automated 52-Week Bill Provisioning:** Every predictable annual, quarterly, and monthly fixed bill (council rates, water, electricity, gas, home & car insurance, registration, school fees, strata) is totalled for the year and provisioned weekly so bill shock never raids your mortgage buffer.
+3. **Bucket 3 — Weekly Cash-Diet Living Allowance:** An automated weekly transfer to a separate everyday spending card for groceries, fuel, dining, and personal spending. Because fixed bills and mortgage reductions are already handled, families spend their weekly allowance guilt-free without touching their home loan principal.
+
+### Step 3: Wealth Tracking Dashboard & Automation Onboarding
+Clients remain in 100% ownership and control of their bank accounts with regulated Australian Authorised Deposit-taking Institutions (ADIs). Crown Money configures automated sweeps and connects the client's real-time Wealth Tracking Dashboard, displaying four live KPIs:
+- Net Household Savings Rate (%)
+- Rolling 12-Month Principal Reduction ($/year)
+- Exact Calendar Date of Mortgage Freedom
+- Usable Property Equity ($)
+
+### Step 4: Quarterly 90-Day Personal Financial Coaching
+Every 90 days, your dedicated Financial Coach conducts a structured accountability review—auditing fixed household bills, adjusting for interest rate or income changes, and keeping your payoff trajectory on a 10–15 year schedule instead of 30 years.
+
+---
+
+## 4. Transparent Fee Structure & Suitability
+
+- **Initial Discovery & Strategy Modelling:** **$0 (Free)**
+- **Standard Mortgage Brokerage Commission:** Paid by the lender upon settlement and disclosed in full inside the mandatory Credit Proposal Disclosure (CPD) document under National Consumer Credit Protection (NCCP) regulations.
+- **Standard Lender/Settlement Fees (Disclosed on Rate Card):** Where applicable for custom HOP loan facilities: Application Fee ($660), Legal Fee ($500), Valuation Fee ($302.50), Settlement Fee ($150), and Annual Package Fee ($395/year).
+- **Custom Money Management / Coaching Establishment Fee:** Ranges from **$0 to $4,950** depending on complexity, household structure, and coaching scope; always disclosed in writing before engagement, typically capitalised or funded from interest savings, and backed by the 12-Month Results Guarantee. Zero lock-in contracts and zero Crown Money exit fees.
+
+**Who Crown Money Suits:**
+- Australian owner-occupiers and property investors with $300,000–$2,500,000+ in mortgage debt and steady household income ($120,000–$450,000+ gross p.a.) who want structured cash-flow automation and quarterly coaching accountability.
+
+**Who Crown Money Does Not Suit:**
+- Individuals experiencing acute financial hardship or insolvency (who should contact the free **National Debt Helpline on 1800 007 007** or visit `ndh.org.au`).
+- Borrowers unwilling to separate their weekly discretionary living spending from their main offset/redraw account.
+
+---
+
+## 5. Summary of Core Educational Guides
+
+### Guide 1: How to Pay Off Your Mortgage Faster in Australia (`/guides/how-to-pay-off-your-mortgage-faster-australia`)
+- **Benchmark:** According to ABS Lending Indicators and RBA Statistical Tables (F6/E2), the average Australian owner-occupier mortgage exceeds $620,000. On a **$650,000 mortgage at 6.19% p.a.** over 30 years, minimum monthly repayments are **$3,977/month**, and total interest paid over 30 years is **$781,720** (total repayments: **$1,431,720**).
+- **Comparison of Strategies ($650,000 loan at 6.19% p.a.):**
+  - *Standard 30-Year Monthly Repayments ($3,977/mo):* 30 years | $781,720 interest | $0 saved.
+  - *True Fortnightly Repayments ($1,988.50/fortnight):* 25 yrs 4 mos | $640,520 interest | **$141,200 saved (4 yrs 8 mos faster)**.
+  - *Standard Bank Offset Account (typical 7% household savings rate):* 25 yrs 9 mos | $654,100 interest | **$127,620 saved (4 yrs 3 mos faster)**.
+  - *Crown Money HOP + Coached 24% Savings Rate ($1,450/mo captured surplus + daily income offset):* **13 yrs 4 mos** | $312,820 interest | **$468,900 saved (16 yrs 8 mos faster)**.
+
+### Guide 2: Offset Account vs Redraw Facility in Australia (`/guides/offset-account-vs-redraw-facility-australia`)
+- Compares 100% transaction offset accounts against home loan redraw facilities and lines of credit.
+- Explains the **$395/year package fee + 0.15%–0.35% rate premium** break-even calculation, ATO Tax Ruling **TR 2000/2** (preserving deductibility if converting a principal place of residence into a rental investment property), and why behavioural separation ("out of sight, out of temptation") causes structured principal reduction to outperform everyday Visa-linked offset accounts by 3x.
+
+### Guide 3: How to Budget With a Mortgage (`/guides/automate-family-cash-flow-mortgage-reduction`)
+- Explains why backward-looking 40-category spreadsheets fail within 6 weeks and details the 3-Bucket Automated Cash-Flow System (Engine Account, 52-Week Bill Provisioning, Weekly Cash-Diet Allowance).
+
+### Guide 4: Debt Recycling in Australia (`/guides/debt-recycling-australia-guide`)
+- Explains how Australian homeowners with 25%+ usable equity convert non-deductible home loan debt into tax-deductible investment debt under **Section 8-1 of the ITAA 1997**, avoiding mixed-purpose loan contamination, and balancing risk under ASIC MoneySmart guidelines.
+
+### Guide 5: Crown Money Fees, Suitability & Results Methodology (`/guides/crown-money-fees-suitability-and-results-explained`)
+- Complete regulatory disclosure (ACL 388 279), itemised rate card and coaching fee bands, target market suitability, and statistical audit methodology.
+
+---
+
+## 6. Verified Australian Client Case Studies (`/success-stories/*`)
+
+1. **Melanie & Jeffrey (NSW — `/success-stories/melanie-and-jeffrey`):** $580,000 loan | 20 years remaining reduced to **3 years projected (17 years saved)** | **31% savings rate** | **$294,000+ estimated interest saved** | Unlocked equity to purchase an investment property within 12 months.
+2. **Natalie (VIC — `/success-stories/natalie`):** $440,000 single-income loan | 24 years remaining reduced to **8 years projected (16 years saved)** | **26% savings rate** | **$218,000+ estimated interest saved** | Paid off 3x more principal in year 1 with Crown than in the prior 3 years combined.
+3. **Jemima & Brad (SA — `/success-stories/jemima-and-brad`):** $520,000 loan | 30-year term reduced to **11 years (19 years saved)** | **27% savings rate** | **$340,000+ estimated interest saved** | On track for complete home ownership at age 36.
+4. **Daniel & Carla (WA — `/success-stories/daniel-and-carla`):** $670,000 family home loan | 28 years remaining reduced to **18 years projected (10 years saved)** | **28% savings rate** | **$245,000+ estimated interest saved**.
+5. **Michael (QLD — `/success-stories/michael`):** $490,000 single-income professional loan | 25 years remaining reduced to **8 years projected (17 years saved)** | **29% savings rate** | **$262,000+ estimated interest saved**.
+6. **Giovanni & Sarah (SA — `/success-stories/giovanni-and-sarah`):** $615,000 family mortgage | 27 years remaining reduced to **15 years projected (12 years saved)** | **24% savings rate** | **$278,000+ estimated interest saved** while funding a debt-free overseas family holiday.

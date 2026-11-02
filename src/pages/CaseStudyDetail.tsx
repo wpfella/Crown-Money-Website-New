@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
-import { ArrowLeft, ArrowRight, CheckCircle, Quote, ShieldCheck, Calculator, MapPin, Users, Calendar } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CheckCircle, Quote, ShieldCheck, Calculator, MapPin, Users, Calendar, Video, Clock } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { caseStudiesData } from '../data/caseStudiesData';
 import { NotFound } from './NotFound';
@@ -16,37 +15,6 @@ export const CaseStudyDetail: React.FC = () => {
 
   const otherStudies = caseStudiesData.filter((c) => c.slug !== study.slug);
 
-  const schema = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'Article',
-        headline: study.headline,
-        description: study.metaDescription,
-        image: study.image,
-        author: {
-          '@type': 'Organization',
-          name: 'Crown Money Management',
-          url: 'https://crownmoney.com.au'
-        },
-        publisher: {
-          '@type': 'Organization',
-          name: 'Crown Money Management',
-          url: 'https://crownmoney.com.au'
-        },
-        mainEntityOfPage: `https://crownmoney.com.au/success-stories/${study.slug}`
-      },
-      {
-        '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://crownmoney.com.au/' },
-          { '@type': 'ListItem', position: 2, name: 'Success Stories', item: 'https://crownmoney.com.au/success-stories' },
-          { '@type': 'ListItem', position: 3, name: study.name, item: `https://crownmoney.com.au/success-stories/${study.slug}` }
-        ]
-      }
-    ]
-  };
-
   return (
     <div className="pt-10 pb-24 bg-white">
       <SEO
@@ -55,9 +23,6 @@ export const CaseStudyDetail: React.FC = () => {
         ogImage={study.image}
         canonicalUrl={`https://crownmoney.com.au/success-stories/${study.slug}`}
       />
-      <Helmet>
-        <script type="application/ld+json">{JSON.stringify(schema)}</script>
-      </Helmet>
 
       {/* Hero */}
       <section className="bg-primary text-white py-16 md:py-24">
@@ -111,26 +76,88 @@ export const CaseStudyDetail: React.FC = () => {
       {/* Case Study Breakdown */}
       <section className="py-16">
         <div className="max-w-5xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-          <div className="lg:col-span-5">
+          <div className="lg:col-span-5 space-y-6">
             <img
               src={study.image}
-              alt={`${study.name} - Crown Money Mortgage Reduction Case Study`}
+              alt={`${study.name} (${study.state}) - Crown Money Mortgage Reduction Case Study`}
+              width={600}
+              height={600}
+              loading="lazy"
               className="w-full rounded-3xl shadow-xl object-cover"
               referrerPolicy="no-referrer"
             />
-            <div className="mt-6 bg-gray-50 p-6 rounded-2xl border border-gray-100">
+            <div className="bg-gray-50 p-6 rounded-2xl border border-gray-100">
               <Quote className="text-gold mb-3" size={28} />
               <p className="text-gray-700 italic leading-relaxed mb-4">"{study.clientQuote}"</p>
               <div className="font-bold text-primary">— {study.name}, {study.state}</div>
             </div>
+
+            {/* Video Testimonial Embed */}
+            {study.videoUrl && (
+              <div className="bg-primary text-white p-6 rounded-3xl shadow-lg space-y-3">
+                <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-gold">
+                  <Video size={16} /> Verified Video Testimonial
+                </div>
+                <h3 className="text-lg font-display font-bold">
+                  Watch Australian Client Video Feedback
+                </h3>
+                <div className="aspect-video rounded-2xl overflow-hidden bg-black">
+                  <video
+                    src={study.videoUrl}
+                    controls
+                    preload="none"
+                    playsInline
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+              </div>
+            )}
           </div>
 
-          <div className="lg:col-span-7 space-y-8">
+          <div className="lg:col-span-7 space-y-10">
             <div>
-              <h2 className="text-2xl font-display font-bold text-primary mb-3">
-                The Starting Position & Challenge
+              <h2 className="text-2xl font-display font-bold text-primary mb-4">
+                The Starting Position & Full Case Study Story
               </h2>
-              <p className="text-gray-700 text-lg leading-relaxed">{study.challenge}</p>
+              <p className="text-gray-800 font-semibold text-lg leading-relaxed mb-4">
+                {study.challenge}
+              </p>
+              <div className="space-y-4">
+                {study.storyParagraphs.map((para, pIdx) => (
+                  <p key={pIdx} className="text-gray-700 leading-relaxed">
+                    {para}
+                  </p>
+                ))}
+              </div>
+            </div>
+
+            {/* Before vs After Financial Comparison Table */}
+            <div className="bg-white rounded-3xl border border-gray-200 shadow-sm overflow-hidden">
+              <div className="bg-primary text-white px-6 py-4">
+                <h2 className="text-lg md:text-xl font-display font-bold">
+                  Before vs After Crown Money Comparison ({study.name})
+                </h2>
+              </div>
+              <div className="overflow-x-auto p-4">
+                <table className="w-full text-left border-collapse text-sm">
+                  <thead>
+                    <tr className="border-b-2 border-gray-200 text-primary font-bold">
+                      <th scope="col" className="py-3 px-3">Metric</th>
+                      <th scope="col" className="py-3 px-3">Before Crown Money</th>
+                      <th scope="col" className="py-3 px-3">With Crown Money HOP</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100 text-gray-700">
+                    {study.beforeAfterTable.map((row, idx) => (
+                      <tr key={idx} className="hover:bg-gray-50">
+                        <td className="py-3 px-3 font-bold text-primary">{row.metric}</td>
+                        <td className="py-3 px-3 text-gray-600">{row.beforeCrown}</td>
+                        <td className="py-3 px-3 font-semibold text-emerald-700">{row.withCrown}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
 
             <div>
@@ -145,6 +172,23 @@ export const CaseStudyDetail: React.FC = () => {
                   </li>
                 ))}
               </ul>
+            </div>
+
+            {/* Step-by-Step Timeline */}
+            <div>
+              <h2 className="text-2xl font-display font-bold text-primary mb-4 flex items-center gap-2">
+                <Clock size={22} className="text-gold" /> Implementation Timeline & Milestones
+              </h2>
+              <div className="space-y-4">
+                {study.timeline.map((step, tIdx) => (
+                  <div key={tIdx} className="bg-gray-50 border-l-4 border-gold rounded-r-2xl p-5">
+                    <h3 className="text-base font-display font-bold text-primary mb-1">
+                      {step.phase}
+                    </h3>
+                    <p className="text-sm text-gray-700 leading-relaxed">{step.milestone}</p>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="bg-primary text-white p-8 rounded-3xl space-y-4">
