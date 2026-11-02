@@ -50,9 +50,13 @@ export const NetWorth = () => {
   return (
     <div className="pt-0 pb-20">
       <Helmet>
-        <title>Net Worth Calculator Australia | Track Your Wealth | Crown Money</title>
-        <meta name="description" content="Calculate your total net worth and analyze your asset allocation in Australia. Our net worth calculator helps you track your journey to financial freedom, wealth building, and mortgage reduction." />
+        <title>Net Worth Calculator Australia | Crown Money</title>
+        <meta name="description" content="Calculate your household net worth in Australia. Track property equity, super, investments, and home loan debt to measure your wealth trajectory." />
         <meta name="keywords" content="net worth calculator australia, track wealth, asset allocation calculator, crown money tools, financial freedom australia, wealth tracking, personal balance sheet" />
+        <meta property="og:title" content="Net Worth Calculator Australia | Crown Money" />
+        <meta property="og:description" content="Calculate your household net worth in Australia. Track property equity, super, investments, and home loan debt to measure your wealth trajectory." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://crownmoney.com.au/tools/net-worth" />
         <link rel="canonical" href="https://crownmoney.com.au/tools/net-worth" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -103,7 +107,7 @@ export const NetWorth = () => {
 
       <section className="bg-primary text-white py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Net Worth Calculator</h1>
+          <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Net Worth Calculator Australia</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Get a 360-degree view of your financial world and track your journey to true wealth.
           </p>

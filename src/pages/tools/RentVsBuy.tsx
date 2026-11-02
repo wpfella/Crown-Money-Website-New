@@ -71,9 +71,13 @@ export const RentVsBuy = () => {
   return (
     <div className="pt-0 pb-20">
       <Helmet>
-        <title>Rent vs Buy Calculator Australia | Home Ownership Comparison | Crown Money</title>
-        <meta name="description" content="Compare renting vs buying in Australia with our advanced calculator. Analyze long-term wealth, maintenance costs, stamp duty, and investment opportunity costs for informed financial planning and mortgage reduction." />
+        <title>Rent vs Buy Calculator Australia | Crown Money</title>
+        <meta name="description" content="Compare the true long-term cost of renting vs buying a home in Australia. Factor in stamp duty, deposit, maintenance, and property growth today." />
         <meta name="keywords" content="rent vs buy calculator, buy vs rent australia, home ownership vs renting, property investment australia, crown money tools, real estate comparison australia" />
+        <meta property="og:title" content="Rent vs Buy Calculator Australia | Crown Money" />
+        <meta property="og:description" content="Compare the true long-term cost of renting vs buying a home in Australia. Factor in stamp duty, deposit, maintenance, and property growth today." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://crownmoney.com.au/tools/rent-vs-buy" />
         <link rel="canonical" href="https://crownmoney.com.au/tools/rent-vs-buy" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -124,7 +128,7 @@ export const RentVsBuy = () => {
 
       <section className="bg-primary text-white py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Rent vs Buy Calculator</h1>
+          <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Rent vs Buy Calculator Australia</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             A comprehensive comparison of renting versus buying in the Australian property market.
           </p>

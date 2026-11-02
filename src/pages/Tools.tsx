@@ -382,19 +382,23 @@ export const Tools = () => {
 
   const advancedTools = [
     { title: "Rent vs Buy", path: "/tools/rent-vs-buy", icon: Home, description: "Compare the long-term cost of renting vs buying." },
-    { title: "Net Worth", path: "/tools/net-worth", icon: Wallet, description: "Track your total financial position." },
-    { title: "Debt Recycling", path: "/tools/debt-recycling", icon: RefreshCw, description: "Turn home debt into tax-deductible debt." },
-    { title: "Budget Planner", path: "/tools/budget", icon: Calculator, description: "Master your cash flow and find savings." },
-    { title: "Home Loan Withdrawal Impact", path: "/tools/withdrawal-impact", icon: ShoppingCart, description: "See the true cost of lifestyle purchases on your mortgage." },
-    { title: "Wishlist Impact", path: "/tools/wishlist-impact", icon: ShoppingCart, description: "Calculate the cost of 'wants' vs 'needs' on your home loan." },
+    { title: "Net Worth", path: "/tools/net-worth", icon: Wallet, description: "Track your total household assets, property equity, and liabilities." },
+    { title: "Debt Recycling", path: "/tools/debt-recycling", icon: RefreshCw, description: "Convert non-deductible home loan debt into tax-deductible investment debt." },
+    { title: "Budget Planner", path: "/tools/budget", icon: Calculator, description: "Calculate your household savings rate and uncover monthly cash-flow surplus." },
+    { title: "Redraw & Offset Withdrawal Cost", path: "/tools/withdrawal-impact", icon: ShoppingCart, description: "Calculate how withdrawing from your redraw or offset extends your loan term." },
+    { title: "Cost of Spending From Redraw", path: "/tools/wishlist-impact", icon: ShoppingCart, description: "Compare 'wants vs needs' when using home loan equity for cars, boats, or holidays." },
   ];
 
   return (
     <div className="pt-20">
       <Helmet>
-        <title>Financial Calculators & Mortgage Tools Australia | Crown Money</title>
-        <meta name="description" content="Explore our suite of financial tools and calculators designed for Australians. From mortgage reduction to debt recycling, budget planning, and wishlist impact, Crown Money helps you take control of your wealth." />
-        <meta name="keywords" content="mortgage calculator australia, rent vs buy calculator, negative gearing calculator, debt recycling calculator, net worth calculator, mortgage reduction tools" />
+        <title>Mortgage & Financial Calculators Australia | Crown Money</title>
+        <meta name="description" content="Free Australian mortgage and financial calculators: compare rent vs buy, debt recycling, redraw impact, net worth, and extra home loan repayments." />
+        <meta name="keywords" content="mortgage calculator australia, rent vs buy calculator, debt recycling calculator, net worth calculator, mortgage reduction tools, redraw impact calculator" />
+        <meta property="og:title" content="Mortgage & Financial Calculators Australia | Crown Money" />
+        <meta property="og:description" content="Free Australian mortgage and financial calculators: compare rent vs buy, debt recycling, redraw impact, net worth, and extra home loan repayments." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://crownmoney.com.au/tools" />
         <link rel="canonical" href="https://crownmoney.com.au/tools" />
         <script type="application/ld+json">
           {JSON.stringify(toolsSchema)}
@@ -403,9 +407,9 @@ export const Tools = () => {
       {/* Hero */}
       <section className="bg-primary text-white py-24">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Financial Tools & Calculators</h1>
+          <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Australian Mortgage & Financial Calculators</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Empower your financial decisions with our suite of Australian-specific calculators.
+            Model your home loan repayments, extra repayment savings, redraw withdrawal impact, debt recycling, and household cash flow with our free Australian financial tools.
           </p>
         </div>
       </section>
@@ -476,6 +480,20 @@ export const Tools = () => {
                 </div>
               </Link>
             ))}
+          </div>
+
+          <div className="mt-16 bg-white p-8 md:p-10 rounded-3xl border border-gray-200 shadow-sm">
+            <h2 className="text-2xl font-display font-bold text-primary mb-4">
+              How to Choose the Right Mortgage Calculator for Your Goal
+            </h2>
+            <p className="text-gray-600 leading-relaxed mb-4">
+              Whether you are buying your first property, comparing an offset account against a redraw facility, or planning to pay off a 30-year home loan in under 15 years, each calculator on this hub solves a specific Australian mortgage question:
+            </p>
+            <ul className="space-y-3 text-sm text-gray-700 mb-6">
+              <li><strong>Paying Off Your Mortgage Early:</strong> Start with our flagship <Link to="/mortgage-reduction-calculator" className="text-primary font-bold underline">Mortgage Reduction Calculator</Link> and read our <Link to="/guides/how-to-pay-off-your-mortgage-faster-australia" className="text-primary font-bold underline">Complete Guide to Paying Off Your Mortgage Faster</Link>.</li>
+              <li><strong>Withdrawing From Redraw or Offset:</strong> Use the <Link to="/tools/withdrawal-impact" className="text-primary font-bold underline">Redraw & Offset Withdrawal Calculator</Link> to see the compound interest impact of pulling equity out, or use the <Link to="/tools/wishlist-impact" className="text-primary font-bold underline">Cost of Spending From Redraw Calculator</Link> to evaluate lifestyle purchases like cars, boats, or renovations.</li>
+              <li><strong>Building Wealth & Tax Efficiency:</strong> Model tax-deductible debt strategies with the <Link to="/tools/debt-recycling" className="text-primary font-bold underline">Debt Recycling Calculator</Link> and our <Link to="/guides/debt-recycling-australia-guide" className="text-primary font-bold underline">Australian Debt Recycling Guide</Link>.</li>
+            </ul>
           </div>
         </div>
       </section>

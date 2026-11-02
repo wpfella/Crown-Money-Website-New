@@ -130,11 +130,22 @@ export const Contact = () => {
   const contactSchema = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    "name": "Contact Crown Money",
-    "description": "Get in touch with Crown Money Management for a free mortgage strategy session.",
+    "name": "Contact Crown Money | Free Mortgage Strategy Session",
+    "description": "Book a free mortgage reduction strategy session with Crown Money. Call 1300 882 981 or visit our Australian office to pay off your home loan faster.",
     "mainEntity": {
-      "@type": "Organization",
-      "name": "Crown Money",
+      "@type": "FinancialService",
+      "name": "Crown Money Management (Crown Lending Pty Ltd)",
+      "telephone": "1300 882 981",
+      "email": "admin@crown.money",
+      "url": "https://crownmoney.com.au",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Level 1, 100 Havelock Street",
+        "addressLocality": "West Perth",
+        "addressRegion": "WA",
+        "postalCode": "6005",
+        "addressCountry": "AU"
+      },
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "1300 882 981",
@@ -148,8 +159,8 @@ export const Contact = () => {
   return (
     <div className="pt-10">
       <SEO
-        title="Contact Us | Book Your Free Mortgage Strategy Call"
-        description="Contact Crown Money Management today. Book your free strategy call, send an enquiry, or find our contact details. We're here to help you achieve financial freedom and pay off your mortgage faster."
+        title="Contact Crown Money | Free Mortgage Strategy Session"
+        description="Book a free mortgage reduction strategy session with Crown Money. Call 1300 882 981 or visit our Australian office to pay off your home loan faster."
         keywords="contact Crown Money, book strategy call, mortgage broker contact, financial advice Australia, debt reduction consultation, mortgage reduction experts"
       />
       <Helmet>
@@ -160,9 +171,9 @@ export const Contact = () => {
       {/* Hero */}
       <section className="bg-primary text-white py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Get In Touch</h1>
+          <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Contact Our Mortgage Reduction Specialists</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            Ready to start your journey to mortgage freedom? Our team is here to help.
+            Ready to pay off your home loan in half the time? Book your free 1-on-1 strategy session with our licensed Australian mortgage specialists.
           </p>
         </div>
       </section>
@@ -173,9 +184,9 @@ export const Contact = () => {
             {/* Contact Info */}
             <div className="space-y-12">
               <div>
-                <h2 className="text-3xl font-display font-bold text-primary mb-6">Contact Information</h2>
+                <h2 className="text-3xl font-display font-bold text-primary mb-6">Contact Information & Australian Office</h2>
                 <p className="text-gray-600 mb-10">
-                  Whether you have a question about our strategy or you're ready to book your discovery call, we'd love to hear from you.
+                  Whether you have a question about our Home Ownership Programme (HOP), want to compare your current offset account, or are ready to book your free discovery session, our team is here to help homeowners across Australia.
                 </p>
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
@@ -183,8 +194,9 @@ export const Contact = () => {
                       <Phone size={24} />
                     </div>
                     <div>
-                      <p className="text-sm text-gray-500 font-bold uppercase tracking-widest">Call Us</p>
+                      <p className="text-sm text-gray-500 font-bold uppercase tracking-widest">Call Us (Australia-Wide)</p>
                       <a href="tel:1300882981" className="text-xl font-bold text-primary hover:text-gold transition-colors">1300 882 981</a>
+                      <p className="text-xs text-gray-500 mt-1">Monday – Friday: 8:30am – 5:30pm AEST/AWST</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
@@ -196,28 +208,45 @@ export const Contact = () => {
                       <a href="mailto:admin@crown.money" className="text-xl font-bold text-primary hover:text-gold transition-colors">admin@crown.money</a>
                     </div>
                   </div>
+                  <div className="flex items-start space-x-4">
+                    <div className="bg-accent p-4 rounded-2xl text-primary shadow-sm">
+                      <MapPin size={24} />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500 font-bold uppercase tracking-widest">Head Office & National Service</p>
+                      <p className="text-base font-bold text-primary">Level 1, 100 Havelock Street, West Perth WA 6005</p>
+                      <p className="text-sm text-gray-600 mt-1">
+                        Video & phone strategy sessions available Australia-wide across Melbourne (VIC), Sydney (NSW), Brisbane (QLD), Adelaide (SA) & Perth (WA).
+                      </p>
+                      <p className="text-xs text-gray-500 mt-2 font-medium">
+                        Crown Lending Pty Ltd · ABN 47 119 504 862 · ACN 119 504 862 · Australian Credit Licence (ACL) 388 279
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
               <div className="bg-crown-lavender p-8 rounded-3xl border border-primary/5">
-                <h3 className="text-xl font-bold text-primary mb-4">Why book a call?</h3>
+                <h3 className="text-xl font-bold text-primary mb-4">What happens in your free strategy session?</h3>
                 <ul className="space-y-3">
                   <li className="flex items-center space-x-3">
                     <CheckCircle className="text-gold" size={18} />
-                    <span className="text-gray-700">100% free discovery session</span>
+                    <span className="text-gray-700">100% free 1-on-1 discovery & mortgage audit</span>
                   </li>
                   <li className="flex items-center space-x-3">
                     <CheckCircle className="text-gold" size={18} />
-                    <span className="text-gray-700">Personalised interest saving projection</span>
+                    <span className="text-gray-700">Personalised interest & years-saved projection on your loan</span>
                   </li>
                   <li className="flex items-center space-x-3">
                     <CheckCircle className="text-gold" size={18} />
-                    <span className="text-gray-700">No obligation, just expert advice</span>
+                    <span className="text-gray-700">Transparent breakdown of eligibility, loan structure, and fees</span>
+                  </li>
+                  <li className="flex items-center space-x-3">
+                    <CheckCircle className="text-gold" size={18} />
+                    <span className="text-gray-700">Zero obligation and zero impact on your credit file</span>
                   </li>
                 </ul>
               </div>
-
-              {/* Removed direct OnceHub link as per request to go through form first */}
             </div>
 
             {/* Form */}

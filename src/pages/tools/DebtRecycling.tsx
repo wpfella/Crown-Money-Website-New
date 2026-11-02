@@ -54,9 +54,13 @@ export const DebtRecycling = () => {
   return (
     <div className="pt-0 pb-20">
       <Helmet>
-        <title>Debt Recycling Calculator Australia | Tax-Deductible Debt Strategy | Crown Money</title>
-        <meta name="description" content="Master debt recycling in Australia with our advanced calculator. Learn how to transform your non-deductible home loan into tax-deductible investment debt for faster wealth building and mortgage reduction." />
+        <title>Debt Recycling Calculator Australia | Crown Money</title>
+        <meta name="description" content="Calculate how debt recycling turns non-deductible Australian home loan debt into tax-deductible investment wealth. See annual tax and interest savings." />
         <meta name="keywords" content="debt recycling calculator australia, tax deductible debt, home loan strategy, crown money tools, wealth building australia, mortgage reduction strategy, investment debt" />
+        <meta property="og:title" content="Debt Recycling Calculator Australia | Crown Money" />
+        <meta property="og:description" content="Calculate how debt recycling turns non-deductible Australian home loan debt into tax-deductible investment wealth. See annual tax and interest savings." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://crownmoney.com.au/tools/debt-recycling" />
         <link rel="canonical" href="https://crownmoney.com.au/tools/debt-recycling" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -107,7 +111,7 @@ export const DebtRecycling = () => {
 
       <section className="bg-primary text-white py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Debt Recycling Calculator</h1>
+          <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Debt Recycling Calculator Australia</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Transform your non-deductible mortgage into tax-deductible wealth-building debt.
           </p>

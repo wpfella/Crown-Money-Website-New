@@ -12,6 +12,7 @@ interface SEOProps {
   ogUrl?: string;
   ogType?: string;
   canonicalUrl?: string;
+  noindex?: boolean;
 }
 
 export const SEO: React.FC<SEOProps> = ({
@@ -24,22 +25,23 @@ export const SEO: React.FC<SEOProps> = ({
   ogUrl,
   ogType = 'website',
   canonicalUrl,
+  noindex = false,
 }) => {
   const location = useLocation();
   
   const siteName = 'Crown Money';
-  const defaultTitle = 'Crown Money | Pay Off Your Mortgage in half the time | Australia\'s Leading Financial Coaching';
-  const defaultDescription = 'Crown Money helps Australian families pay off their home loans in up to half the time using advanced money management strategies. Achieve financial freedom faster with our proven system.';
-  const defaultKeywords = 'mortgage reduction Australia, pay off mortgage fast, financial coaching Australia, debt reduction strategy, home loan interest savings, Crown Money Management, Scott Parry, mortgage freedom system, wealth tracking dashboard';
+  const defaultTitle = 'Pay Off Mortgage Faster | Mortgage Reduction | Crown Money';
+  const defaultDescription = "Australian homeowners use Crown Money's money management system to pay off their home loan years sooner. Free mortgage savings check in 2 minutes.";
+  const defaultKeywords = 'mortgage reduction Australia, pay off mortgage faster, financial coaching Australia, debt reduction strategy, home loan interest savings, Crown Money Management, Scott Parry, Home Ownership Programme';
 
   const finalTitle = title ? (title.includes(siteName) ? title : `${title} | ${siteName}`) : defaultTitle;
   const finalDescription = description || defaultDescription;
   const finalKeywords = keywords || defaultKeywords;
   
-  const finalOgTitle = ogTitle || title || 'Crown Money | Australia\'s Leading Mortgage Reduction Specialists';
-  const finalOgDescription = ogDescription || description || 'Pay off your mortgage in half the time, not 30 years. Our proven money management system helps Aussie homeowners save hundreds of thousands in interest.';
+  const finalOgTitle = ogTitle || finalTitle;
+  const finalOgDescription = ogDescription || finalDescription;
   
-  const currentPath = location.pathname;
+  const currentPath = location.pathname === '/' ? '/' : location.pathname.replace(/\/+$/, '');
   const baseDomain = 'https://crownmoney.com.au';
   const finalOgUrl = ogUrl || `${baseDomain}${currentPath}`;
   const finalCanonicalUrl = canonicalUrl || `${baseDomain}${currentPath}`;
@@ -51,6 +53,11 @@ export const SEO: React.FC<SEOProps> = ({
       <meta name="title" content={finalTitle} />
       <meta name="description" content={finalDescription} />
       {finalKeywords && <meta name="keywords" content={finalKeywords} />}
+      {noindex ? (
+        <meta name="robots" content="noindex, nofollow" />
+      ) : (
+        <meta name="robots" content="index, follow" />
+      )}
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />

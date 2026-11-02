@@ -41,8 +41,9 @@ const Header = ({ onChatToggle, onBookToggle }: { onChatToggle: () => void; onBo
     { name: 'Rent vs Buy', path: '/tools/rent-vs-buy' },
     { name: 'Net Worth', path: '/tools/net-worth' },
     { name: 'Debt Recycling', path: '/tools/debt-recycling' },
-    { name: 'Withdrawal Impact', path: '/tools/withdrawal-impact' },
-    { name: 'Wishlist Impact', path: '/tools/wishlist-impact' },
+    { name: 'Budget Planner', path: '/tools/budget' },
+    { name: 'Redraw & Offset Withdrawal', path: '/tools/withdrawal-impact' },
+    { name: 'Cost of Spending From Redraw', path: '/tools/wishlist-impact' },
   ];
 
   const clientLogins = [
@@ -119,8 +120,9 @@ const Header = ({ onChatToggle, onBookToggle }: { onChatToggle: () => void; onBo
               </div>
             </div>
 
-            <Link to="/success-stories" className={cn("text-sm font-medium hover:text-primary transition-colors", location.pathname === "/success-stories" ? "text-primary" : "text-gray-600")}>Success Stories</Link>
+            <Link to="/success-stories" className={cn("text-sm font-medium hover:text-primary transition-colors", location.pathname.startsWith("/success-stories") ? "text-primary" : "text-gray-600")}>Success Stories</Link>
             <Link to="/reviews" className={cn("text-sm font-medium hover:text-primary transition-colors", location.pathname === "/reviews" ? "text-primary" : "text-gray-600")}>Reviews</Link>
+            <Link to="/guides" className={cn("text-sm font-medium hover:text-primary transition-colors", location.pathname.startsWith("/guides") ? "text-primary" : "text-gray-600")}>Guides</Link>
             <a 
               href="https://open.spotify.com/show/56u7gA4oHUb9h47iyd8uLs" 
               target="_blank" 
@@ -198,6 +200,7 @@ const Header = ({ onChatToggle, onBookToggle }: { onChatToggle: () => void; onBo
 
                 <Link to="/success-stories" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium py-2 text-gray-600">Success Stories</Link>
                 <Link to="/reviews" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium py-2 text-gray-600">Reviews</Link>
+                <Link to="/guides" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium py-2 text-gray-600">Guides</Link>
                 <a 
                   href="https://open.spotify.com/show/56u7gA4oHUb9h47iyd8uLs" 
                   target="_blank" 
@@ -268,6 +271,9 @@ const Footer = ({ onBookToggle, onRatesToggle }: { onBookToggle: () => void; onR
               <Mail size={16} className="mr-3 text-gold" />
               admin@crown.money
             </a>
+            <p className="text-xs text-gray-300 leading-relaxed pt-1">
+              Level 1, 100 Havelock Street, West Perth WA 6005 (Servicing Australia-Wide)
+            </p>
           </div>
           <button
             onClick={onBookToggle}
@@ -284,6 +290,8 @@ const Footer = ({ onBookToggle, onRatesToggle }: { onBookToggle: () => void; onR
             <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
             <li><Link to="/how-it-works" className="hover:text-white transition-colors">How It Works</Link></li>
             <li><Link to="/tools" className="hover:text-white transition-colors">Calculators & Tools</Link></li>
+            <li><Link to="/mortgage-reduction-calculator" className="hover:text-white transition-colors">Mortgage Reduction Calculator</Link></li>
+            <li><Link to="/guides" className="hover:text-white transition-colors">Mortgage Reduction Guides</Link></li>
             <li><Link to="/success-stories" className="hover:text-white transition-colors">Success Stories</Link></li>
             <li><Link to="/reviews" className="hover:text-white transition-colors">Client Reviews</Link></li>
             <li>
@@ -301,7 +309,7 @@ const Footer = ({ onBookToggle, onRatesToggle }: { onBookToggle: () => void; onR
         </div>
 
         <div>
-          <h4 className="text-lg font-bold mb-6 border-b border-white/10 pb-2">Legal</h4>
+          <h4 className="text-lg font-bold mb-6 border-b border-white/10 pb-2">Legal & Transparency</h4>
           <ul className="space-y-3 text-sm text-gray-300">
             <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
             <li>
@@ -309,6 +317,7 @@ const Footer = ({ onBookToggle, onRatesToggle }: { onBookToggle: () => void; onR
                 Maximum Rates and Fees
               </button>
             </li>
+            <li><Link to="/guides/crown-money-fees-suitability-and-results-explained" className="hover:text-white transition-colors">Fees, Suitability & Results Methodology</Link></li>
             <li><Link to="/target-market-determinations" className="hover:text-white transition-colors">Target Market Determinations</Link></li>
           </ul>
         </div>
@@ -323,7 +332,7 @@ const Footer = ({ onBookToggle, onRatesToggle }: { onBookToggle: () => void; onR
             <a href="https://www.youtube.com/@crownmoneyAU" target="_blank" rel="noopener noreferrer" className="bg-white/10 p-3 rounded-full hover:bg-gold transition-all"><Youtube size={20} /></a>
           </div>
           <p className="text-xs text-gray-400 mb-4">
-            Crown Lending Pty Ltd ACL Number – 388 279 | Crown Lending ACN – 119 504 862 | MFAA Member
+            Crown Lending Pty Ltd · ABN 47 119 504 862 · ACN 119 504 862 · Australian Credit Licence (ACL) Number 388 279 · MFAA Full Member
           </p>
           <p className="text-xs text-gray-400 mb-4">
             <a 

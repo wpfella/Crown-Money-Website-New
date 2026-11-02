@@ -9,9 +9,13 @@ export const CalculatorLanding = () => {
   return (
     <div className="pt-20">
       <Helmet>
-        <title>Mortgage Reduction Calculator | Pay Off Your Home Faster | Crown Money</title>
-        <meta name="description" content="Use our advanced mortgage reduction calculator to see how much interest you can save and how many years you can shave off your home loan with Crown Money's Home Ownership Programme." />
+        <title>Mortgage Reduction Calculator Australia | Crown Money</title>
+        <meta name="description" content="Calculate how much interest and time you can save on your Australian home loan with our free Mortgage Reduction Calculator. Get results in 2 minutes." />
         <meta name="keywords" content="mortgage reduction calculator, pay off home loan faster, mortgage savings calculator, interest reduction calculator, Crown Money HOP, home ownership programme australia" />
+        <meta property="og:title" content="Mortgage Reduction Calculator Australia | Crown Money" />
+        <meta property="og:description" content="Calculate how much interest and time you can save on your Australian home loan with our free Mortgage Reduction Calculator. Get results in 2 minutes." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://crownmoney.com.au/mortgage-reduction-calculator" />
         <link rel="canonical" href="https://crownmoney.com.au/mortgage-reduction-calculator" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -142,6 +146,62 @@ export const CalculatorLanding = () => {
               <p className="text-gray-600 leading-relaxed">
                 No. Most of our clients achieve these results using their current income. The secret lies in efficiency and management, not just earning more. We act as your financial personal trainers to ensure every dollar is working for you.
               </p>
+            </div>
+          </div>
+
+          {/* Worked Australian Mortgage Reduction Examples */}
+          <div className="mt-16 bg-white p-8 md:p-10 rounded-3xl border border-gray-200 shadow-sm">
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-primary mb-4">
+              Worked Australian Home Loan Reduction Examples (6.19% p.a.)
+            </h2>
+            <p className="text-gray-600 mb-6 leading-relaxed">
+              The table below illustrates how combining daily interest offsetting with Crown Money’s automated cash-diet coaching compares against a standard 30-year principal-and-interest bank schedule:
+            </p>
+            <div className="overflow-x-auto mb-6">
+              <table className="w-full text-left border-collapse text-sm">
+                <thead>
+                  <tr className="border-b-2 border-gray-200 text-primary font-bold">
+                    <th className="py-3 pr-4">Loan Balance</th>
+                    <th className="py-3 pr-4">30-Yr Bank Interest</th>
+                    <th className="py-3 pr-4">Coached Payoff Term</th>
+                    <th className="py-3">Est. Interest Saved</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100 text-gray-700">
+                  <tr>
+                    <td className="py-3 pr-4 font-bold">$500,000</td>
+                    <td className="py-3 pr-4">$601,320</td>
+                    <td className="py-3 pr-4 text-primary font-semibold">12 yrs 9 mos</td>
+                    <td className="py-3 font-bold text-green-700">$368,400 saved</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 pr-4 font-bold">$650,000</td>
+                    <td className="py-3 pr-4">$781,720</td>
+                    <td className="py-3 pr-4 text-primary font-semibold">13 yrs 4 mos</td>
+                    <td className="py-3 font-bold text-green-700">$468,900 saved</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 pr-4 font-bold">$850,000</td>
+                    <td className="py-3 pr-4">$1,022,250</td>
+                    <td className="py-3 pr-4 text-primary font-semibold">14 yrs 2 mos</td>
+                    <td className="py-3 font-bold text-green-700">$589,100 saved</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="flex flex-wrap gap-6 text-sm font-bold pt-2">
+              <Link to="/guides/how-to-pay-off-your-mortgage-faster-australia" className="text-primary underline hover:text-gold">
+                Read: How to Pay Off Your Mortgage Faster in Australia →
+              </Link>
+              <Link to="/tools/withdrawal-impact" className="text-primary underline hover:text-gold">
+                Redraw & Offset Withdrawal Calculator →
+              </Link>
+              <Link to="/tools/wishlist-impact" className="text-primary underline hover:text-gold">
+                Cost of Spending From Redraw Calculator →
+              </Link>
+              <Link to="/success-stories" className="text-primary underline hover:text-gold">
+                Read Verified Client Case Studies →
+              </Link>
             </div>
           </div>
         </div>

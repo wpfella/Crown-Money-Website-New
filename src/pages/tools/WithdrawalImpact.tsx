@@ -151,10 +151,41 @@ export const WithdrawalImpact = () => {
   return (
     <div className="pt-0 pb-20">
       <Helmet>
-        <title>Home Loan Withdrawal Impact Calculator | Redraw & Offset Cost | Crown Money</title>
-        <meta name="description" content="Calculate the real cost of withdrawing funds from your home loan redraw or offset account. See the impact on your loan term, total interest, and payoff age." />
+        <title>Redraw & Offset Withdrawal Calculator | Crown Money</title>
+        <meta name="description" content="Calculate the true cost of withdrawing from your home loan redraw or offset account. See how withdrawals impact your loan term and total interest." />
         <meta name="keywords" content="home loan withdrawal calculator, redraw impact, offset withdrawal cost, mortgage equity withdrawal, crown money calculators" />
+        <meta property="og:title" content="Redraw & Offset Withdrawal Calculator | Crown Money" />
+        <meta property="og:description" content="Calculate the true cost of withdrawing from your home loan redraw or offset account. See how withdrawals impact your loan term and total interest." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://crownmoney.com.au/tools/withdrawal-impact" />
         <link rel="canonical" href="https://crownmoney.com.au/tools/withdrawal-impact" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "WebApplication",
+                "name": "Home Loan Redraw & Offset Withdrawal Calculator",
+                "description": "Calculate the true long-term interest and loan term impact of withdrawing funds from your Australian mortgage redraw or offset account.",
+                "applicationCategory": "FinanceApplication",
+                "operatingSystem": "All",
+                "author": {
+                  "@type": "Organization",
+                  "name": "Crown Money",
+                  "url": "https://crownmoney.com.au"
+                }
+              },
+              {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://crownmoney.com.au" },
+                  { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://crownmoney.com.au/tools" },
+                  { "@type": "ListItem", "position": 3, "name": "Redraw & Offset Withdrawal Calculator", "item": "https://crownmoney.com.au/tools/withdrawal-impact" }
+                ]
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
       {/* Hero Section */}
@@ -169,7 +200,7 @@ export const WithdrawalImpact = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Home Loan Withdrawal Impact Calculator</h1>
+            <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Home Loan Redraw & Offset Withdrawal Calculator</h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
               Understand the long-term consequences of withdrawing funds from your mortgage. See how a small withdrawal today can cost you thousands in interest and years of extra work.
             </p>

@@ -56,11 +56,9 @@ export const HowItWorks = () => {
   return (
     <div className="pt-10">
       <SEO
-        title="How It Works | Crown Money's 4-Step Mortgage Reduction Strategy"
-        description="Discover the Crown Money 4-step process to financial freedom. From discovery calls to custom mortgage strategies and ongoing coaching, we help you pay off your home loan faster."
-        keywords="debt reduction process, mortgage reduction strategy, financial coaching Australia, how to pay off mortgage fast, Crown Money process, wealth tracking dashboard, mortgage structure optimisation"
-        ogTitle="How It Works | The Crown Money Mortgage Reduction Process"
-        ogDescription="Our proven 4-step system helps you pay off your mortgage in half the time. See how we combine strategy, implementation, and coaching."
+        title="How Mortgage Reduction Works | 4-Step System | Crown Money"
+        description="See how Crown Money's 4-step mortgage reduction and cash-flow coaching system helps Australian homeowners pay off their home loans in half the time."
+        keywords="debt reduction process, mortgage reduction strategy, financial coaching Australia, how to pay off mortgage fast, Crown Money process, Home Ownership Programme"
       />
       <Helmet>
         <script type="application/ld+json">
@@ -72,7 +70,7 @@ export const HowItWorks = () => {
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <h1 className="text-4xl md:text-6xl font-display font-bold text-primary mb-6">
-              A Proven System For <span className="text-gold">Financial Freedom</span>
+              How Our <span className="text-gold">Mortgage Reduction</span> System Works
             </h1>
             <p className="text-xl text-gray-600 mb-8">
               We don't just give you a loan. We give you a strategy and the coaching to ensure you actually pay it off.
@@ -177,6 +175,62 @@ export const HowItWorks = () => {
             <div className="pt-6">
               <Link to="/contact" className="bg-gold text-white px-8 py-4 rounded-full font-bold hover:bg-gold-hover transition-all inline-block">
                 Get Your Personal Dashboard
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Deep-Dive: Why Our Home Ownership Programme Outperforms Standard Bank Offset Accounts */}
+      <section className="py-20 bg-gray-50 border-t border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 space-y-10">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
+              Why the Crown Money System Outperforms a Standard Bank Offset Account
+            </h2>
+            <p className="text-gray-600 max-w-3xl mx-auto text-lg">
+              Most Australian homeowners believe a low interest rate and a 100% offset account are enough to get out of debt early. After reviewing over 6,500 Australian household budgets, the numbers tell a very different story.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm space-y-4">
+              <h3 className="text-xl font-display font-bold text-primary">Standard Bank Mortgage + Offset</h3>
+              <p className="text-gray-600 leading-relaxed">
+                With a traditional bank setup, your salary, everyday Visa debit card, credit card sweeps, and lumpy quarterly bills all compete for the same pool of money. Without structural separation and 90-day accountability, the average Australian household saves just 3.7% of net income and reduces principal by ~$12,000 per year—saving only 3 to 4 years off a 30-year loan.
+              </p>
+              <Link to="/guides/offset-account-vs-redraw-facility-australia" className="text-primary font-bold underline hover:text-gold inline-block text-sm">
+                Read: Offset Account vs Redraw Facility in Australia →
+              </Link>
+            </div>
+
+            <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm space-y-4">
+              <h3 className="text-xl font-display font-bold text-primary">Crown Money Home Ownership Programme (HOP)</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Our system routes 100% of your household income directly against your home loan balance to cut daily interest immediately, automatically provisions for annual and quarterly bills across 52 weeks, and transfers a set weekly living allowance to a separate spending card. Paired with quarterly 1-on-1 Financial Coach reviews, our clients average a 24% savings rate and $29,327/year in principal reduction.
+              </p>
+              <Link to="/guides/how-to-pay-off-your-mortgage-faster-australia" className="text-primary font-bold underline hover:text-gold inline-block text-sm">
+                Read: Complete Guide to Paying Off Your Mortgage Faster →
+              </Link>
+            </div>
+          </div>
+
+          <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm">
+            <h3 className="text-xl font-display font-bold text-primary mb-3">
+              Transparent Fees, Licensing & Suitability
+            </h3>
+            <p className="text-gray-600 leading-relaxed mb-4">
+              Crown Money Management (Crown Lending Pty Ltd ABN 47 119 504 862, Australian Credit Licence 388 279) never holds your funds—your loan and accounts remain in your own name with regulated Australian banking institutions. There are zero lock-in contracts or exit penalties. Before you make any commitment, we model your exact projected interest savings in a free discovery session.
+            </p>
+            <div className="flex flex-wrap gap-6 text-sm font-bold">
+              <Link to="/mortgage-reduction-calculator" className="text-primary underline hover:text-gold">
+                Try the Mortgage Reduction Calculator →
+              </Link>
+              <Link to="/guides/crown-money-fees-suitability-and-results-explained" className="text-primary underline hover:text-gold">
+                See Full Fees & Suitability Guide →
+              </Link>
+              <Link to="/success-stories" className="text-primary underline hover:text-gold">
+                Explore Client Case Studies →
               </Link>
             </div>
           </div>

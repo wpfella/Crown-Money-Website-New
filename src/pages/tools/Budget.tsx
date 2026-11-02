@@ -68,9 +68,13 @@ export const Budget = () => {
   return (
     <div className="pt-0 pb-20">
       <Helmet>
-        <title>Budget Planner & Monthly Savings Calculator Australia | Crown Money</title>
-        <meta name="description" content="Take control of your finances with our interactive budget planner. Track income, expenses, and savings rate to find surplus cash flow for faster mortgage reduction and wealth building in Australia." />
+        <title>Household Budget & Savings Calculator | Crown Money</title>
+        <meta name="description" content="Use our Australian household budget planner to calculate your savings rate, uncover surplus cash flow, and pay off your home loan years sooner." />
         <meta name="keywords" content="budget planner australia, savings calculator, monthly budget tool, crown money tools, debt reduction strategy, cash flow management, financial planning australia" />
+        <meta property="og:title" content="Household Budget & Savings Calculator | Crown Money" />
+        <meta property="og:description" content="Use our Australian household budget planner to calculate your savings rate, uncover surplus cash flow, and pay off your home loan years sooner." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://crownmoney.com.au/tools/budget" />
         <link rel="canonical" href="https://crownmoney.com.au/tools/budget" />
         <script type="application/ld+json">
           {JSON.stringify({
@@ -121,7 +125,7 @@ export const Budget = () => {
 
       <section className="bg-primary text-white py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Budget Planner</h1>
+          <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Household Budget & Cash Flow Calculator</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Master your cash flow. Find the hidden money in your budget to accelerate your mortgage reduction.
           </p>

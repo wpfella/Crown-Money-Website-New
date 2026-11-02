@@ -5,6 +5,7 @@ import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { HowItWorks } from './pages/HowItWorks';
 import { SuccessStories } from './pages/SuccessStories';
+import { CaseStudyDetail } from './pages/CaseStudyDetail';
 import { Contact } from './pages/Contact';
 import { Tools } from './pages/Tools';
 import { Privacy } from './pages/Privacy';
@@ -21,6 +22,8 @@ import { PayOffMortgage } from './pages/PayOffMortgage';
 import { Completed } from './pages/Completed';
 import { ErrorPage } from './pages/ErrorPage';
 import { Reviews } from './pages/Reviews';
+import { Guides } from './pages/Guides';
+import { GuideDetail } from './pages/GuideDetail';
 import { NotFound } from './pages/NotFound';
 import { initUrlTracker } from './utils/urlTracker';
 
@@ -47,6 +50,7 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/success-stories" element={<SuccessStories />} />
+          <Route path="/success-stories/:slug" element={<CaseStudyDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/pay-off-mortgage" element={<PayOffMortgage />} />
           <Route path="/tools" element={<Tools />} />
@@ -56,6 +60,8 @@ export default function App() {
           <Route path="/tools/budget" element={<Budget />} />
           <Route path="/tools/wishlist-impact" element={<WishlistImpact />} />
           <Route path="/tools/withdrawal-impact" element={<WithdrawalImpact />} />
+          <Route path="/guides" element={<Guides />} />
+          <Route path="/guides/:slug" element={<GuideDetail />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/target-market-determinations" element={<TargetMarketDeterminations />} />
           <Route path="/mortgage-reduction-calculator" element={<CalculatorLanding />} />

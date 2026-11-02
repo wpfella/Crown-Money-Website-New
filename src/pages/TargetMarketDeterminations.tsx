@@ -58,8 +58,8 @@ const TargetMarketDeterminations = () => {
   return (
     <div className="bg-white">
       <Helmet>
-        <title>Target Market Determinations (TMD) | Crown Money Australia</title>
-        <meta name="description" content="Access Crown Money Management's Target Market Determinations (TMDs) to understand which of our financial products, including home loans and SMSF products, are appropriate for your needs." />
+        <title>Target Market Determinations (TMD) | Crown Money</title>
+        <meta name="description" content="View Target Market Determinations (TMDs) for Crown Money Management and Crown Lending Pty Ltd (ACL 388 279) home loan and mortgage products." />
         <meta name="keywords" content="Target Market Determinations, TMD, Crown Money products, financial product suitability Australia, mortgage TMD, SMSF TMD, financial compliance" />
         <link rel="canonical" href="https://crownmoney.com.au/target-market-determinations" />
       </Helmet>

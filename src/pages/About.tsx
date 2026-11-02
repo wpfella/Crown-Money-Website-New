@@ -218,11 +218,9 @@ export const About = () => {
   return (
     <div className="pt-10">
       <SEO
-        title="About Crown Money | Australia's Mortgage Reduction & Debt Strategy Experts"
-        description="Meet the team at Crown Money Management. Founded in 2004 by Scott Parry, we've helped thousands of Australian families pay off their mortgages faster and build wealth through strategic money management."
-        keywords="Scott Parry, Craig Parry, Crown Money team, mortgage reduction specialists, Australian finance experts, debt reduction experts, financial coaching Australia, mortgage freedom experts"
-        ogTitle="About Crown Money | Meet Our Mortgage Reduction Experts"
-        ogDescription="Founded in 2004, Crown Money is dedicated to helping Australians become mortgage-free faster. Meet the team behind our proven system."
+        title="Mortgage Reduction Specialists Australia | Crown Money"
+        description="Meet Crown Money's licensed mortgage reduction specialists and financial coaches. Helping 7,000+ Australian families pay off home loans since 2004."
+        keywords="Scott Parry, Craig Parry, Crown Money team, mortgage reduction specialists, Australian finance experts, debt reduction experts, financial coaching Australia, ACL 388 279"
         ogImage="https://storage.googleapis.com/crown_money/Website/About/People/Scott_Parry_BW.jpg"
       />
       <Helmet>
@@ -493,11 +491,41 @@ export const About = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      {/* Brand Clarity Statement */}
-      <section className="py-12 bg-white border-t border-gray-100">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <p className="text-sm text-gray-500 italic">
-            Crown Money Management is an Australian mortgage broker and debt reduction specialist. We are not affiliated with Crown Currency Exchange or any other foreign exchange services.
+      {/* Canonical Facts, Licensing & Results Methodology Section */}
+      <section className="py-16 bg-gray-50 border-t border-gray-100">
+        <div className="max-w-5xl mx-auto px-4">
+          <h2 className="text-3xl font-display font-bold text-primary mb-6 text-center">
+            Canonical Facts, Licensing & How We Calculate Our Results
+          </h2>
+          <p className="text-gray-600 text-center max-w-3xl mx-auto mb-10">
+            Last verified & updated: November 2026. Below is the official corporate, regulatory, and client-outcome dataset for Crown Money Management across Australia.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm space-y-3 text-sm text-gray-700">
+              <h3 className="text-xl font-display font-bold text-primary mb-2">Corporate & Regulatory Details</h3>
+              <p><strong>Legal Entity:</strong> Crown Lending Pty Ltd trading as Crown Money Management</p>
+              <p><strong>Australian Credit Licence (ACL):</strong> 388 279 (ASIC Regulated)</p>
+              <p><strong>ABN:</strong> 47 119 504 862 · <strong>ACN:</strong> 119 504 862</p>
+              <p><strong>Industry Membership:</strong> Full Member, Mortgage & Finance Association of Australia (MFAA)</p>
+              <p><strong>Founded:</strong> 2004 by Scott Parry (22+ years operating in Australia)</p>
+              <p><strong>Head Office Address:</strong> Level 1, 100 Havelock Street, West Perth WA 6005 (Servicing homeowners Australia-wide across NSW, VIC, QLD, SA & WA)</p>
+              <p><strong>Phone:</strong> 1300 882 981 · <strong>Email:</strong> admin@crown.money</p>
+            </div>
+            <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm space-y-3 text-sm text-gray-700">
+              <h3 className="text-xl font-display font-bold text-primary mb-2">About Our Results & Methodology</h3>
+              <p><strong>7,000+ Australian Households Coached:</strong> Cumulative Australian families assisted with mortgage strategy and cash-flow coaching since 2004.</p>
+              <p><strong>$29,327 Average Annual Principal Reduction:</strong> Measured from active Home Ownership Programme (HOP) 90-day client review audits over rolling 12-month periods (compared to the $12,000/yr Australian average).</p>
+              <p><strong>24% Average Household Savings Rate:</strong> Net household income directed toward principal reduction and wealth creation across active HOP clients (compared to the 3.7% ABS national household savings ratio).</p>
+              <p><strong>1 Client Mortgage Paid Off Every 23 Days:</strong> Verified frequency of full home loan discharges achieved across our coached portfolio.</p>
+              <p className="pt-2">
+                <Link to="/guides/crown-money-fees-suitability-and-results-explained" className="text-primary font-bold underline hover:text-gold">
+                  Read our full Fees, Suitability & Results Methodology Guide →
+                </Link>
+              </p>
+            </div>
+          </div>
+          <p className="text-sm text-gray-500 italic text-center">
+            Crown Money Management is an Australian mortgage broker and debt reduction specialist (ACL 388 279). We are not affiliated with Crown Resorts, Crown Currency Exchange, or any US mortgage entities.
           </p>
         </div>
       </section>

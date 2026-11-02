@@ -16,6 +16,7 @@ import {
   ArrowDown
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
 export const PayOffMortgage = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
@@ -123,7 +124,12 @@ export const PayOffMortgage = () => {
 
   return (
     <div id="pay-off-mortgage-landing" className="min-h-screen bg-white text-[#2A154B] selection:bg-[#D4AF37] selection:text-white font-sans scroll-smooth">
-      
+      <SEO
+        title="Pay Off Your Mortgage in 7–15 Years | Crown Money"
+        description="Find out if you qualify to pay off your Australian home loan in 7–15 years with the Crown Money System. Take the free 60-second assessment today."
+        canonicalUrl="https://crownmoney.com.au/pay-off-mortgage"
+        noindex={true}
+      />
       {/* 1. Custom CSS overrides rendered inline to strip out excess whitespace from Paperform */}
       <style dangerouslySetInnerHTML={{__html: `
         iframe[src*="paperform.co"],

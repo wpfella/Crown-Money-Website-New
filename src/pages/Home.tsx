@@ -157,7 +157,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <img 
           src="https://storage.googleapis.com/crown_money/Website/Images/happy%20couple.png" 
-          alt="" 
+          alt="Australian homeowners celebrating paying off their mortgage faster with Crown Money" 
           className="w-full h-full object-cover opacity-20 mix-blend-multiply"
           referrerPolicy="no-referrer"
         />
@@ -667,16 +667,19 @@ export const Home = () => {
         </div>
       </section>
 
-      {/* Conversational Extraction Section (GEO) */}
+      {/* Conversational Extraction & Internal Resource Links Section (GEO & SEO) */}
       <section className="py-20 bg-crown-lavender">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <div className="max-w-5xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-6">
             What is Crown Money?
           </h2>
-          <p className="text-xl text-gray-700 font-bold leading-relaxed">
-            Crown Money Management is an Australian mortgage reduction specialist founded in 2004. Utilising our proprietary Home Ownership Programme (HOP) and cash-diet system, we act as financial personal trainers to help Australians become debt-free in up to half the time.
+          <p className="text-xl text-gray-700 font-bold leading-relaxed mb-8">
+            Crown Money Management is an Australian mortgage reduction specialist founded in 2004 (Crown Lending Pty Ltd ABN 47 119 504 862, ACL 388 279). Utilising our proprietary <Link to="/how-it-works" className="underline text-primary hover:text-gold">Home Ownership Programme (HOP)</Link> and cash-diet system, we act as financial personal trainers to help Australians become debt-free in up to half the time.
           </p>
-          <div className="mt-10">
+          <p className="text-base text-gray-700 leading-relaxed max-w-3xl mx-auto mb-10">
+            Explore our <Link to="/guides/how-to-pay-off-your-mortgage-faster-australia" className="font-bold text-primary underline hover:text-gold">Complete Guide to Paying Off Your Mortgage Faster in Australia</Link>, compare <Link to="/guides/offset-account-vs-redraw-facility-australia" className="font-bold text-primary underline hover:text-gold">Offset Accounts vs Redraw Facilities</Link>, review our <Link to="/guides/crown-money-fees-suitability-and-results-explained" className="font-bold text-primary underline hover:text-gold">Transparent Fees & Results Methodology</Link>, or read <Link to="/success-stories" className="font-bold text-primary underline hover:text-gold">Verified Client Case Studies</Link> and <Link to="/reviews" className="font-bold text-primary underline hover:text-gold">380+ 5-Star Client Reviews</Link>. You can also test your numbers using our <Link to="/mortgage-reduction-calculator" className="font-bold text-primary underline hover:text-gold">Mortgage Reduction Calculator</Link>, <Link to="/tools/withdrawal-impact" className="font-bold text-primary underline hover:text-gold">Redraw & Offset Withdrawal Calculator</Link>, <Link to="/tools/wishlist-impact" className="font-bold text-primary underline hover:text-gold">Cost of Spending From Redraw Calculator</Link>, and <Link to="/tools/debt-recycling" className="font-bold text-primary underline hover:text-gold">Debt Recycling Calculator</Link>.
+          </p>
+          <div className="mt-6">
             <Link 
               to="/contact"
               className="inline-block bg-gold text-primary px-10 py-4 rounded-full font-bold hover:bg-opacity-90 transition-all shadow-xl"

@@ -7,8 +7,8 @@ export const Privacy = () => {
   return (
     <div className="pt-20 pb-24 bg-white">
       <Helmet>
-        <title>Privacy Policy | Crown Money Management Australia</title>
-        <meta name="description" content="Read the Crown Money Management privacy policy. Learn how we collect, use, and protect your personal and credit information in accordance with Australian Privacy Principles." />
+        <title>Privacy Policy & Credit Guide | Crown Money</title>
+        <meta name="description" content="Read the Crown Money Management (Crown Lending Pty Ltd ACL 388 279) Privacy Policy and Credit Reporting Policy under Australian Privacy Principles." />
         <meta name="keywords" content="privacy policy, data protection, Crown Money privacy, Australian privacy principles, credit reporting policy, personal information security" />
         <link rel="canonical" href="https://crownmoney.com.au/privacy" />
       </Helmet>

@@ -3,6 +3,8 @@ import { motion } from 'motion/react';
 import { Star, ArrowRight, Quote, TrendingDown, Calendar, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { SEO } from '../components/SEO';
+import { caseStudiesData } from '../data/caseStudiesData';
 
 export const SuccessStories = () => {
   const [visibleCount, setVisibleCount] = useState(6);
@@ -191,11 +193,13 @@ export const SuccessStories = () => {
 
   return (
     <div className="pt-10">
+      <SEO
+        title="Mortgage Reduction Success Stories & Results | Crown Money"
+        description="Explore real mortgage reduction success stories and case studies from Australian families who cut 10–17 years and $320k+ off their home loans."
+        keywords="mortgage success stories, debt reduction results, client testimonials Crown Money, financial freedom Australia, mortgage reduction case studies"
+        canonicalUrl="https://crownmoney.com.au/success-stories"
+      />
       <Helmet>
-        <title>Success Stories | Real Mortgage Reduction Results | Crown Money</title>
-        <meta name="description" content="Read real success stories from Crown Money clients who have saved years and hundreds of thousands of dollars on their mortgages. See how Australian families achieve financial freedom." />
-        <meta name="keywords" content="mortgage success stories, debt reduction results, client testimonials Crown Money, financial freedom Australia, mortgage reduction case studies" />
-        <link rel="canonical" href="https://crownmoney.com.au/success-stories" />
         <script type="application/ld+json">
           {JSON.stringify(reviewSchema)}
         </script>
@@ -204,9 +208,9 @@ export const SuccessStories = () => {
       {/* Hero */}
       <section className="bg-primary text-white py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Real Australians. Real Results.</h1>
+          <h1 className="text-4xl md:text-6xl font-display font-bold mb-6">Mortgage Reduction Success Stories</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            See how our clients are transforming their financial lives and achieving mortgage freedom years ahead of schedule.
+            See how Australian homeowners are cutting 10 to 17 years off their home loans and saving hundreds of thousands in bank interest.
           </p>
         </div>
       </section>
@@ -244,9 +248,9 @@ export const SuccessStories = () => {
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {stories.map((story, idx) => (
+            {caseStudiesData.map((story, idx) => (
               <motion.div 
-                key={idx}
+                key={story.slug}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -256,7 +260,7 @@ export const SuccessStories = () => {
                 <div className="relative h-64">
                   <img 
                     src={story.image} 
-                    alt={story.name} 
+                    alt={`${story.name} - Crown Money Mortgage Reduction Case Study`} 
                     className="w-full h-full object-cover"
                     onError={(e) => {
                       (e.target as HTMLImageElement).src = `https://picsum.photos/seed/${story.name}/600/600`;
@@ -268,12 +272,30 @@ export const SuccessStories = () => {
                   </div>
                 </div>
                 <div className="p-8 flex-grow flex flex-col">
-                  <h3 className="text-2xl font-display font-bold text-primary mb-4">{story.name}</h3>
+                  <div className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">
+                    {story.state} · {story.familyType}
+                  </div>
+                  <h3 className="text-2xl font-display font-bold text-primary mb-3">
+                    <Link to={`/success-stories/${story.slug}`} className="hover:text-gold transition-colors">
+                      {story.name}
+                    </Link>
+                  </h3>
+                  <div className="grid grid-cols-2 gap-2 mb-4 text-xs bg-gray-50 p-3 rounded-xl border border-gray-100">
+                    <div><span className="text-gray-500">Loan:</span> <strong className="text-primary">{story.loanSize}</strong></div>
+                    <div><span className="text-gray-500">Term:</span> <strong className="text-primary">{story.startingTerm}</strong></div>
+                    <div className="col-span-2"><span className="text-gray-500">Est. Saved:</span> <strong className="text-primary">{story.interestSaved}</strong></div>
+                  </div>
                   <p className="text-gray-600 mb-6 flex-grow">{story.summary}</p>
-                  <div className="bg-accent/30 p-4 rounded-2xl border border-accent/50">
+                  <div className="bg-accent/30 p-4 rounded-2xl border border-accent/50 mb-4">
                     <p className="text-xs text-primary font-bold uppercase tracking-widest mb-1">Outcome</p>
                     <p className="text-lg font-display font-bold text-primary">{story.outcome}</p>
                   </div>
+                  <Link
+                    to={`/success-stories/${story.slug}`}
+                    className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-gold transition-colors"
+                  >
+                    Read Full Case Study <ArrowRight size={16} />
+                  </Link>
                 </div>
               </motion.div>
             ))}
