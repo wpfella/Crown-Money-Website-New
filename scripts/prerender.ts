@@ -13,10 +13,8 @@ if (!fs.existsSync(templatePath)) {
   process.exit(1);
 }
 
-// Preserve a clean copy of the un-rendered Vite HTML shell for server.ts
-const templateHtml = fs.existsSync(savedTemplatePath)
-  ? fs.readFileSync(savedTemplatePath, 'utf-8')
-  : fs.readFileSync(templatePath, 'utf-8');
+// Preserve a clean copy of the freshly built Vite HTML shell for server.ts
+const templateHtml = fs.readFileSync(templatePath, 'utf-8');
 
 fs.writeFileSync(savedTemplatePath, templateHtml, 'utf-8');
 
