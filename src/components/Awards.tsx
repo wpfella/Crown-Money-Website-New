@@ -61,6 +61,10 @@ export const Awards = () => {
               <img 
                 src={highlightedAward.image} 
                 alt={`${highlightedAward.title}`} 
+                width={200}
+                height={200}
+                loading="lazy"
+                decoding="async"
                 className="max-h-full max-w-full object-contain"
                 referrerPolicy="no-referrer"
               />
@@ -101,10 +105,14 @@ export const Awards = () => {
                   <img 
                     src={award} 
                     alt={`${name} - Crown Money Win`} 
+                    width={112}
+                    height={112}
+                    loading="lazy"
+                    decoding="async"
                     className="h-28 w-auto object-contain hover:scale-110 transition-transform duration-300"
                     referrerPolicy="no-referrer"
                   />
-                  <span className="text-[10px] text-gray-400 font-bold uppercase mt-2 text-center truncate w-full">
+                  <span className="text-[10px] text-gray-600 font-bold uppercase mt-2 text-center truncate w-full">
                     Winner
                   </span>
                 </motion.div>
@@ -116,8 +124,8 @@ export const Awards = () => {
         {/* Industry Finalists List */}
         <div className="space-y-12 pt-8 border-t border-gray-200/50">
           <div className="flex items-center justify-center space-x-3">
-            <Award className="text-gray-400" size={24} />
-            <h3 className="text-xl font-display font-bold text-gray-500">Industry Recognition</h3>
+            <Award className="text-gray-600" size={24} />
+            <h3 className="text-xl font-display font-bold text-gray-700">Industry Recognition</h3>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-6 items-center justify-center opacity-85">
             {finalistAwards.map((award, idx) => {
@@ -134,10 +142,14 @@ export const Awards = () => {
                   <img 
                     src={award} 
                     alt={`${name} - Crown Money Award Finalist`} 
+                    width={112}
+                    height={112}
+                    loading="lazy"
+                    decoding="async"
                     className="h-28 w-auto object-contain"
                     referrerPolicy="no-referrer"
                   />
-                  <span className="text-[10px] text-gray-400 font-bold uppercase mt-2 text-center truncate w-full">
+                  <span className="text-[10px] text-gray-600 font-bold uppercase mt-2 text-center truncate w-full">
                     Finalist
                   </span>
                 </motion.div>

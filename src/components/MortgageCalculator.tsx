@@ -49,13 +49,15 @@ export const MortgageCalculator = () => {
           <div className="space-y-8">
             <div className="space-y-4">
               <div className="flex justify-between items-center">
-                <label className="text-sm font-bold text-gray-700 flex items-center">
+                <label htmlFor="loan-amount-range" className="text-sm font-bold text-gray-700 flex items-center">
                   <DollarSign size={16} className="mr-2 text-gold" />
                   Loan Amount
                 </label>
                 <span className="text-primary font-bold">{formatCurrency(loanAmount)}</span>
               </div>
               <input 
+                id="loan-amount-range"
+                aria-label="Loan Amount"
                 type="range" 
                 min="50000" 
                 max="2000000" 
@@ -68,13 +70,15 @@ export const MortgageCalculator = () => {
 
             <div className="space-y-4">
               <div className="flex justify-between items-center">
-                <label className="text-sm font-bold text-gray-700 flex items-center">
+                <label htmlFor="interest-rate-range" className="text-sm font-bold text-gray-700 flex items-center">
                   <Percent size={16} className="mr-2 text-gold" />
                   Interest Rate
                 </label>
                 <span className="text-primary font-bold">{interestRate}%</span>
               </div>
               <input 
+                id="interest-rate-range"
+                aria-label="Interest Rate"
                 type="range" 
                 min="1" 
                 max="15" 
@@ -87,13 +91,15 @@ export const MortgageCalculator = () => {
 
             <div className="space-y-4">
               <div className="flex justify-between items-center">
-                <label className="text-sm font-bold text-gray-700 flex items-center">
+                <label htmlFor="loan-term-range" className="text-sm font-bold text-gray-700 flex items-center">
                   <Calendar size={16} className="mr-2 text-gold" />
                   Loan Term
                 </label>
                 <span className="text-primary font-bold">{loanTerm} Years</span>
               </div>
               <input 
+                id="loan-term-range"
+                aria-label="Loan Term"
                 type="range" 
                 min="5" 
                 max="30" 
@@ -110,17 +116,17 @@ export const MortgageCalculator = () => {
         <div className="p-8 md:p-12 bg-primary text-white flex flex-col justify-between">
           <div className="space-y-10">
             <div>
-              <p className="text-gray-400 text-sm font-bold uppercase tracking-widest mb-2">Estimated Monthly Payment</p>
+              <p className="text-gray-200 text-sm font-bold uppercase tracking-widest mb-2">Estimated Monthly Payment</p>
               <p className="text-5xl md:text-6xl font-display font-bold text-gold">{formatCurrency(monthlyPayment)}</p>
             </div>
 
             <div className="grid grid-cols-2 gap-8">
               <div>
-                <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-1">Total Interest</p>
+                <p className="text-gray-200 text-xs font-bold uppercase tracking-widest mb-1">Total Interest</p>
                 <p className="text-xl font-bold">{formatCurrency(totalInterest)}</p>
               </div>
               <div>
-                <p className="text-gray-400 text-xs font-bold uppercase tracking-widest mb-1">Total Repayment</p>
+                <p className="text-gray-200 text-xs font-bold uppercase tracking-widest mb-1">Total Repayment</p>
                 <p className="text-xl font-bold">{formatCurrency(totalRepayment)}</p>
               </div>
             </div>

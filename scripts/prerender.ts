@@ -55,4 +55,18 @@ const redirectLines: string[] = [
 ];
 fs.writeFileSync(path.join(distDir, '_redirects'), redirectLines.join('\n') + '\n', 'utf-8');
 
-console.log(`Pre-rendered ${count} static route HTML files (.html + /index.html), _template.html, _redirects, and 404.html into dist/`);
+// Generate dist/_headers for static CDN cache lifetimes & security headers (PageSpeed Insights)
+const headersContent = `/*
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Cross-Origin-Opener-Policy: same-origin-allow-popups
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+`;
+fs.writeFileSync(path.join(distDir, '_headers'), headersContent, 'utf-8');
+
+console.log(`Pre-rendered ${count} static route HTML files (.html + /index.html), _template.html, _redirects, _headers, and 404.html into dist/`);
+

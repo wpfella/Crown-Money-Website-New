@@ -70,6 +70,10 @@ export const Testimonials = () => {
                   <img 
                     src={testimonials[currentIndex].image} 
                     alt={testimonials[currentIndex].name}
+                    width={192}
+                    height={192}
+                    loading="lazy"
+                    decoding="async"
                     className="w-32 h-32 md:w-48 md:h-48 rounded-full object-cover border-4 border-accent shadow-lg"
                     referrerPolicy="no-referrer"
                   />
@@ -79,7 +83,7 @@ export const Testimonials = () => {
                     "{testimonials[currentIndex].story}"
                   </p>
                   <div>
-                    <h4 className="text-2xl font-display font-bold text-primary mb-2">{testimonials[currentIndex].name}</h4>
+                    <h3 className="text-2xl font-display font-bold text-primary mb-2">{testimonials[currentIndex].name}</h3>
                     <div className="inline-block bg-accent px-4 py-2 rounded-full text-primary font-bold text-sm">
                       {testimonials[currentIndex].outcome}
                     </div>
@@ -92,12 +96,14 @@ export const Testimonials = () => {
           <div className="flex justify-center mt-12 space-x-4">
             <button 
               onClick={prev}
+              aria-label="Previous testimonial"
               className="bg-white p-4 rounded-full text-primary shadow-lg hover:bg-primary hover:text-white transition-all"
             >
               <ChevronLeft size={24} />
             </button>
             <button 
               onClick={next}
+              aria-label="Next testimonial"
               className="bg-white p-4 rounded-full text-primary shadow-lg hover:bg-primary hover:text-white transition-all"
             >
               <ChevronRight size={24} />

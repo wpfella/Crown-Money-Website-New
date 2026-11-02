@@ -4,7 +4,6 @@ import { Phone, Mail, Facebook, Instagram, Linkedin, Youtube, Twitter, Menu, X, 
 import { motion, AnimatePresence } from 'motion/react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-import { GoogleGenAI } from "@google/genai";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { getLeadSourceData } from '../utils/urlTracker';
@@ -91,11 +90,11 @@ const Header = ({ onChatToggle, onBookToggle }: { onChatToggle: () => void; onBo
             </div>
             <div className="h-3.5 w-px bg-white/20" />
             <div className="flex items-center space-x-4">
-              <a href="https://www.facebook.com/CrownMoneyManagement" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Facebook size={16} /></a>
-              <a href="https://www.instagram.com/crownmoneyofficial/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Instagram size={16} /></a>
-              <a href="https://twitter.com/Crown_Money" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Twitter size={16} /></a>
-              <a href="https://www.linkedin.com/company/crown-money" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Linkedin size={16} /></a>
-              <a href="https://www.youtube.com/@crownmoneyAU" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors"><Youtube size={16} /></a>
+              <a href="https://www.facebook.com/CrownMoneyManagement" target="_blank" rel="noopener noreferrer" aria-label="Crown Money on Facebook" className="hover:text-accent transition-colors"><Facebook size={16} /></a>
+              <a href="https://www.instagram.com/crownmoneyofficial/" target="_blank" rel="noopener noreferrer" aria-label="Crown Money on Instagram" className="hover:text-accent transition-colors"><Instagram size={16} /></a>
+              <a href="https://twitter.com/Crown_Money" target="_blank" rel="noopener noreferrer" aria-label="Crown Money on X (Twitter)" className="hover:text-accent transition-colors"><Twitter size={16} /></a>
+              <a href="https://www.linkedin.com/company/crown-money" target="_blank" rel="noopener noreferrer" aria-label="Crown Money on LinkedIn" className="hover:text-accent transition-colors"><Linkedin size={16} /></a>
+              <a href="https://www.youtube.com/@crownmoneyAU" target="_blank" rel="noopener noreferrer" aria-label="Crown Money on YouTube" className="hover:text-accent transition-colors"><Youtube size={16} /></a>
             </div>
           </div>
         </div>
@@ -111,6 +110,8 @@ const Header = ({ onChatToggle, onBookToggle }: { onChatToggle: () => void; onBo
             <img 
               src="https://storage.googleapis.com/crown_money/Logo%20%26%20Icon/header-logo.svg" 
               alt="Crown Money" 
+              width={180}
+              height={48}
               className="h-10 xl:h-12 w-auto"
             />
           </Link>
@@ -191,7 +192,12 @@ const Header = ({ onChatToggle, onBookToggle }: { onChatToggle: () => void; onBo
           </div>
 
           {/* Mobile Menu Toggle */}
-          <button className="lg:hidden text-primary" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <button
+            className="lg:hidden text-primary"
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
@@ -284,6 +290,10 @@ const Footer = ({ onBookToggle, onRatesToggle }: { onBookToggle: () => void; onR
             <img 
               src="https://storage.googleapis.com/crown_money/Logo%20%26%20Icon/Crown%20Money%20Cropped%20Logo.png" 
               alt="Crown Money" 
+              width={200}
+              height={64}
+              loading="lazy"
+              decoding="async"
               className="h-16 w-auto"
             />
           </Link>
@@ -312,7 +322,7 @@ const Footer = ({ onBookToggle, onRatesToggle }: { onBookToggle: () => void; onR
         </div>
 
         <div>
-          <h4 className="text-lg font-bold mb-6 border-b border-white/10 pb-2">Quick Links</h4>
+          <h2 className="text-lg font-bold mb-6 border-b border-white/10 pb-2">Quick Links</h2>
           <ul className="space-y-3 text-sm text-gray-300">
             <li><Link to="/" className="hover:text-white transition-colors">Home</Link></li>
             <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
@@ -337,7 +347,7 @@ const Footer = ({ onBookToggle, onRatesToggle }: { onBookToggle: () => void; onR
         </div>
 
         <div>
-          <h4 className="text-lg font-bold mb-6 border-b border-white/10 pb-2">Legal & Transparency</h4>
+          <h2 className="text-lg font-bold mb-6 border-b border-white/10 pb-2">Legal & Transparency</h2>
           <ul className="space-y-3 text-sm text-gray-300">
             <li><Link to="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
             <li>
@@ -351,18 +361,18 @@ const Footer = ({ onBookToggle, onRatesToggle }: { onBookToggle: () => void; onR
         </div>
 
         <div>
-          <h4 className="text-lg font-bold mb-6 border-b border-white/10 pb-2">Follow Us</h4>
+          <h2 className="text-lg font-bold mb-6 border-b border-white/10 pb-2">Follow Us</h2>
           <div className="flex space-x-4 mb-8">
-            <a href="https://www.facebook.com/CrownMoneyManagement" target="_blank" rel="noopener noreferrer" className="bg-white/10 p-3 rounded-full hover:bg-gold transition-all"><Facebook size={20} /></a>
-            <a href="https://www.instagram.com/crownmoneyofficial/" target="_blank" rel="noopener noreferrer" className="bg-white/10 p-3 rounded-full hover:bg-gold transition-all"><Instagram size={20} /></a>
-            <a href="https://twitter.com/Crown_Money" target="_blank" rel="noopener noreferrer" className="bg-white/10 p-3 rounded-full hover:bg-gold transition-all"><Twitter size={20} /></a>
-            <a href="https://www.linkedin.com/company/crown-money" target="_blank" rel="noopener noreferrer" className="bg-white/10 p-3 rounded-full hover:bg-gold transition-all"><Linkedin size={20} /></a>
-            <a href="https://www.youtube.com/@crownmoneyAU" target="_blank" rel="noopener noreferrer" className="bg-white/10 p-3 rounded-full hover:bg-gold transition-all"><Youtube size={20} /></a>
+            <a href="https://www.facebook.com/CrownMoneyManagement" target="_blank" rel="noopener noreferrer" aria-label="Crown Money on Facebook" className="bg-white/10 p-3 rounded-full hover:bg-gold hover:text-primary transition-all"><Facebook size={20} /></a>
+            <a href="https://www.instagram.com/crownmoneyofficial/" target="_blank" rel="noopener noreferrer" aria-label="Crown Money on Instagram" className="bg-white/10 p-3 rounded-full hover:bg-gold hover:text-primary transition-all"><Instagram size={20} /></a>
+            <a href="https://twitter.com/Crown_Money" target="_blank" rel="noopener noreferrer" aria-label="Crown Money on X (Twitter)" className="bg-white/10 p-3 rounded-full hover:bg-gold hover:text-primary transition-all"><Twitter size={20} /></a>
+            <a href="https://www.linkedin.com/company/crown-money" target="_blank" rel="noopener noreferrer" aria-label="Crown Money on LinkedIn" className="bg-white/10 p-3 rounded-full hover:bg-gold hover:text-primary transition-all"><Linkedin size={20} /></a>
+            <a href="https://www.youtube.com/@crownmoneyAU" target="_blank" rel="noopener noreferrer" aria-label="Crown Money on YouTube" className="bg-white/10 p-3 rounded-full hover:bg-gold hover:text-primary transition-all"><Youtube size={20} /></a>
           </div>
-          <p className="text-xs text-gray-400 mb-4">
+          <p className="text-xs text-gray-300 mb-4">
             Crown Lending Pty Ltd · ABN 47 119 504 862 · ACN 119 504 862 · Australian Credit Licence (ACL) Number 388 279 · MFAA Full Member
           </p>
-          <p className="text-xs text-gray-400 mb-4">
+          <p className="text-xs text-gray-300 mb-4">
             <a 
               href="https://storage.googleapis.com/crown_money/Website/License%20%26%20Legal/Crown%20Lending%20ASIC%20ACL.pdf" 
               target="_blank" 
@@ -372,14 +382,14 @@ const Footer = ({ onBookToggle, onRatesToggle }: { onBookToggle: () => void; onR
               View Australian Credit Licence (ACL)
             </a>
           </p>
-          <p className="text-xs text-gray-400">
+          <p className="text-xs text-gray-300">
             © {new Date().getFullYear()} Crown Money Management. All rights reserved.
           </p>
         </div>
       </div>
       
       <div className="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-white/10">
-        <p className="text-[10px] text-gray-400 leading-relaxed uppercase">
+        <p className="text-[10px] text-gray-300 leading-relaxed uppercase">
           THIS INFORMATION IS GENERAL IN NATURE AND DOES NOT TAKE INTO ACCOUNT YOUR PERSONAL FINANCIAL SITUATION. IT IS FOR EDUCATIONAL PURPOSES ONLY, AND DOES NOT CONSTITUTE FORMAL FINANCIAL OR PERSONAL ADVICE. YOU SHOULD CONSIDER THE APPROPRIATENESS OF THE ADVICE TO YOUR OWN SITUATION AND NEEDS BEFORE TAKING ANY ACTION. IT SHOULD NOT BE RELIED UPON FOR THE PURPOSES OF ENTERING INTO ANY LEGAL OR FINANCIAL COMMITMENTS.
         </p>
       </div>
@@ -612,6 +622,7 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
     setIsLoading(true);
 
     try {
+      const { GoogleGenAI } = await import("@google/genai");
       const genAI = new GoogleGenAI({ 
         apiKey: process.env.GEMINI_API_KEY || "",
       });
@@ -714,14 +725,14 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
                 <div className="w-8 h-8 bg-gold rounded-full flex items-center justify-center font-bold text-primary">C</div>
                 <span className="font-bold">Crown AI Assistant</span>
               </div>
-              <button onClick={() => setIsOpen(false)}><X size={20} /></button>
+              <button onClick={() => setIsOpen(false)} aria-label="Close AI assistant"><X size={20} /></button>
             </div>
 
             {/* Callback Request Form Area */}
             {showDirectForm ? (
               <div className="bg-gradient-to-br from-[#1D093B] to-[#2A154B] p-4 text-white border-b border-white/10 transition-all duration-300">
                 <div className="flex justify-between items-center mb-3">
-                  <h4 className="text-xs font-bold text-[#D4AF37] uppercase tracking-wider">Request Specialist Callback</h4>
+                  <h3 className="text-xs font-bold text-[#D4AF37] uppercase tracking-wider">Request Specialist Callback</h3>
                   <button onClick={() => setShowDirectForm(false)} className="text-gray-300 hover:text-white text-xs">Close</button>
                 </div>
                 {directSubmitted ? (
@@ -732,6 +743,7 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
                   <form onSubmit={handleDirectFormSubmit} className="space-y-2">
                     <input 
                       type="text" 
+                      aria-label="Your Name"
                       placeholder="Your Name" 
                       value={directName}
                       onChange={(e) => setDirectName(e.target.value)}
@@ -740,6 +752,7 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
                     />
                     <input 
                       type="email" 
+                      aria-label="Your Email"
                       placeholder="Your Email * (required)" 
                       value={directEmail}
                       onChange={(e) => setDirectEmail(e.target.value)}
@@ -749,6 +762,7 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
                     />
                     <input 
                       type="tel" 
+                      aria-label="Your Phone Number"
                       placeholder="Your Phone Number" 
                       value={directPhone}
                       onChange={(e) => setDirectPhone(e.target.value)}
@@ -802,7 +816,7 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
                     <div className="w-2 h-2 bg-primary/30 rounded-full animate-bounce"></div>
                     <div className="w-2 h-2 bg-primary/30 rounded-full animate-bounce [animation-delay:0.2s]"></div>
                     <div className="w-2 h-2 bg-primary/30 rounded-full animate-bounce [animation-delay:0.4s]"></div>
-                    <span className="text-[10px] text-gray-400 ml-2">Thinking...</span>
+                    <span className="text-[10px] text-gray-500 ml-2">Thinking...</span>
                   </div>
                 </div>
               )}
@@ -810,13 +824,14 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
             <form onSubmit={handleSend} className="p-4 bg-white border-t border-gray-100 flex space-x-2">
               <input 
                 type="text" 
+                aria-label="Type your message to Crown AI Assistant"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your message..." 
                 className="flex-grow px-4 py-2 rounded-xl border border-gray-200 outline-none focus:border-primary text-sm"
                 disabled={isLoading}
               />
-              <button type="submit" className="bg-primary text-white p-2 rounded-xl hover:bg-opacity-90 transition-all disabled:opacity-50" disabled={isLoading}>
+              <button type="submit" aria-label="Send message" className="bg-primary text-white p-2 rounded-xl hover:bg-opacity-90 transition-all disabled:opacity-50" disabled={isLoading}>
                 <Send size={20} />
               </button>
             </form>
@@ -825,6 +840,7 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
       </AnimatePresence>
       <button 
         onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? "Close AI chat assistant" : "Open AI chat assistant"}
         className="bg-primary text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center justify-center"
       >
         {isOpen ? <X size={24} /> : <MessageSquare size={24} />}
@@ -905,7 +921,8 @@ const ExitPopup = () => {
           >
             <button 
               onClick={() => setIsVisible(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors"
+              aria-label="Close popup"
+              className="absolute top-4 right-4 text-gray-500 hover:text-primary transition-colors"
             >
               <X size={24} />
             </button>
@@ -925,6 +942,7 @@ const ExitPopup = () => {
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <input 
                     type="text" 
+                    aria-label="First Name"
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     placeholder="First Name" 
@@ -933,6 +951,7 @@ const ExitPopup = () => {
                   />
                   <input 
                     type="email" 
+                    aria-label="Email Address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email * (required)" 
@@ -945,7 +964,7 @@ const ExitPopup = () => {
                   </button>
                 </form>
               )}
-              <p className="mt-6 text-xs text-gray-400">
+              <p className="mt-6 text-xs text-gray-500">
                 We respect your privacy. No spam, ever.
               </p>
             </div>
@@ -976,7 +995,8 @@ const BookMeetingModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =>
           >
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors"
+              aria-label="Close booking modal"
+              className="absolute top-4 right-4 text-gray-500 hover:text-primary transition-colors"
             >
               <X size={24} />
             </button>
@@ -1021,7 +1041,8 @@ const RatesAndFeesModal = ({ isOpen, onClose }: { isOpen: boolean; onClose: () =
           >
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 text-gray-400 hover:text-primary transition-colors"
+              aria-label="Close rates and fees modal"
+              className="absolute top-4 right-4 text-gray-500 hover:text-primary transition-colors"
             >
               <X size={24} />
             </button>

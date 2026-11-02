@@ -23,7 +23,7 @@ export const TrustSignals = () => {
   return (
     <section className="py-16 bg-white overflow-hidden border-y border-gray-100">
       <div className="max-w-7xl mx-auto px-4 mb-10 text-center">
-        <p className="text-sm font-bold text-gray-400 uppercase tracking-widest">As Seen On & Featured In</p>
+        <p className="text-sm font-bold text-gray-600 uppercase tracking-widest">As Seen On & Featured In</p>
       </div>
       <div className="relative flex overflow-x-hidden group">
         <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
@@ -46,6 +46,10 @@ export const TrustSignals = () => {
                 <img 
                   src={logo} 
                   alt={`${logoName} - Featured in Crown Money Media`} 
+                  width={180}
+                  height={80}
+                  loading="lazy"
+                  decoding="async"
                   className="max-h-full max-w-full object-contain"
                   referrerPolicy="no-referrer"
                   onError={(e) => {

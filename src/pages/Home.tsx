@@ -97,7 +97,7 @@ const faqs = [
   },
   {
     question: "Is Crown Money licensed?",
-    answer: "Yes, Crown Money holds an Australian Credit Licence (ACL). We are operated by Crown Lending Pty Ltd, ACL Number 388 279, ACN 119 504 862. You can view a copy of our licence [here](https://storage.googleapis.com/crown_money/Website/License%20%26%20Legal/Crown%20Lending%20ASIC%20ACL.pdf)."
+    answer: "Yes, Crown Money holds an Australian Credit Licence (ACL). We are operated by Crown Lending Pty Ltd, ACL Number 388 279, ACN 119 504 862. You can [view our Australian Credit Licence (ACL 388 279) certificate](https://storage.googleapis.com/crown_money/Website/License%20%26%20Legal/Crown%20Lending%20ASIC%20ACL.pdf)."
   }
 ];
 
@@ -147,6 +147,10 @@ const Hero = () => {
         <img 
           src="https://storage.googleapis.com/crown_money/Website/Images/happy%20couple.png" 
           alt="Australian homeowners celebrating paying off their mortgage faster with Crown Money" 
+          width={1200}
+          height={800}
+          fetchPriority="high"
+          decoding="async"
           className="w-full h-full object-cover opacity-20 mix-blend-multiply"
           referrerPolicy="no-referrer"
         />
@@ -242,7 +246,8 @@ const Hero = () => {
               <div className="absolute top-0 right-0 p-6">
                 <button 
                   onClick={() => setIsGuaranteeModalOpen(false)}
-                  className="text-gray-400 hover:text-primary transition-colors"
+                  aria-label="Close guarantee modal"
+                  className="text-gray-500 hover:text-primary transition-colors"
                 >
                   <ChevronDown className="rotate-180" size={32} />
                 </button>
@@ -317,6 +322,7 @@ const SocialProof = () => {
 };
 
 const HowItWorksPreview = () => {
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const steps = [
     { number: "1", title: "Discovery Call", desc: "Understand client finances and goals." },
     { number: "2", title: "Personal Financial Strategy", desc: "Create personalised debt reduction plan." },
@@ -333,7 +339,7 @@ const HowItWorksPreview = () => {
             <div className="space-y-8">
               {steps.map((step, idx) => (
                 <div key={idx} className="flex items-start space-x-6">
-                  <div className="bg-gold text-white w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0 mt-1">
+                  <div className="bg-gold text-primary w-10 h-10 rounded-full flex items-center justify-center font-bold flex-shrink-0 mt-1">
                     {step.number}
                   </div>
                   <div>
@@ -344,22 +350,46 @@ const HowItWorksPreview = () => {
               ))}
             </div>
             <div className="mt-12">
-              <Link to="/how-it-works" className="bg-gold text-white px-8 py-4 rounded-full font-bold hover:bg-gold-hover transition-all inline-block">
-                Learn More
+              <Link to="/how-it-works" className="bg-gold text-primary px-8 py-4 rounded-full font-bold hover:bg-gold-hover transition-all inline-block">
+                See How Our 4-Step System Works
               </Link>
             </div>
           </div>
 
           <div className="relative">
-            <div className="aspect-video rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10">
-              <iframe 
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/vAKiVus_r7k" 
-                title="How Crown Money Works" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowFullScreen
-              ></iframe>
+            <div className="aspect-video rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 bg-black relative">
+              {isVideoPlaying ? (
+                <iframe 
+                  className="w-full h-full"
+                  src="https://www.youtube-nocookie.com/embed/vAKiVus_r7k?autoplay=1" 
+                  title="How Crown Money Works" 
+                  frameBorder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowFullScreen
+                ></iframe>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setIsVideoPlaying(true)}
+                  aria-label="Play video: How Crown Money Works"
+                  className="w-full h-full relative group cursor-pointer block focus:outline-none"
+                >
+                  <img
+                    src="https://i.ytimg.com/vi/vAKiVus_r7k/hqdefault.jpg"
+                    alt="How Crown Money Works video preview"
+                    width={480}
+                    height={360}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-opacity"
+                  />
+                  <div className="absolute inset-0 bg-primary/30 group-hover:bg-primary/10 transition-colors flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-full bg-gold text-primary flex items-center justify-center shadow-2xl group-hover:scale-110 transition-transform">
+                      <Play size={32} fill="currentColor" className="ml-1" />
+                    </div>
+                  </div>
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -406,7 +436,7 @@ const TimelineVisual = () => {
 
             {/* Step 3 */}
             <div className="bg-white p-8 rounded-3xl shadow-lg border border-gold/20 relative ring-2 ring-gold/10">
-              <div className="bg-gold text-white w-12 h-12 rounded-full flex items-center justify-center font-bold mb-6 lg:absolute lg:-top-6 lg:left-1/2 lg:-translate-x-1/2">
+              <div className="bg-gold text-primary w-12 h-12 rounded-full flex items-center justify-center font-bold mb-6 lg:absolute lg:-top-6 lg:left-1/2 lg:-translate-x-1/2">
                 9-15
               </div>
               <h3 className="text-xl font-bold mb-4 text-primary">Year 9–15</h3>
@@ -469,6 +499,10 @@ const WhyCrownMoney = () => {
             <img 
               src="https://storage.googleapis.com/crown_money/Website/About/The-Better-Business-Awards.png" 
               alt="Crown Money Team receiving the Better Business Awards for excellence in finance" 
+              width={800}
+              height={600}
+              loading="lazy"
+              decoding="async"
               className="rounded-3xl shadow-2xl"
               referrerPolicy="no-referrer"
             />
@@ -495,7 +529,7 @@ const FinalCTA = () => {
         </p>
         <Link 
           to="/contact"
-          className="bg-gold text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-gold-hover transition-all shadow-2xl inline-block"
+          className="bg-gold text-primary px-12 py-5 rounded-full font-bold text-lg hover:bg-gold-hover transition-all shadow-2xl inline-block"
         >
           Book Free Strategy Call
         </Link>
@@ -646,7 +680,7 @@ export const Home = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               {/* Average Annual Mortgage Reduction */}
               <div className="space-y-6">
-                <p className="text-sm font-bold uppercase tracking-wider text-gray-500">Average Annual Mortgage Reduction</p>
+                <p className="text-sm font-bold uppercase tracking-wider text-gray-600">Average Annual Mortgage Reduction</p>
                 <div className="space-y-4">
                   <div className="bg-gold/10 p-4 rounded-2xl border border-gold/20">
                     <p className="text-2xl font-display font-bold text-primary">$29,327</p>
@@ -686,7 +720,7 @@ export const Home = () => {
               </div>
             </div>
             <div className="mt-12 pt-8 border-t border-gray-50">
-              <p className="text-xs text-gray-400 italic">
+              <p className="text-xs text-gray-600 italic">
                 Data source: Crown Money Internal Audit (2026). These statistics represent the average performance of active Crown Money clients following the proprietary debt reduction system.
               </p>
             </div>

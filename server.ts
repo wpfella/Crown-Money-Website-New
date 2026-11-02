@@ -12,6 +12,16 @@ async function startServer() {
   const PORT = 3000;
   const isProd = process.env.NODE_ENV === 'production';
 
+  // 0. Trust & Safety Security Headers (PageSpeed Insights Best Practices)
+  app.use((_req, res, next) => {
+    res.setHeader('Strict-Transport-Security', 'max-age=63072000; includeSubDomains; preload');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+    res.setHeader('Cross-Origin-Opener-Policy', 'same-origin-allow-popups');
+    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+    next();
+  });
+
   // 1. Canonical URL normalization & legacy 301 redirects before static or Vite middleware
   app.use((req, res, next) => {
     if (req.method !== 'GET' && req.method !== 'HEAD') {
@@ -55,6 +65,7 @@ async function startServer() {
       express.static(path.resolve(__dirname, 'public'), {
         index: false,
         redirect: false,
+        maxAge: '7d',
       })
     );
 
@@ -103,13 +114,24 @@ async function startServer() {
     });
   } else {
     const distPath = path.resolve(__dirname, 'dist');
-    // Serve static assets (JS, CSS, sitemap.xml, robots.txt, llms.txt, llms-full.txt)
+    // Serve hashed Vite bundles in /assets with 1-year immutable cache lifetime
+    app.use(
+      '/assets',
+      express.static(path.join(distPath, 'assets'), {
+        index: false,
+        redirect: false,
+        maxAge: '365d',
+        immutable: true,
+      })
+    );
+    // Serve other static assets (sitemap.xml, robots.txt, llms.txt, llms-full.txt)
     // CRITICAL: redirect: false prevents express.static from issuing 301 /about -> /about/
     app.use(
       express.static(distPath, {
         index: false,
         extensions: false,
         redirect: false,
+        maxAge: '1d',
       })
     );
 

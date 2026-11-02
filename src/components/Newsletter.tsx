@@ -107,6 +107,7 @@ export const Newsletter = () => {
                   <div className="flex flex-col sm:flex-row gap-4">
                     <input 
                       type="text" 
+                      aria-label="First Name"
                       placeholder="First Name *" 
                       className="flex-grow px-6 py-4 rounded-full border-2 border-primary/5 focus:border-primary outline-none transition-all"
                       required
@@ -120,6 +121,7 @@ export const Newsletter = () => {
                     />
                     <input 
                       type="email" 
+                      aria-label="Email Address"
                       placeholder="Enter your email * (required)" 
                       className={`flex-grow px-6 py-4 rounded-full border-2 ${errorMessage ? 'border-red-500' : 'border-primary/5'} focus:border-primary outline-none transition-all`}
                       required
@@ -149,6 +151,10 @@ export const Newsletter = () => {
               <img 
                 src="https://storage.googleapis.com/crown_money/Website/Images/Newsletter_Crown.png" 
                 alt="Crown Money Financial Resources Newsletter - Get expert debt reduction and mortgage strategy tips" 
+                width={600}
+                height={450}
+                loading="lazy"
+                decoding="async"
                 className="rounded-3xl shadow-2xl rotate-3"
                 referrerPolicy="no-referrer"
               />
