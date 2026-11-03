@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, CheckCircle, Quote, ShieldCheck, Calculator, MapPin, Users, Calendar, Video, Clock } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { caseStudiesData } from '../data/caseStudiesData';
+import { BlogInteractiveVisualizer } from '../components/BlogInteractiveVisualizer';
 import { NotFound } from './NotFound';
 
 export const CaseStudyDetail: React.FC = () => {
@@ -159,6 +160,9 @@ export const CaseStudyDetail: React.FC = () => {
                 </table>
               </div>
             </div>
+
+            {/* Interactive Payoff Curve & Personal Simulator */}
+            <BlogInteractiveVisualizer slug={study.slug} clientName={study.name} />
 
             <div>
               <h2 className="text-2xl font-display font-bold text-primary mb-4">

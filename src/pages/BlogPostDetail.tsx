@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import {
@@ -15,11 +15,36 @@ import {
 } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { blogsData } from '../data/blogsData';
+import { BlogInteractiveVisualizer } from '../components/BlogInteractiveVisualizer';
 import { NotFound } from './NotFound';
+
+const AUDIT_CHECKLIST_ITEMS = [
+  {
+    id: 'salary',
+    label: 'My salary is paid into a standard everyday bank account instead of offsetting my home loan daily.',
+    estAnnualLeak: 4800,
+  },
+  {
+    id: 'bills',
+    label: 'Quarterly bills (rates, power, insurance, rego) are paid ad-hoc and occasionally dip into savings or redraw.',
+    estAnnualLeak: 6200,
+  },
+  {
+    id: 'creditcard',
+    label: 'We use a credit card or un-ringfenced debit card for weekly groceries, dining, and discretionary spending.',
+    estAnnualLeak: 7500,
+  },
+  {
+    id: 'repayments',
+    label: 'We have never had a 90-day cash-flow coach audit our bank statements line-by-line to lock in a 24% savings rate.',
+    estAnnualLeak: 10800,
+  },
+];
 
 export const BlogPostDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = blogsData.find((p) => p.slug === slug);
+  const [checkedLeaks, setCheckedLeaks] = useState<string[]>(['salary', 'bills']);
 
   if (!post) {
     return <NotFound />;
@@ -232,6 +257,9 @@ export const BlogPostDetail = () => {
             ))}
           </section>
 
+          {/* Interactive Case Study Chart & Household Simulator */}
+          <BlogInteractiveVisualizer slug={post.slug} clientName={post.clientName} />
+
           {/* Long-Form SEO/AEO Article Sections */}
           <div className="bg-white rounded-3xl shadow-sm border border-gray-100 p-8 md:p-12 space-y-10">
             {post.sections.map((section, idx) => (
@@ -295,6 +323,79 @@ export const BlogPostDetail = () => {
                     ))}
                   </tbody>
                 </table>
+              </div>
+            </section>
+
+            {/* Interactive Cash-Flow Leak Diagnostic Tool */}
+            <section
+              aria-label="Interactive Cash-Flow Leak Diagnostic"
+              className="bg-crown-lavender/40 rounded-2xl p-6 md:p-8 border border-primary/15 space-y-5"
+            >
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <span className="text-xs font-bold text-primary">Interactive 60-Second Self-Audit</span>
+                  <h2 className="text-xl md:text-2xl font-display font-bold text-primary">
+                    How Much Hidden Mortgage Surplus Could You Capture?
+                  </h2>
+                </div>
+                <span className="text-xs text-gray-600">Select all that apply to your household</span>
+              </div>
+
+              <div className="space-y-3">
+                {AUDIT_CHECKLIST_ITEMS.map((item) => {
+                  const isSelected = checkedLeaks.includes(item.id);
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() =>
+                        setCheckedLeaks((prev) =>
+                          prev.includes(item.id) ? prev.filter((id) => id !== item.id) : [...prev, item.id]
+                        )
+                      }
+                      className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between gap-4 cursor-pointer ${
+                        isSelected
+                          ? 'bg-white border-primary shadow-sm'
+                          : 'bg-white/60 border-gray-200 hover:bg-white'
+                      }`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <input
+                          type="checkbox"
+                          checked={isSelected}
+                          readOnly
+                          className="mt-1 h-4 w-4 accent-primary rounded pointer-events-none"
+                        />
+                        <span className="text-sm font-medium text-gray-800">{item.label}</span>
+                      </div>
+                      <span className="text-xs font-mono tabular-nums font-bold text-emerald-700 shrink-0">
+                        +${item.estAnnualLeak.toLocaleString('en-AU')}/yr
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              <div className="bg-white rounded-xl p-5 border border-primary/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                  <span className="block text-xs text-gray-500">
+                    Estimated Recoverable Annual Principal Paydown ({checkedLeaks.length} of 4 areas selected)
+                  </span>
+                  <span className="text-2xl font-display font-bold text-primary font-mono tabular-nums">
+                    $
+                    {AUDIT_CHECKLIST_ITEMS.filter((i) => checkedLeaks.includes(i.id))
+                      .reduce((sum, i) => sum + i.estAnnualLeak, 0)
+                      .toLocaleString('en-AU')}{' '}
+                    / year
+                  </span>
+                </div>
+                <Link
+                  to="/contact"
+                  className="bg-primary text-white px-5 py-3 rounded-xl text-xs font-bold hover:bg-opacity-90 transition-colors inline-flex items-center gap-1.5 shrink-0"
+                >
+                  <span>Claim Free Cash-Flow Audit</span>
+                  <ArrowRight size={14} />
+                </Link>
               </div>
             </section>
 

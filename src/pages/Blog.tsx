@@ -2,9 +2,10 @@ import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
-import { Clock, ArrowRight, Search, CheckCircle2, Sparkles, BookOpen, ShieldCheck } from 'lucide-react';
+import { Clock, ArrowRight, Search, CheckCircle2, Sparkles, BookOpen, ShieldCheck, BarChart3 } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { blogsData, BlogPost } from '../data/blogsData';
+import { getProfileForSlug } from '../components/BlogInteractiveVisualizer';
 
 const CATEGORIES: Array<'All' | BlogPost['category']> = [
   'All',
@@ -263,7 +264,7 @@ export const Blog = () => {
                       </p>
 
                       {/* Key Strategy Pillars */}
-                      <div className="grid grid-cols-2 gap-2 bg-gray-50 p-3 rounded-2xl border border-gray-100 mb-5 text-xs">
+                      <div className="grid grid-cols-2 gap-2 bg-gray-50 p-3 rounded-2xl border border-gray-100 mb-4 text-xs">
                         {post.strategyPillars.slice(0, 2).map((pillar) => (
                           <div key={pillar.label}>
                             <span className="block text-[10px] uppercase tracking-wider text-gray-500">
@@ -273,6 +274,49 @@ export const Blog = () => {
                           </div>
                         ))}
                       </div>
+
+                      {/* Mini Visual Term & Savings Comparison Graph on Card */}
+                      {(() => {
+                        const prof = getProfileForSlug(post.slug);
+                        const coachedYrs = Math.max(9, Math.round(prof.defaultTermYears * (1 - (prof.coachedSavingsRatePct - 4) / 36)));
+                        const widthPct = Math.min(85, Math.max(32, Math.round((coachedYrs / prof.defaultTermYears) * 100)));
+                        return (
+                          <div className="bg-crown-lavender/35 rounded-2xl p-3.5 border border-primary/10 mb-5">
+                            <div className="flex items-center justify-between text-[11px] font-bold text-primary mb-2">
+                              <span className="flex items-center gap-1">
+                                <BarChart3 size={12} className="text-gold" />
+                                Loan Payoff Comparison
+                              </span>
+                              <span className="font-mono tabular-nums text-emerald-700">
+                                {prof.coachedSavingsRatePct}% Savings Rate
+                              </span>
+                            </div>
+                            <div className="space-y-1.5 text-[11px]">
+                              <div>
+                                <div className="flex justify-between text-gray-500 mb-0.5">
+                                  <span>Bank Schedule</span>
+                                  <span className="font-mono tabular-nums">{prof.defaultTermYears} yrs</span>
+                                </div>
+                                <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
+                                  <div className="h-full bg-gray-400 rounded-full w-full" />
+                                </div>
+                              </div>
+                              <div>
+                                <div className="flex justify-between text-primary font-semibold mb-0.5">
+                                  <span>Crown Coached</span>
+                                  <span className="font-mono tabular-nums">~{coachedYrs} yrs</span>
+                                </div>
+                                <div className="h-1.5 w-full bg-gray-200 rounded-full overflow-hidden">
+                                  <div
+                                    className="h-full bg-primary rounded-full"
+                                    style={{ width: `${widthPct}%` }}
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })()}
                     </div>
 
                     <div className="pt-4 border-t border-gray-100 flex items-center justify-between">
