@@ -1,5 +1,6 @@
 import { guidesData } from '../data/guidesData';
 import { caseStudiesData } from '../data/caseStudiesData';
+import { blogsData } from '../data/blogsData';
 
 export interface RouteSeoData {
   path: string;
@@ -47,7 +48,6 @@ const BASE_URL = 'https://crownmoney.com.au';
 const DEFAULT_OG_IMAGE = 'https://storage.googleapis.com/crown_money/Website/Images/happy%20couple.png';
 
 export const LEGACY_REDIRECTS: Record<string, string> = {
-  '/blog': '/guides',
   '/articles': '/guides',
   '/resources': '/guides',
   '/news': '/guides',
@@ -824,6 +824,44 @@ const staticRoutes: Record<string, RouteSeoData> = {
       url: `${BASE_URL}/guides`,
     },
   },
+  '/blog': {
+    path: '/blog',
+    title: 'Mortgage Reduction Blog & Video Stories | Crown Money',
+    description: 'Read 19 in-depth Australian mortgage reduction blog posts and watch verified client video testimonials showing how homeowners pay off their loans faster.',
+    canonical: `${BASE_URL}/blog`,
+    h1: 'Mortgage Reduction Blog & Video Testimonials',
+    images: [
+      {
+        src: 'https://storage.googleapis.com/crown_money/Website/Images/happy%20couple.png',
+        alt: 'Crown Money Mortgage Reduction Blog and Verified Client Video Testimonials',
+      },
+    ],
+    h2s: blogsData.map((b) => b.title),
+    paragraphs: [
+      ...blogsData.map((b) => `${b.clientName} (${b.highlightStat}, ${b.readTime}): ${b.aeoDirectAnswer} Watch video: ${b.videoUrl}`),
+      'All 19 video testimonial blogs are authored and peer-reviewed by Scott Parry (Founder & CEO) and Craig Parry (Partner & Senior Finance Broker, MFAA Member) under Crown Lending Pty Ltd (ABN 47 119 504 862, Australian Credit Licence 388 279, Level 19, 180 Lonsdale Street, Melbourne VIC 3000.).',
+    ],
+    schema: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        organizationSchema,
+        {
+          '@type': 'Blog',
+          '@id': `${BASE_URL}/blog#blog`,
+          name: 'Mortgage Reduction Blog & Video Stories | Crown Money',
+          url: `${BASE_URL}/blog`,
+          publisher: organizationSchema,
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE_URL}/blog` },
+          ],
+        },
+      ],
+    },
+  },
   '/pay-off-mortgage': {
     path: '/pay-off-mortgage',
     title: 'Pay Off Your Mortgage in 7–15 Years | Crown Money',
@@ -1126,6 +1164,105 @@ for (const study of caseStudiesData) {
   };
 }
 
+for (const blog of blogsData) {
+  const path = `/blog/${blog.slug}`;
+  ALL_ROUTES[path] = {
+    path,
+    title: blog.seoTitle,
+    description: blog.metaDescription,
+    canonical: `${BASE_URL}${path}`,
+    ogType: 'article',
+    ogImage: blog.thumbnailImage,
+    h1: blog.h1,
+    images: [
+      {
+        src: blog.thumbnailImage,
+        alt: `${blog.clientName} — Crown Money Video Testimonial Blog`,
+        caption: `${blog.clientName}: ${blog.summary}`,
+      },
+    ],
+    h2s: [
+      `Quick Summary: ${blog.clientName} (${blog.highlightStat})`,
+      ...blog.sections.map((s) => s.heading),
+    ],
+    paragraphs: [
+      `${blog.aeoDirectAnswer} Key Takeaways: ${blog.keyTakeaways.join(' ')} Watch video testimonial: ${blog.videoUrl}`,
+      ...blog.sections.map((s) => [...s.paragraphs, ...(s.bulletPoints || [])].join(' ')),
+    ],
+    tables: [blog.comparisonTable],
+    faqs: blog.faqs,
+    contextualLinks: [
+      {
+        label: 'Mortgage Reduction Calculator Australia',
+        path: '/mortgage-reduction-calculator',
+        description: 'Calculate how many years and how much bank interest you can save on your home loan.',
+      },
+      {
+        label: 'How to Pay Off Your Mortgage Faster in Australia (Pillar Guide)',
+        path: '/guides/how-to-pay-off-your-mortgage-faster-australia',
+        description: 'Read our complete breakdown of daily interest offsetting and 3-bucket cash-flow coaching.',
+      },
+    ],
+    schema: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        organizationSchema,
+        {
+          '@type': 'BlogPosting',
+          '@id': `${BASE_URL}${path}#blogposting`,
+          headline: blog.h1,
+          name: blog.title,
+          description: blog.metaDescription,
+          image: blog.thumbnailImage,
+          datePublished: blog.publishedDate,
+          dateModified: blog.updatedDate,
+          author: {
+            '@type': 'Person',
+            name: blog.author.name,
+            jobTitle: blog.author.role,
+            url: `${BASE_URL}/author/${blog.author.slug}`,
+          },
+          reviewedBy: {
+            '@type': 'Person',
+            name: blog.reviewedBy.name,
+            jobTitle: blog.reviewedBy.role,
+            url: `${BASE_URL}/author/${blog.reviewedBy.slug}`,
+          },
+          publisher: organizationSchema,
+          mainEntityOfPage: `${BASE_URL}${path}`,
+          video: {
+            '@type': 'VideoObject',
+            name: `${blog.clientName} — Crown Money Video Testimonial`,
+            description: blog.aeoDirectAnswer,
+            contentUrl: blog.videoUrl,
+            thumbnailUrl: blog.thumbnailImage,
+            uploadDate: `${blog.publishedDate}T09:00:00+10:00`,
+          },
+        },
+        {
+          '@type': 'FAQPage',
+          mainEntity: blog.faqs.map((faq) => ({
+            '@type': 'Question',
+            name: faq.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: faq.answer,
+            },
+          })),
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: `${BASE_URL}/` },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE_URL}/blog` },
+            { '@type': 'ListItem', position: 3, name: blog.shortTitle, item: `${BASE_URL}${path}` },
+          ],
+        },
+      ],
+    },
+  };
+}
+
 const NOT_FOUND_SEO: RouteSeoData = {
   path: '/404',
   title: 'Page Not Found | Crown Money',
@@ -1156,6 +1293,7 @@ export function buildPrerenderedBodyHtml(route: RouteSeoData): string {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About Us' },
     { href: '/how-it-works', label: 'How It Works' },
+    { href: '/blog', label: 'Mortgage Reduction Blog & Video Stories' },
     { href: '/guides', label: 'Mortgage Reduction Guides' },
     { href: '/tools', label: 'Financial Calculators' },
     { href: '/mortgage-reduction-calculator', label: 'Mortgage Reduction Calculator' },
@@ -1174,6 +1312,10 @@ export function buildPrerenderedBodyHtml(route: RouteSeoData): string {
 
   const guideLinks = guidesData
     .map((g) => `<li><a href="/guides/${g.slug}">${escapeHtml(g.title)}</a></li>`)
+    .join('\n            ');
+
+  const blogLinks = blogsData
+    .map((b) => `<li><a href="/blog/${b.slug}">${escapeHtml(b.title)}</a></li>`)
     .join('\n            ');
 
   const caseStudyLinks = caseStudiesData
@@ -1323,10 +1465,14 @@ export function buildPrerenderedBodyHtml(route: RouteSeoData): string {
           ${citationsHtml}
           ${standaloneFaqsHtml}
         </article>
-        <aside aria-label="Australian Mortgage Guides & Case Studies">
+        <aside aria-label="Australian Mortgage Guides, Video Blogs & Case Studies">
           <h2>Australian Mortgage Reduction Guides</h2>
           <ul>
             ${guideLinks}
+          </ul>
+          <h2>Client Video Testimonial Blogs</h2>
+          <ul>
+            ${blogLinks}
           </ul>
           <h2>Verified Client Case Studies</h2>
           <ul>
@@ -1353,13 +1499,6 @@ export function renderRouteHtml(templateHtml: string, rawPath: string): {
     return {
       status: 301,
       redirectTo: LEGACY_REDIRECTS[lowerPath],
-      html: '',
-    };
-  }
-  if (lowerPath.startsWith('/blog/')) {
-    return {
-      status: 301,
-      redirectTo: '/guides',
       html: '',
     };
   }

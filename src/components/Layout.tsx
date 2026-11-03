@@ -150,19 +150,25 @@ const Header = ({ onChatToggle, onBookToggle }: { onChatToggle: () => void; onBo
             <Link to="/success-stories" className={cn("text-sm font-medium hover:text-primary transition-colors whitespace-nowrap", location.pathname.startsWith("/success-stories") ? "text-primary font-semibold" : "text-gray-600")}>Success Stories</Link>
             <Link to="/reviews" className={cn("text-sm font-medium hover:text-primary transition-colors whitespace-nowrap", location.pathname === "/reviews" ? "text-primary font-semibold" : "text-gray-600")}>Reviews</Link>
 
-            {/* Guides & Podcast Dropdown */}
+            {/* Guides, Blog & Podcast Dropdown */}
             <div className="relative group">
               <Link
                 to="/guides"
                 className={cn(
                   "text-sm font-medium hover:text-primary transition-colors flex items-center whitespace-nowrap",
-                  location.pathname.startsWith("/guides") ? "text-primary font-semibold" : "text-gray-600"
+                  location.pathname.startsWith("/guides") || location.pathname.startsWith("/blog") ? "text-primary font-semibold" : "text-gray-600"
                 )}
               >
-                Guides
+                Guides &amp; Blog
                 <ChevronRight size={14} className="ml-1 rotate-90" />
               </Link>
-              <div className="absolute top-full left-0 mt-2 w-56 bg-white shadow-xl rounded-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 border border-gray-100">
+              <div className="absolute top-full left-0 mt-2 w-60 bg-white shadow-xl rounded-xl py-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-50 border border-gray-100">
+                <Link
+                  to="/blog"
+                  className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
+                >
+                  Video Testimonial Blogs
+                </Link>
                 <Link
                   to="/guides"
                   className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
@@ -234,6 +240,7 @@ const Header = ({ onChatToggle, onBookToggle }: { onChatToggle: () => void; onBo
 
                 <Link to="/success-stories" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium py-2 text-gray-600">Success Stories</Link>
                 <Link to="/reviews" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium py-2 text-gray-600">Reviews</Link>
+                <Link to="/blog" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium py-2 text-gray-600">Blog</Link>
                 <Link to="/guides" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium py-2 text-gray-600">Guides</Link>
                 <a 
                   href="https://open.spotify.com/show/56u7gA4oHUb9h47iyd8uLs" 
@@ -329,6 +336,7 @@ const Footer = ({ onBookToggle, onRatesToggle }: { onBookToggle: () => void; onR
             <li><Link to="/how-it-works" className="hover:text-white transition-colors">How It Works</Link></li>
             <li><Link to="/tools" className="hover:text-white transition-colors">Calculators & Tools</Link></li>
             <li><Link to="/mortgage-reduction-calculator" className="hover:text-white transition-colors">Mortgage Reduction Calculator</Link></li>
+            <li><Link to="/blog" className="hover:text-white transition-colors">Video Testimonial Blogs</Link></li>
             <li><Link to="/guides" className="hover:text-white transition-colors">Mortgage Reduction Guides</Link></li>
             <li><Link to="/success-stories" className="hover:text-white transition-colors">Success Stories</Link></li>
             <li><Link to="/reviews" className="hover:text-white transition-colors">Client Reviews</Link></li>
@@ -853,37 +861,64 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
+const EXIT_POPUP_STORAGE_KEY = 'crown_exit_popup_shown';
+
 const ExitPopup = () => {
   const location = useLocation();
   const [isVisible, setIsVisible] = useState(false);
-  const [hasShown, setHasShown] = useState(false);
+  const [hasShown, setHasShown] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem(EXIT_POPUP_STORAGE_KEY) === 'true';
+    }
+    return false;
+  });
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const isExcludedPage =
+    location.pathname.startsWith('/contact') ||
+    location.pathname === '/error' ||
+    location.pathname === '/completed';
+
   useEffect(() => {
-    if (location.pathname === '/error') return;
+    if (isExcludedPage && isVisible) {
+      setIsVisible(false);
+    }
+  }, [isExcludedPage, isVisible]);
+
+  useEffect(() => {
+    if (isExcludedPage || hasShown) return;
 
     const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 0 && !hasShown) {
-        setIsVisible(true);
+      if (e.clientY <= 0 && !hasShown && localStorage.getItem(EXIT_POPUP_STORAGE_KEY) !== 'true') {
+        localStorage.setItem(EXIT_POPUP_STORAGE_KEY, 'true');
         setHasShown(true);
+        setIsVisible(true);
       }
     };
 
     document.addEventListener('mouseleave', handleMouseLeave);
     return () => document.removeEventListener('mouseleave', handleMouseLeave);
-  }, [hasShown, location.pathname]);
+  }, [hasShown, isExcludedPage]);
 
-  if (location.pathname === '/error') {
+  if (isExcludedPage) {
     return null;
   }
+
+  const handleClose = () => {
+    localStorage.setItem(EXIT_POPUP_STORAGE_KEY, 'true');
+    setHasShown(true);
+    setIsVisible(false);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !firstName) return;
     
     try {
+      localStorage.setItem(EXIT_POPUP_STORAGE_KEY, 'true');
+      setHasShown(true);
       const sourceData = getLeadSourceData();
       await fetch('https://hooks.zapier.com/hooks/catch/24598887/up2fobt/', {
         method: 'POST',
@@ -920,7 +955,7 @@ const ExitPopup = () => {
             className="bg-white rounded-3xl p-8 md:p-12 max-w-xl w-full relative shadow-2xl"
           >
             <button 
-              onClick={() => setIsVisible(false)}
+              onClick={handleClose}
               aria-label="Close popup"
               className="absolute top-4 right-4 text-gray-500 hover:text-primary transition-colors"
             >

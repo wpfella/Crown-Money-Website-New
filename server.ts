@@ -47,9 +47,6 @@ async function startServer() {
     if (LEGACY_REDIRECTS[lowerPath]) {
       return res.redirect(301, `${LEGACY_REDIRECTS[lowerPath]}${querySuffix}`);
     }
-    if (lowerPath.startsWith('/blog/')) {
-      return res.redirect(301, `/guides${querySuffix}`);
-    }
 
     // Enforce canonical no-trailing-slash URLs (e.g. /about/ -> 301 -> /about)
     if (rawPath.length > 1 && rawPath.endsWith('/')) {

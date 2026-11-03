@@ -26,6 +26,8 @@ const ErrorPage = lazy(() => import('./pages/ErrorPage').then(m => ({ default: m
 const Reviews = lazy(() => import('./pages/Reviews').then(m => ({ default: m.Reviews })));
 const Guides = lazy(() => import('./pages/Guides').then(m => ({ default: m.Guides })));
 const GuideDetail = lazy(() => import('./pages/GuideDetail').then(m => ({ default: m.GuideDetail })));
+const Blog = lazy(() => import('./pages/Blog').then(m => ({ default: m.Blog })));
+const BlogPostDetail = lazy(() => import('./pages/BlogPostDetail').then(m => ({ default: m.BlogPostDetail })));
 const NotFound = lazy(() => import('./pages/NotFound').then(m => ({ default: m.NotFound })));
 
 // Scroll to top on route change
@@ -64,6 +66,8 @@ export default function App() {
             <Route path="/tools/withdrawal-impact" element={<WithdrawalImpact />} />
             <Route path="/guides" element={<Guides />} />
             <Route path="/guides/:slug" element={<GuideDetail />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPostDetail />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/target-market-determinations" element={<TargetMarketDeterminations />} />
             <Route path="/mortgage-reduction-calculator" element={<CalculatorLanding />} />

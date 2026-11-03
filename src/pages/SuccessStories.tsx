@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/SEO';
 import { caseStudiesData } from '../data/caseStudiesData';
+import { blogsData } from '../data/blogsData';
 
 export const SuccessStories = () => {
   const [visibleCount, setVisibleCount] = useState(6);
@@ -65,103 +66,13 @@ export const SuccessStories = () => {
     }
   ];
 
-  const videos = [
-    {
-      title: "Kamani & Scott",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/riverside_edit_-%20kamani%20%26%20scott_crown_money%20(2).mp4",
-      description: "How Crown Money's coaching and money management structure helped Kamani and Scott fast-track their mortgage freedom."
-    },
-    {
-      title: "$320,000 Saved in 4 Years",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/320%2C000_in_4_years_(k)_v1%20(720p).mp4",
-      description: "A remarkable story of accelerated debt reduction and total financial control."
-    },
-    {
-      title: "Chris",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/chris_battistuzzi_(k)_v1%20(720p).mp4",
-      description: "How targeted strategy and structures helped Chris gain momentum over his home loan."
-    },
-    {
-      title: "Dominic & Elisabeth",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/dominic_%26_elisabeth_lobosso_v1%20(720p).mp4",
-      description: "Working with Craig and team to optimise their loan and pay it down years sooner."
-    },
-    {
-      title: "Ella",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/ella_(ok)_v1%20(720p).mp4",
-      description: "How discipline, clear goals, and support allowed Ella to enjoy life debt-free."
-    },
-    {
-      title: "Graham",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/gram_(k)_v1%20(720p).mp4",
-      description: "Finding absolute confidence through a structure built entirely for the customer."
-    },
-    {
-      title: "Linda - Debt Free",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/linda_taylor_-_debt_free_(k)_v1%20(720p)_vocals_only.mp4",
-      description: "A powerful and inspiring testimonial on mortgage reduction success."
-    },
-    {
-      title: "Marcus & Taryn",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/marcus_%26_taryn_burdett_(k)_v1%20(720p).mp4",
-      description: "How custom coaching helped this family accelerate their wealth-building timeline."
-    },
-    {
-      title: "Accelerated Savings Success",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/mccolley_testimonial_(k)_v1%20(720p)_vocals_only.mp4",
-      description: "Client success story focusing on home loan optimisation and coaching support."
-    },
-    {
-      title: "Mortgage-Free Success",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/monaghan_-_debt_free_(k)_v1%20(720p)_vocals_only.mp4",
-      description: "Becoming mortgage-free and creating robust generational wealth."
-    },
-    {
-      title: "Peter & Karina",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/peter_kerak_%26_karina_kerakova_v1%20(720p).mp4",
-      description: "A transparent and reliable approach that worked perfectly for their lifestyle."
-    },
-    {
-      title: "Ryan",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/ryan_hillman_(k)_v1%20(720p).mp4",
-      description: "Unlocking extraordinary savings and taking charge of their path."
-    },
-    {
-      title: "Sheena",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/sheena_(k)_v1%20(720p).mp4",
-      description: "Developing incredible budget structure and confidence under guidance."
-    },
-    {
-      title: "Stephen & Lynda",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/stephen_%26_lynda_milde_(k)_v1%20(720p).mp4",
-      description: "How a custom debt reduction plan saved thousands in interest."
-    },
-    {
-      title: "Steve",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/steve_(k)_v1%20(720p).mp4",
-      description: "Refining financial strategy and achieving total debt reduction success."
-    },
-    {
-      title: "Accelerated Freedom Story #3",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/copy_of_3_(k)_v1%20(720p).mp4",
-      description: "Witnessing real, rapid home loan savings and total peace of mind."
-    },
-    {
-      title: "Accelerated Freedom Story #5",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/copy_of_5_(ok)_v1%20(720p).mp4",
-      description: "Proven results showing exactly how our system works to defeat interest."
-    },
-    {
-      title: "Accelerated Freedom Story #7",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/copy_of_7_(k)_v1%20(720p).mp4",
-      description: "How changing the mortgage structure beats the traditional banking model."
-    },
-    {
-      title: "Our Financial System in Action",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/om_testimonial_01_(k)_v1%20(720p)_vocals_only.mp4",
-      description: "A detailed look at client experiences and real financial achievements."
-    }
-  ];
+  const videos = blogsData.map((blog) => ({
+    title: blog.shortTitle,
+    url: blog.videoUrl,
+    description: blog.summary,
+    blogSlug: blog.slug,
+    highlightStat: blog.highlightStat,
+  }));
 
   const reviewSchema = {
     "@context": "https://schema.org",
@@ -313,9 +224,15 @@ export const SuccessStories = () => {
             <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mt-4 mb-4">
               Watch Success Testimonials
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Hear directly from real Australians who have accelerated their timeline and achieved complete financial freedom.
+            <p className="text-gray-600 max-w-2xl mx-auto mb-6">
+              Hear directly from real Australians who have accelerated their timeline and achieved complete financial freedom—or read the full strategy breakdown blog for each video.
             </p>
+            <Link
+              to="/blog"
+              className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-gold transition-colors"
+            >
+              Explore All 19 Video Testimonial Strategy Blogs <ArrowRight size={16} />
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -342,16 +259,19 @@ export const SuccessStories = () => {
                 <div className="p-6 flex-grow flex flex-col justify-between">
                   <div>
                     <h3 className="text-lg font-bold text-primary font-display mb-2 group-hover:text-gold transition-colors duration-200">
-                      {video.title}
+                      <Link to={`/blog/${video.blogSlug}`}>{video.title}</Link>
                     </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">
+                    <p className="text-sm text-gray-600 leading-relaxed mb-4">
                       {video.description}
                     </p>
                   </div>
-                  <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between">
-                    <span className="text-xs text-gray-400 font-mono">
-                      Crown Success Video
-                    </span>
+                  <div className="mt-2 pt-4 border-t border-gray-100 flex items-center justify-between">
+                    <Link
+                      to={`/blog/${video.blogSlug}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-gold transition-colors"
+                    >
+                      Read Full Strategy Blog <ArrowRight size={13} />
+                    </Link>
                     <span className="text-xs text-gold font-bold flex items-center gap-1">
                       <Star size={12} className="fill-current" /> Verified Result
                     </span>

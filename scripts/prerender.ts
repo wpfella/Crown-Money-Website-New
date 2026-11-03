@@ -46,7 +46,6 @@ fs.writeFileSync(path.join(distDir, '404.html'), notFoundHtml, 'utf-8');
 const redirectLines: string[] = [
   '# Legacy 301 Redirects',
   ...Object.entries(LEGACY_REDIRECTS).map(([from, to]) => `${from} ${to} 301`),
-  '/blog/* /guides 301',
   '',
   '# Canonical No-Slash Normalization',
   ...Object.keys(ALL_ROUTES)
