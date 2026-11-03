@@ -167,7 +167,7 @@ const Header = ({ onChatToggle, onBookToggle }: { onChatToggle: () => void; onBo
                   to="/blog"
                   className="block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
                 >
-                  Video Testimonial Blogs
+                  Blog
                 </Link>
                 <Link
                   to="/guides"
@@ -336,7 +336,7 @@ const Footer = ({ onBookToggle, onRatesToggle }: { onBookToggle: () => void; onR
             <li><Link to="/how-it-works" className="hover:text-white transition-colors">How It Works</Link></li>
             <li><Link to="/tools" className="hover:text-white transition-colors">Calculators & Tools</Link></li>
             <li><Link to="/mortgage-reduction-calculator" className="hover:text-white transition-colors">Mortgage Reduction Calculator</Link></li>
-            <li><Link to="/blog" className="hover:text-white transition-colors">Video Testimonial Blogs</Link></li>
+            <li><Link to="/blog" className="hover:text-white transition-colors">Blog</Link></li>
             <li><Link to="/guides" className="hover:text-white transition-colors">Mortgage Reduction Guides</Link></li>
             <li><Link to="/success-stories" className="hover:text-white transition-colors">Success Stories</Link></li>
             <li><Link to="/reviews" className="hover:text-white transition-colors">Client Reviews</Link></li>

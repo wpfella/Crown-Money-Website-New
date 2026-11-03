@@ -198,9 +198,9 @@ export const Reviews = () => {
       source: 'Google Review',
       image: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Giovanni-and-Sarah.png',
       headline: 'Massive dent in home loan and planning family holiday!',
-      text: 'After making a massive dent in our home loan this past year, we are now planning our first family overseas holiday all thanks to Crown Money. We highly recommend Craig and the team to any family wanting to get ahead.',
+      text: 'After making a massive dent in our home loan this past year, we are now planning our first family overseas holiday all thanks to Crown Money. We highly recommend Scott and the team to any family wanting to get ahead.',
       highlight: '12 Years Cut Off Loan',
-      tags: ['Craig Parry Team', 'Family Goals', 'Lifestyle Balance']
+      tags: ['Scott Parry Team', 'Family Goals', 'Lifestyle Balance']
     },
     {
       id: 'r7',
@@ -212,7 +212,7 @@ export const Reviews = () => {
       source: 'Google Review',
       image: 'https://picsum.photos/seed/dominic/300/300',
       headline: 'Outstanding mortgage structure and ongoing coaching',
-      text: 'Working with Craig and the Crown Money team to optimise our loan structure was the best decision we ever made. They turned what felt like a 30-year sentence into a clear 10-year action plan.',
+      text: 'Working with Scott and the Crown Money team to optimise our loan structure was the best decision we ever made. They turned what felt like a 30-year sentence into a clear 10-year action plan.',
       highlight: 'Years Saved Sooner',
       tags: ['Loan Optimisation', 'Coaching', 'Structure']
     },
@@ -269,14 +269,8 @@ export const Reviews = () => {
     {
       title: "Dominic & Elisabeth - Debt Reduction",
       url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/dominic_%26_elisabeth_lobosso_v1%20(720p).mp4",
-      description: "Working with Craig and team to optimise their loan and pay it down years sooner.",
+      description: "Working with Scott and team to optimise their loan and pay it down years sooner.",
       author: "Dominic & Elisabeth Lobosso"
-    },
-    {
-      title: "Ella - Enjoying Life Debt-Free",
-      url: "https://storage.googleapis.com/crown_money/Video%20Testimonials/ella_(ok)_v1%20(720p).mp4",
-      description: "How discipline, clear goals, and support allowed Ella to enjoy life debt-free.",
-      author: "Ella"
     },
     {
       title: "Graham - Confidence in Cash-Flow Structure",

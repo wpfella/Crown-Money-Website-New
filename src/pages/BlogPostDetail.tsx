@@ -11,7 +11,7 @@ import {
   Sparkles,
   HelpCircle,
   Calculator,
-  Video,
+  BookOpen,
 } from 'lucide-react';
 import { SEO } from '../components/SEO';
 import { blogsData } from '../data/blogsData';
@@ -79,21 +79,6 @@ export const BlogPostDetail = () => {
           '@id': 'https://crownmoney.com.au/#organization',
         },
         mainEntityOfPage: canonicalUrl,
-        video: {
-          '@id': `${canonicalUrl}#video`,
-        },
-      },
-      {
-        '@type': 'VideoObject',
-        '@id': `${canonicalUrl}#video`,
-        name: `${post.clientName} — Crown Money Mortgage Reduction Video Testimonial`,
-        description: post.aeoDirectAnswer,
-        contentUrl: post.videoUrl,
-        thumbnailUrl: post.thumbnailImage,
-        uploadDate: `${post.publishedDate}T09:00:00+10:00`,
-        publisher: {
-          '@id': 'https://crownmoney.com.au/#organization',
-        },
       },
       {
         '@type': 'FAQPage',
@@ -159,7 +144,7 @@ export const BlogPostDetail = () => {
               {post.category}
             </span>
             <span className="bg-white/10 text-white text-xs font-semibold px-3.5 py-1 rounded-full flex items-center gap-1.5">
-              <Video size={13} className="text-gold" /> Verified Video Case Study
+              <BookOpen size={13} className="text-gold" /> Strategy Breakdown
             </span>
             <span className="text-xs text-gray-300 flex items-center gap-1">
               <Clock size={13} /> {post.readTime}
@@ -171,7 +156,7 @@ export const BlogPostDetail = () => {
 
           <h1 className="text-3xl md:text-5xl font-display font-bold leading-tight mb-6">{post.h1}</h1>
 
-          {/* Author & Reviewer Credentials */}
+          {/* Author Credentials */}
           <div className="flex flex-wrap items-center gap-6 pt-6 border-t border-white/10 text-xs text-gray-300">
             <div className="flex items-center gap-3">
               <img
@@ -182,28 +167,11 @@ export const BlogPostDetail = () => {
                 className="w-10 h-10 rounded-full object-cover border border-gold"
               />
               <div>
-                <span className="block text-gray-400">Written by</span>
+                <span className="block text-gray-400">Written &amp; reviewed by</span>
                 <Link to={`/author/${post.author.slug}`} className="font-bold text-white hover:text-gold">
                   {post.author.name}
                 </Link>{' '}
-                <span>({post.author.role})</span>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <img
-                src={post.reviewedBy.image}
-                alt={post.reviewedBy.name}
-                width={40}
-                height={40}
-                className="w-10 h-10 rounded-full object-cover border border-white/30"
-              />
-              <div>
-                <span className="block text-gray-400">Fact-checked &amp; reviewed by</span>
-                <Link to={`/author/${post.reviewedBy.slug}`} className="font-bold text-white hover:text-gold">
-                  {post.reviewedBy.name}
-                </Link>{' '}
-                <span>({post.reviewedBy.role} · ACL 388 279)</span>
+                <span>({post.author.role} · ACL 388 279)</span>
               </div>
             </div>
           </div>
@@ -213,38 +181,19 @@ export const BlogPostDetail = () => {
       {/* Main Article Content */}
       <article className="py-12">
         <div className="max-w-4xl mx-auto px-4 space-y-10">
-          {/* Embedded Client Testimonial Video */}
-          <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
-            <div className="bg-black aspect-video flex items-center justify-center">
-              <video
-                src={post.videoUrl}
-                className="w-full h-full object-contain"
-                controls
-                preload="metadata"
-                playsInline
-              />
-            </div>
-            <div className="p-5 bg-gray-50 border-t border-gray-100 flex flex-wrap items-center justify-between gap-4">
-              <div>
-                <p className="text-xs font-bold text-primary uppercase tracking-wider">
-                  Verified Client Video Testimonial · {post.clientName}
-                </p>
-                <p className="text-xs text-gray-600">{post.summary}</p>
-              </div>
-              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary bg-crown-lavender px-3.5 py-1.5 rounded-full">
-                <ShieldCheck size={14} /> Crown Lending Pty Ltd · ACL 388 279
-              </span>
-            </div>
-          </div>
-
           {/* AEO Direct Answer / Executive Summary Box */}
           <section
             aria-label="Quick Summary and Key Takeaways"
             className="bg-crown-lavender/50 border-2 border-primary/15 rounded-3xl p-6 md:p-8 space-y-6"
           >
-            <div className="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest">
-              <Sparkles size={16} className="text-gold" />
-              <span>Quick Summary (TL;DR)</span>
+            <div className="flex items-center justify-between flex-wrap gap-2">
+              <div className="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest">
+                <Sparkles size={16} className="text-gold" />
+                <span>Quick Summary (TL;DR)</span>
+              </div>
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold text-primary bg-white px-3 py-1 rounded-full border border-primary/10">
+                <ShieldCheck size={14} className="text-gold" /> Crown Lending Pty Ltd · ACL 388 279
+              </span>
             </div>
             <p className="text-base md:text-lg text-primary font-medium leading-relaxed">
               {post.aeoDirectAnswer}
@@ -252,7 +201,7 @@ export const BlogPostDetail = () => {
 
             <div>
               <h2 className="text-sm font-bold text-primary uppercase tracking-wider mb-3">
-                Key Strategy Takeaways From {post.clientName}’s Story
+                Key Strategy Takeaways
               </h2>
               <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
                 {post.keyTakeaways.map((item, idx) => (
@@ -349,13 +298,27 @@ export const BlogPostDetail = () => {
               </div>
             </section>
 
-            {/* Contextual Internal Links */}
+            {/* Contextual Internal Backlinks (Success Stories Videos, Calculators & Pillar Guides) */}
             <section className="bg-gray-50 rounded-2xl p-6 border border-gray-200 space-y-4">
               <h2 className="text-lg font-display font-bold text-primary flex items-center gap-2">
                 <Calculator size={18} className="text-gold" />
-                <span>Model This Strategy on Your Own Australian Home Loan</span>
+                <span>Related Resources, Calculators &amp; Client Success Stories</span>
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                <Link
+                  to="/success-stories#video-testimonials"
+                  className="bg-white p-4 rounded-xl border border-gray-200 hover:border-primary transition-all flex items-center justify-between group"
+                >
+                  <div>
+                    <strong className="block text-primary group-hover:text-gold transition-colors">
+                      Watch Client Testimonials
+                    </strong>
+                    <span className="text-xs text-gray-600">
+                      See real client stories on our Success Stories page
+                    </span>
+                  </div>
+                  <ArrowRight size={16} className="text-primary shrink-0" />
+                </Link>
                 <Link
                   to="/mortgage-reduction-calculator"
                   className="bg-white p-4 rounded-xl border border-gray-200 hover:border-primary transition-all flex items-center justify-between group"
@@ -376,7 +339,7 @@ export const BlogPostDetail = () => {
                 >
                   <div>
                     <strong className="block text-primary group-hover:text-gold transition-colors">
-                      Pillar Guide: Pay Off Mortgage Faster
+                      Pillar Guide: Pay Off Faster
                     </strong>
                     <span className="text-xs text-gray-600">
                       Full breakdown of daily interest &amp; 3-bucket cash flow
@@ -395,7 +358,7 @@ export const BlogPostDetail = () => {
               <span>Frequently Asked Questions</span>
             </div>
             <h2 className="text-2xl md:text-3xl font-display font-bold text-primary mb-6">
-              Common Questions About {post.shortTitle}’s Strategy
+              Common Questions About {post.shortTitle}
             </h2>
             <div className="space-y-4">
               {post.faqs.map((faq, idx) => (
@@ -430,15 +393,15 @@ export const BlogPostDetail = () => {
             </div>
           </section>
 
-          {/* Related Video Blogs */}
+          {/* Related Blog Articles */}
           <section className="pt-6">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-display font-bold text-primary">More Video Testimonial Blogs</h2>
+              <h2 className="text-2xl font-display font-bold text-primary">More Mortgage Strategy Articles</h2>
               <Link
                 to="/blog"
                 className="inline-flex items-center gap-1.5 text-sm font-bold text-primary hover:text-gold"
               >
-                <ArrowLeft size={16} /> All 19 Video Blogs
+                <ArrowLeft size={16} /> Back to All Blogs
               </Link>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -458,7 +421,7 @@ export const BlogPostDetail = () => {
                     <p className="text-xs text-gray-600 line-clamp-2 mb-4">{related.summary}</p>
                   </div>
                   <span className="inline-flex items-center gap-1 text-xs font-bold text-primary">
-                    Watch &amp; Read <ArrowRight size={13} />
+                    Read Article <ArrowRight size={13} />
                   </span>
                 </Link>
               ))}

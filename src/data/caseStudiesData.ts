@@ -129,7 +129,7 @@ export const caseStudiesData: CaseStudy[] = [
       { phase: 'Month 4: First Coaching Milestone', milestone: 'Passed previous annual principal reduction total in just 16 weeks on the system.' },
       { phase: 'Month 12: 3x Principal Reduction Verified', milestone: 'Paid off more principal in 12 months than in the prior 36 months combined; on track to be debt-free 16 years early.' }
     ],
-    videoUrl: 'https://storage.googleapis.com/crown_money/Video%20Testimonials/ella_(ok)_v1%20(720p).mp4',
+    videoUrl: 'https://storage.googleapis.com/crown_money/Video%20Testimonials/sheena_(k)_v1%20(720p).mp4',
     clientQuote: "When I joined Crown I paid off in my first year as much as I had in the previous 3 years!! I was amazed how the programme made me so disciplined and allowed me to actually enjoy life.",
     verifiedDate: '2026-10-06'
   },
@@ -280,7 +280,7 @@ export const caseStudiesData: CaseStudy[] = [
     name: 'Giovanni and Sarah',
     headline: 'Giovanni & Sarah: 12 Years Cut Off Their Home Loan Plus a Family Overseas Holiday',
     seoTitle: 'Giovanni & Sarah Case Study | 12 Years Saved | Crown Money',
-    metaDescription: 'Read how Giovanni and Sarah worked with Craig Parry and Crown Money to cut 12 years off their Australian home loan while funding a family overseas holiday.',
+    metaDescription: 'Read how Giovanni and Sarah worked with Scott Parry and Crown Money to cut 12 years off their Australian home loan while funding a family overseas holiday.',
     h1: 'Giovanni & Sarah: 12 Years Cut Off Their Home Loan Without Sacrificing Family Holidays',
     image: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Giovanni-and-Sarah.png',
     state: 'SA, Australia',
@@ -293,16 +293,16 @@ export const caseStudiesData: CaseStudy[] = [
     savingsRate: '24%',
     result: '12 Years Saved',
     outcome: '12 Years Cut Off Loan',
-    summary: "After making a massive dent in our home loan this past year, we are now planning our first family overseas holiday all thanks to Crown Money. We highly recommend Craig and the team.",
+    summary: "After making a massive dent in our home loan this past year, we are now planning our first family overseas holiday all thanks to Crown Money. We highly recommend Scott and the team.",
     challenge: 'Giovanni and Sarah wanted to make a major dent in their mortgage principal without sacrificing quality of life or putting family holidays on credit.',
     storyParagraphs: [
-      'A common fear among Australian parents is that paying off their home loan faster means saying goodbye to family holidays and weekend memories with their children. When Giovanni and Sarah met with Partner & Senior Finance Broker Craig Parry and the Crown Money team, they had $615,000 owing on their mortgage with 27 years remaining.',
-      'Craig and the strategy team restructured their home loan and built a tailored 52-week cash-flow plan that explicitly provisioned for their dream first family overseas holiday alongside aggressive daily interest reduction.',
+      'A common fear among Australian parents is that paying off their home loan faster means saying goodbye to family holidays and weekend memories with their children. When Giovanni and Sarah met with Founder & CEO Scott Parry and the Crown Money team, they had $615,000 owing on their mortgage with 27 years remaining.',
+      'Scott and the strategy team restructured their home loan and built a tailored 52-week cash-flow plan that explicitly provisioned for their dream first family overseas holiday alongside aggressive daily interest reduction.',
       'By separating their weekly living allowance from their fixed bills and holiday provisioning, Giovanni and Sarah achieved Crown Money’s benchmark 24% household savings rate in their first 12 months.',
       'Not only did they make the largest single-year dent in their mortgage principal since buying their home—cutting 12 years and $278,000+ in projected interest off their loan—they also funded their first family overseas holiday in cash with zero credit card debt.'
     ],
     strategyImplemented: [
-      'Refinanced and structured their $615,000 mortgage with Craig Parry (ACL 388 279) and the Crown Money team.',
+      'Refinanced and structured their $615,000 mortgage with Scott Parry (ACL 388 279) and the Crown Money team.',
       'Created dedicated 52-week provisioning for their family overseas holiday alongside automated weekly principal reduction.',
       'Achieved a 24% household savings rate and shaved 12 years off their home loan schedule within their first year on the system.'
     ],
@@ -314,12 +314,12 @@ export const caseStudiesData: CaseStudy[] = [
       { metric: 'Estimated Interest Saved', beforeCrown: '$0', withCrown: '$278,000+ Estimated Interest Saved' }
     ],
     timeline: [
-      { phase: 'Month 1: Refinance & Goal Mapping', milestone: 'Structured $615k loan with Craig Parry and built overseas family holiday into 52-week cash-flow plan.' },
+      { phase: 'Month 1: Refinance & Goal Mapping', milestone: 'Structured $615k loan with Scott Parry and built overseas family holiday into 52-week cash-flow plan.' },
       { phase: 'Month 6: Half-Year Coaching Review', milestone: 'Ahead of principal reduction target by $4,200; holiday bucket 50% funded.' },
       { phase: 'Month 12: 12 Years Saved + Holiday Booked', milestone: 'Cut projected mortgage term from 27 years to 15 years and booked first family overseas holiday debt-free.' }
     ],
     videoUrl: 'https://storage.googleapis.com/crown_money/Video%20Testimonials/dominic_%26_elisabeth_lobosso_v1%20(720p).mp4',
-    clientQuote: "After making a massive dent in our home loan this past year, we are now planning our first family overseas holiday all thanks to Crown Money. We highly recommend Craig and the team.",
+    clientQuote: "After making a massive dent in our home loan this past year, we are now planning our first family overseas holiday all thanks to Crown Money. We highly recommend Scott and the team.",
     verifiedDate: '2026-10-15'
   }
 ];

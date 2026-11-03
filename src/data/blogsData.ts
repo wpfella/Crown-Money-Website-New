@@ -56,24 +56,16 @@ export const SCOTT_AUTHOR: BlogAuthor = {
   image: 'https://storage.googleapis.com/crown_money/Website/About/People/Scott_Parry_BW.jpg',
 };
 
-export const CRAIG_AUTHOR: BlogAuthor = {
-  name: 'Craig Parry',
-  slug: 'craig-parry',
-  role: 'Partner & Senior Finance Broker',
-  credentials: 'Dip. Finance & Mortgage Broking · MFAA Full Member · ACL 388 279',
-  image: 'https://storage.googleapis.com/crown_money/Website/About/People/craig%20parry.png',
-};
-
 export const blogsData: BlogPost[] = [
   {
     slug: 'kamani-and-scott-fast-track-mortgage-freedom',
     title: 'How Kamani & Scott Fast-Tracked Their Mortgage Freedom With Cash-Flow Coaching',
-    seoTitle: 'Kamani & Scott Video Testimonial | Mortgage Reduction Blog | Crown Money',
+    seoTitle: 'How Kamani & Scott Fast-Tracked Mortgage Freedom | Crown Money Blog',
     metaDescription:
-      'Watch Kamani & Scott explain how Crown Money’s 3-bucket cash-flow structure and 90-day coaching helped them fast-track their Australian mortgage freedom.',
+      'Learn how Kamani & Scott used Crown Money’s 3-bucket cash-flow structure and 90-day coaching to fast-track their Australian mortgage freedom.',
     h1: 'How Kamani & Scott Fast-Tracked Their Mortgage Freedom With Structured Cash-Flow Coaching',
     clientName: 'Kamani & Scott',
-    shortTitle: 'Kamani & Scott',
+    shortTitle: 'Kamani & Scott’s Strategy',
     videoUrl:
       'https://storage.googleapis.com/crown_money/Video%20Testimonials/riverside_edit_-%20kamani%20%26%20scott_crown_money%20(2).mp4',
     thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/Images/happy%20couple.png',
@@ -121,7 +113,7 @@ export const blogsData: BlogPost[] = [
       {
         heading: 'The Role of 90-Day Financial Coaching in Sustaining Momentum',
         paragraphs: [
-          'As Kamani and Scott highlight in their video testimonial, the loan structure is only half the equation—the real accelerator is having a dedicated Financial Coach in their corner every 90 days. Audited data across 6,500+ Australian households shows that self-managed offset users save less than 7% of net income, whereas coached Crown Money families average a 24% net household savings rate.',
+          'The loan structure is only half the equation—the real accelerator is having a dedicated Financial Coach in their corner every 90 days. Audited data across 6,500+ Australian households shows that self-managed offset users save less than 7% of net income, whereas coached Crown Money families average a 24% net household savings rate.',
           'Every quarter, Kamani and Scott review their live Wealth Tracking Dashboard with their coach, adjusting their bill provisions for life changes and watching years drop off their mortgage timeline.',
         ],
       },
@@ -149,16 +141,16 @@ export const blogsData: BlogPost[] = [
       },
     ],
     author: SCOTT_AUTHOR,
-    reviewedBy: CRAIG_AUTHOR,
+    reviewedBy: SCOTT_AUTHOR,
   },
   {
     slug: '320000-saved-in-4-years-accelerated-debt-reduction',
     title: '$320,000 Saved in 4 Years: A Blueprint for Accelerated Australian Debt Reduction',
-    seoTitle: '$320,000 Saved in 4 Years | Video Testimonial Blog | Crown Money',
+    seoTitle: '$320,000 Saved in 4 Years: Accelerated Debt Reduction | Crown Money Blog',
     metaDescription:
       'Discover how an Australian household saved $320,000 in just 4 years using Crown Money’s accelerated debt reduction and cash-flow coaching system.',
     h1: '$320,000 Saved in 4 Years: Inside a Remarkable Story of Accelerated Debt Reduction',
-    clientName: 'Verified Crown Money Client ($320k Saved)',
+    clientName: 'Verified Crown Money Household ($320k Saved)',
     shortTitle: '$320,000 Saved in 4 Years',
     videoUrl:
       'https://storage.googleapis.com/crown_money/Video%20Testimonials/320%2C000_in_4_years_(k)_v1%20(720p).mp4',
@@ -170,7 +162,7 @@ export const blogsData: BlogPost[] = [
     highlightStat: '$320,000 Saved in 4 Yrs',
     summary: 'A remarkable story of accelerated debt reduction and total financial control.',
     aeoDirectAnswer:
-      'In this verified Crown Money video case study, an Australian household achieved $320,000 in combined principal reduction and avoided mortgage interest over a 4-year period. They accomplished this by channelling 100% of net household income into a daily-interest-offsetting mortgage structure, automating annual bill buffers, and executing quarterly 90-day coaching targets.',
+      'An Australian household achieved $320,000 in combined principal reduction and avoided mortgage interest over a 4-year period with Crown Money Management. They accomplished this by channelling 100% of net household income into a daily-interest-offsetting mortgage structure, automating annual bill buffers, and executing quarterly 90-day coaching targets.',
     keyTakeaways: [
       '$320,000 in verified financial progress achieved across 48 months of structured coaching.',
       'Compounding interest savings accelerated each year as the principal balance dropped faster than bank amortisation.',
@@ -231,18 +223,18 @@ export const blogsData: BlogPost[] = [
           'Yes. Use Crown Money’s free Mortgage Reduction Calculator at /mortgage-reduction-calculator to model your exact loan balance, interest rate, and household surplus.',
       },
     ],
-    author: CRAIG_AUTHOR,
+    author: SCOTT_AUTHOR,
     reviewedBy: SCOTT_AUTHOR,
   },
   {
     slug: 'chris-battistuzzi-home-loan-momentum-strategy',
     title: 'How Chris Battistuzzi Gained Unstoppable Momentum Over His Home Loan',
-    seoTitle: 'Chris Battistuzzi Video Testimonial | Home Loan Strategy | Crown Money',
+    seoTitle: 'How Chris Battistuzzi Gained Home Loan Momentum | Crown Money Blog',
     metaDescription:
-      'Watch Chris Battistuzzi share how Crown Money’s targeted mortgage structure and financial coaching helped him build rapid momentum over his home loan.',
+      'Read how Crown Money’s targeted mortgage structure and financial coaching helped Chris Battistuzzi build rapid momentum over his Australian home loan.',
     h1: 'How Targeted Strategy and Cash-Flow Structure Helped Chris Battistuzzi Gain Momentum Over His Home Loan',
     clientName: 'Chris Battistuzzi',
-    shortTitle: 'Chris',
+    shortTitle: 'Chris’s Momentum Strategy',
     videoUrl:
       'https://storage.googleapis.com/crown_money/Video%20Testimonials/chris_battistuzzi_(k)_v1%20(720p).mp4',
     thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Michael.png',
@@ -315,17 +307,17 @@ export const blogsData: BlogPost[] = [
       },
     ],
     author: SCOTT_AUTHOR,
-    reviewedBy: CRAIG_AUTHOR,
+    reviewedBy: SCOTT_AUTHOR,
   },
   {
     slug: 'dominic-and-elisabeth-lobosso-pay-down-mortgage-years-sooner',
-    title: 'How Dominic & Elisabeth Lobosso Optimised Their Loan With Craig Parry to Pay It Off Years Sooner',
-    seoTitle: 'Dominic & Elisabeth Lobosso Video Testimonial | Crown Money Blog',
+    title: 'How Dominic & Elisabeth Lobosso Optimised Their Loan With Scott Parry to Pay It Off Years Sooner',
+    seoTitle: 'Dominic & Elisabeth Lobosso: Paying Off Their Loan Sooner | Crown Money Blog',
     metaDescription:
-      'Watch Dominic and Elisabeth Lobosso explain how working with Craig Parry and the Crown Money team helped them optimise their home loan and pay it off years sooner.',
-    h1: 'Working With Craig Parry & Team: How Dominic & Elisabeth Lobosso Optimised Their Home Loan',
+      'Discover how working with Scott Parry and the Crown Money team helped Dominic and Elisabeth Lobosso optimise their home loan and pay it off years sooner.',
+    h1: 'Working With Scott Parry & Team: How Dominic & Elisabeth Lobosso Optimised Their Home Loan',
     clientName: 'Dominic & Elisabeth Lobosso',
-    shortTitle: 'Dominic & Elisabeth',
+    shortTitle: 'Dominic & Elisabeth’s Plan',
     videoUrl:
       'https://storage.googleapis.com/crown_money/Video%20Testimonials/dominic_%26_elisabeth_lobosso_v1%20(720p).mp4',
     thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Daniel-and-Carla.png',
@@ -334,18 +326,18 @@ export const blogsData: BlogPost[] = [
     updatedDate: '2026-10-30',
     readTime: '6 min read',
     highlightStat: 'Years Cut Off Loan',
-    summary: 'Working with Craig and team to optimise their loan and pay it down years sooner.',
+    summary: 'Working with Scott and team to optimise their loan and pay it down years sooner.',
     aeoDirectAnswer:
-      'Dominic and Elisabeth Lobosso partnered with Senior Finance Broker Craig Parry and the Crown Money coaching team (ACL 388 279) to restructure their home loan and household cash flow. By aligning their mortgage facility with automated bill provisioning and a disciplined weekly cash-flow plan, they shaved years off their home loan term and saved tens of thousands in interest.',
+      'Dominic and Elisabeth Lobosso partnered with Crown Money Founder & CEO Scott Parry and the Crown Money coaching team (ACL 388 279) to restructure their home loan and household cash flow. By aligning their mortgage facility with automated bill provisioning and a disciplined weekly cash-flow plan, they shaved years off their home loan term and saved tens of thousands in interest.',
     keyTakeaways: [
-      'Direct collaboration with Partner & Senior Finance Broker Craig Parry (MFAA Full Member, ACL 388 279).',
+      'Direct collaboration with Founder & CEO Scott Parry and the Crown Money team (ACL 388 279).',
       'Replaced a bank-friendly loan setup with a borrower-first principal reduction structure.',
       'Aligned both partners on a transparent, stress-free household spending and savings plan.',
       'Cut years off their remaining mortgage schedule without giving up family priorities.',
     ],
     strategyPillars: [
       { label: 'Clients', value: 'Dominic & Elisabeth Lobosso' },
-      { label: 'Lead Broker', value: 'Craig Parry (ACL 388 279)' },
+      { label: 'Lead Strategist', value: 'Scott Parry (ACL 388 279)' },
       { label: 'Core Strategy', value: 'Loan Optimisation + Coaching' },
       { label: 'Result', value: 'Paying Down Loan Years Sooner' },
     ],
@@ -353,14 +345,14 @@ export const blogsData: BlogPost[] = [
       {
         heading: 'Why Interest Rate Alone Is Not Enough to Pay Off a Mortgage Early',
         paragraphs: [
-          'Many Australian homeowners believe that chasing a 0.10% lower interest rate is the secret to paying off their home loan faster. However, as Partner & Senior Finance Broker Craig Parry demonstrates with clients every day, the structure of your loan and the percentage of net income you retain against principal have a 5x to 10x greater impact on total interest paid than a minor rate discount alone.',
+          'Many Australian homeowners believe that chasing a 0.10% lower interest rate is the secret to paying off their home loan faster. However, as Crown Money Founder & CEO Scott Parry demonstrates with clients every day, the structure of your loan and the percentage of net income you retain against principal have a 5x to 10x greater impact on total interest paid than a minor rate discount alone.',
           'When Dominic and Elisabeth Lobosso came to Crown Money, they wanted both a competitive loan structure and a proven system to pay down their principal years ahead of the bank’s 30-year timetable.',
         ],
       },
       {
-        heading: 'How Craig Parry and the Crown Team Structured Dominic & Elisabeth’s Plan',
+        heading: 'How Scott Parry and the Crown Team Structured Dominic & Elisabeth’s Plan',
         paragraphs: [
-          'Under Australian Credit Licence 388 279 and statutory Best Interests Duty, Craig Parry and the Crown brokerage team audited Dominic and Elisabeth’s existing lending facilities and household cash flow. They restructured the loan so that every dollar of household income worked to suppress daily interest charges before being deployed toward planned bills or living expenses.',
+          'Under Australian Credit Licence 388 279 and statutory Best Interests Duty, Scott Parry and the Crown strategy team audited Dominic and Elisabeth’s existing lending facilities and household cash flow. They restructured the loan so that every dollar of household income worked to suppress daily interest charges before being deployed toward planned bills or living expenses.',
           'Once the loan settled, Dominic and Elisabeth transitioned seamlessly to Crown Money’s post-settlement coaching team, who configured their 52-week bill calendar and quarterly accountability reviews.',
         ],
         bulletPoints: [
@@ -372,13 +364,13 @@ export const blogsData: BlogPost[] = [
       {
         heading: 'The Peace of Mind of Having a Team in Your Corner',
         paragraphs: [
-          'In their video testimonial, Dominic and Elisabeth emphasise the responsiveness and clarity of working with Craig and the wider Crown Money team. Instead of navigating complex mortgage decisions alone, they gained a long-term financial partner committed to seeing their home loan reach zero.',
+          'Dominic and Elisabeth’s experience highlights the responsiveness and clarity of working with Scott and the wider Crown Money team. Instead of navigating complex mortgage decisions alone, they gained a long-term financial partner committed to seeing their home loan reach zero.',
         ],
       },
     ],
     comparisonTable: {
-      caption: 'Traditional Mortgage Broker vs Crown Money’s Integrated Broker + Coach Model',
-      headers: ['Service Element', 'Traditional Mortgage Broker', 'Craig Parry & Crown Money Team'],
+      caption: 'Traditional Mortgage Broker vs Crown Money’s Integrated Strategy + Coach Model',
+      headers: ['Service Element', 'Traditional Mortgage Broker', 'Scott Parry & Crown Money Team'],
       rows: [
         ['Primary Focus', 'Refinance rate comparison only', 'Total interest saved + years cut off loan'],
         ['Cash-Flow Architecture', 'Left entirely to the borrower', 'Full 3-Bucket Cash-Diet & 52-week bill setup'],
@@ -387,9 +379,9 @@ export const blogsData: BlogPost[] = [
     },
     faqs: [
       {
-        question: 'Who is Craig Parry at Crown Money Management?',
+        question: 'Who is Scott Parry at Crown Money Management?',
         answer:
-          'Craig Parry is Partner and Senior Finance Broker at Crown Money Management (Crown Lending Pty Ltd, ACL 388 279) and a Full Member of the Mortgage & Finance Association of Australia (MFAA).',
+          'Scott Parry is the Founder and Chief Executive Officer of Crown Money Management (Crown Lending Pty Ltd, ACL 388 279), with over 25 years of experience helping Australian families pay off their home loans in half the time.',
       },
       {
         question: 'Do Dominic and Elisabeth have to pay extra for their 90-day coaching reviews?',
@@ -397,100 +389,18 @@ export const blogsData: BlogPost[] = [
           'Ongoing 90-day coaching reviews are built into the Home Ownership Programme with zero lock-in contracts and zero exit penalties.',
       },
     ],
-    author: CRAIG_AUTHOR,
-    reviewedBy: SCOTT_AUTHOR,
-  },
-  {
-    slug: 'ella-debt-free-homeowner-success-story',
-    title: 'How Ella Achieved Debt-Free Living Through Discipline, Clear Goals & Coaching Support',
-    seoTitle: 'Ella Debt-Free Video Testimonial | Mortgage Freedom Blog | Crown Money',
-    metaDescription:
-      'Watch Ella share how clear financial goals, structured cash-flow discipline, and Crown Money’s coaching support helped her enjoy life debt-free.',
-    h1: 'How Discipline, Clear Goals, and Coaching Support Allowed Ella to Enjoy Life Debt-Free',
-    clientName: 'Ella',
-    shortTitle: 'Ella',
-    videoUrl: 'https://storage.googleapis.com/crown_money/Video%20Testimonials/ella_(ok)_v1%20(720p).mp4',
-    thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Natalie.png',
-    category: 'Debt-Free Milestone',
-    publishedDate: '2026-09-17',
-    updatedDate: '2026-10-30',
-    readTime: '6 min read',
-    highlightStat: 'Debt-Free Lifestyle',
-    summary: 'How discipline, clear goals, and support allowed Ella to enjoy life debt-free.',
-    aeoDirectAnswer:
-      'Ella achieved debt-free living with Crown Money Management by pairing clear personal financial goals with an automated 3-bucket cash-flow structure. By separating her weekly lifestyle allowance from her 52-week bill provisions and directing all surplus income toward debt reduction, Ella eliminated her mortgage stress while still enjoying her lifestyle.',
-    keyTakeaways: [
-      'Proved that single and independent homeowners can rapidly accelerate debt reduction.',
-      'Balanced disciplined principal reduction with a protected weekly lifestyle budget.',
-      'Eliminated financial anxiety by automating every bill across a 52-week cycle.',
-      'Used regular coaching check-ins to stay focused on her debt-free finish line.',
-    ],
-    strategyPillars: [
-      { label: 'Client', value: 'Ella' },
-      { label: 'Milestone', value: 'Debt-Free Freedom' },
-      { label: 'Method', value: 'Goal-Driven Cash-Flow Coaching' },
-      { label: 'Lifestyle Impact', value: 'Zero Guilt Weekly Spending' },
-    ],
-    sections: [
-      {
-        heading: 'Overcoming the Myth That Debt Reduction Means Living on Two-Minute Noodles',
-        paragraphs: [
-          'One of the biggest fears Australian homeowners have before speaking with a financial coach is that paying off their mortgage early will require extreme deprivation. In reality, restrictive crash budgets fail for the exact same reason crash diets fail: they are unsustainable over a multi-year mortgage journey.',
-          'Ella’s story illustrates why sustainable structure beats restriction every time. By defining what truly mattered to her lifestyle upfront, her Crown Money coach built those priorities directly into her 52-week cash-flow plan.',
-        ],
-      },
-      {
-        heading: 'How Clear Goals + Automated Guardrails Created Freedom for Ella',
-        paragraphs: [
-          'When you know the exact calendar date your debt will hit $0, daily financial discipline becomes effortless. Ella worked with her Crown Money coach to set clear quarterly principal reduction milestones.',
-          'Because her weekly spending money was automatically transferred to a dedicated everyday account while her bills and loan surplus remained ring-fenced, Ella could spend her weekly allowance with 100% confidence knowing her debt reduction was already locked in.',
-        ],
-        bulletPoints: [
-          'Clear, measurable 90-day debt reduction targets.',
-          'Guilt-free lifestyle spending within a pre-agreed weekly allowance.',
-          'Supportive, judgement-free accountability from a dedicated Crown Money coach.',
-        ],
-      },
-      {
-        heading: 'What Life Looks Like After Escaping the Debt Trap',
-        paragraphs: [
-          'Today, one Crown Money client pays off their mortgage in full every 23 days. As Ella shares in her video testimonial, the combination of clear goals, personal discipline, and professional coaching doesn’t just save bank interest—it transforms how you experience everyday life.',
-        ],
-      },
-    ],
-    comparisonTable: {
-      caption: 'Restrictive Crash Budgeting vs Ella’s Coached Cash-Flow Structure',
-      headers: ['Dimension', 'Restrictive Crash Budgeting', 'Ella’s Crown Money Structure'],
-      rows: [
-        ['Sustainability', 'Burns out within 6–8 weeks', 'Sustainable for years until debt-free'],
-        ['Lifestyle Enjoyment', 'Guilt and anxiety on every purchase', '100% guilt-free weekly spending allowance'],
-        ['Accountability', 'Solo willpower', 'Dedicated 90-day personal Financial Coach'],
-      ],
-    },
-    faqs: [
-      {
-        question: 'Can a single-income homeowner succeed with the Crown Money system?',
-        answer:
-          'Yes. Single-income borrowers often achieve rapid results because there is only one decision-maker and zero household spending friction once the 3-bucket cash-flow automation is in place.',
-      },
-      {
-        question: 'How often does a Crown Money client pay off their mortgage completely?',
-        answer:
-          'Across our active Australian portfolio, 1 Crown Money client pays off their home loan in full every 23 days.',
-      },
-    ],
     author: SCOTT_AUTHOR,
-    reviewedBy: CRAIG_AUTHOR,
+    reviewedBy: SCOTT_AUTHOR,
   },
   {
     slug: 'graham-customer-first-mortgage-structure',
     title: 'How Graham Found Absolute Financial Confidence Through a Customer-First Mortgage Structure',
-    seoTitle: 'Graham Video Testimonial | Customer-First Mortgage Structure | Crown Money',
+    seoTitle: 'Graham’s Customer-First Mortgage Structure | Crown Money Blog',
     metaDescription:
-      'Watch Graham explain how switching from a bank-first loan to Crown Money’s customer-first mortgage structure gave him absolute financial confidence.',
+      'Learn how switching from a bank-first loan to Crown Money’s customer-first mortgage structure gave Graham absolute financial confidence.',
     h1: 'Finding Absolute Confidence: Why Graham Switched to a Mortgage Structure Built for the Customer',
     clientName: 'Graham',
-    shortTitle: 'Graham',
+    shortTitle: 'Graham’s Loan Structure',
     videoUrl: 'https://storage.googleapis.com/crown_money/Video%20Testimonials/gram_(k)_v1%20(720p).mp4',
     thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/Images/happy%20couple.png',
     category: 'Loan Structuring',
@@ -518,7 +428,7 @@ export const blogsData: BlogPost[] = [
         heading: 'Bank-First vs Customer-First Mortgage Architecture',
         paragraphs: [
           'Australian banks are among the most profitable financial institutions in the world because standard 30-year mortgage packages are designed around bank profitability. Banks routinely bundle high-limit credit cards with offset accounts, encourage 30-year term resets on every refinance, and provide zero post-settlement cash-flow coaching.',
-          'As Graham highlights in his video testimonial, experiencing a structure built 100% around the customer’s debt-free goal—rather than the lender’s net interest margin—is a revelation.',
+          'Experiencing a structure built 100% around the customer’s debt-free goal—rather than the lender’s net interest margin—is a revelation for Australian homeowners.',
         ],
       },
       {
@@ -561,27 +471,27 @@ export const blogsData: BlogPost[] = [
           'Yes. As an Australian Credit Licence holder (ACL 388 279), our finance brokers are legally bound by ASIC’s Best Interests Duty under the National Consumer Credit Protection Act.',
       },
     ],
-    author: CRAIG_AUTHOR,
+    author: SCOTT_AUTHOR,
     reviewedBy: SCOTT_AUTHOR,
   },
   {
     slug: 'linda-taylor-debt-free-mortgage-reduction-testimonial',
-    title: 'Linda Taylor — Debt Free: An Inspiring Australian Mortgage Reduction Success Story',
-    seoTitle: 'Linda Taylor Debt-Free Video Testimonial | Mortgage Success Blog | Crown Money',
+    title: 'Linda Taylor — Debt Free: An Inspiring Australian Mortgage Reduction Story',
+    seoTitle: 'Linda Taylor’s 100% Debt-Free Mortgage Story | Crown Money Blog',
     metaDescription:
-      'Watch Linda Taylor celebrate becoming 100% debt-free with Crown Money Management. Learn the exact steps that took her from a home loan to full ownership.',
+      'Read how Linda Taylor became 100% debt-free with Crown Money Management and learn the exact steps that took her from a home loan to full ownership.',
     h1: 'Linda Taylor — Debt Free: How Structured Coaching Turned Home Ownership Into Reality Years Early',
     clientName: 'Linda Taylor',
-    shortTitle: 'Linda - Debt Free',
+    shortTitle: 'Linda Taylor — Debt Free',
     videoUrl:
       'https://storage.googleapis.com/crown_money/Video%20Testimonials/linda_taylor_-_debt_free_(k)_v1%20(720p)_vocals_only.mp4',
-    thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Jemima%20and%20Brad.jpg',
+    thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Jemima-and-Brad.png',
     category: 'Debt-Free Milestone',
     publishedDate: '2026-09-19',
     updatedDate: '2026-10-30',
     readTime: '7 min read',
     highlightStat: '100% Debt-Free',
-    summary: 'A powerful and inspiring testimonial on mortgage reduction success.',
+    summary: 'A powerful and inspiring story on achieving complete mortgage reduction success.',
     aeoDirectAnswer:
       'Linda Taylor achieved 100% mortgage-free home ownership years ahead of her bank schedule through Crown Money Management’s Home Ownership Programme. By combining daily salary interest offsetting, automated 52-week bill provisioning, and consistent 90-day coaching reviews, Linda eliminated her entire home loan balance and now owns her home outright.',
     keyTakeaways: [
@@ -600,7 +510,7 @@ export const blogsData: BlogPost[] = [
       {
         heading: 'The Ultimate Goal of Every Australian Homeowner: Owning Your Home Outright',
         paragraphs: [
-          'Signing a mortgage contract is easy; receiving your title deed back from the lender with a $0 balance is one of the greatest milestones in an Australian homeowner’s life. Linda Taylor’s debt-free video testimonial captures the emotion and relief of crossing that finish line years ahead of schedule.',
+          'Signing a mortgage contract is easy; receiving your title deed back from the lender with a $0 balance is one of the greatest milestones in an Australian homeowner’s life. Linda Taylor’s debt-free journey captures the relief of crossing that finish line years ahead of schedule.',
           'According to Australian housing data, a growing percentage of Australians are now entering retirement still carrying mortgage debt, forcing them to draw down their superannuation just to clear the bank. Linda refused to let that become her story.',
         ],
       },
@@ -645,20 +555,20 @@ export const blogsData: BlogPost[] = [
       },
     ],
     author: SCOTT_AUTHOR,
-    reviewedBy: CRAIG_AUTHOR,
+    reviewedBy: SCOTT_AUTHOR,
   },
   {
     slug: 'marcus-and-taryn-burdett-family-wealth-building',
     title: 'How Custom Coaching Helped Marcus & Taryn Burdett Accelerate Their Family Wealth Timeline',
-    seoTitle: 'Marcus & Taryn Burdett Video Testimonial | Family Wealth Blog | Crown Money',
+    seoTitle: 'Marcus & Taryn Burdett: Accelerating Family Wealth | Crown Money Blog',
     metaDescription:
-      'Watch Marcus and Taryn Burdett explain how custom financial coaching from Crown Money helped their family pay down debt faster and accelerate wealth building.',
+      'Discover how custom financial coaching from Crown Money helped Marcus and Taryn Burdett pay down debt faster and accelerate their family wealth timeline.',
     h1: 'How Custom Coaching Helped Marcus & Taryn Burdett Accelerate Their Family Wealth-Building Timeline',
     clientName: 'Marcus & Taryn Burdett',
-    shortTitle: 'Marcus & Taryn',
+    shortTitle: 'Marcus & Taryn’s Family Plan',
     videoUrl:
       'https://storage.googleapis.com/crown_money/Video%20Testimonials/marcus_%26_taryn_burdett_(k)_v1%20(720p).mp4',
-    thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Giovanni%20and%20Sarah.png',
+    thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Giovanni-and-Sarah.png',
     category: 'Couples & Families',
     publishedDate: '2026-09-20',
     updatedDate: '2026-10-30',
@@ -728,17 +638,17 @@ export const blogsData: BlogPost[] = [
       },
     ],
     author: SCOTT_AUTHOR,
-    reviewedBy: CRAIG_AUTHOR,
+    reviewedBy: SCOTT_AUTHOR,
   },
   {
     slug: 'mccolley-family-accelerated-savings-home-loan-optimisation',
     title: 'The McColley Family: Accelerated Savings Success Through Home Loan Optimisation & Coaching',
-    seoTitle: 'McColley Family Video Testimonial | Accelerated Mortgage Savings | Crown Money',
+    seoTitle: 'The McColley Family: Home Loan Optimisation & Savings | Crown Money Blog',
     metaDescription:
-      'Watch the McColley family share how Crown Money’s home loan optimisation and 90-day coaching support unlocked accelerated mortgage savings.',
+      'Read how Crown Money’s home loan optimisation and 90-day coaching support helped the McColley family unlock accelerated mortgage savings.',
     h1: 'Accelerated Savings Success: How the McColley Family Optimised Their Home Loan With Coaching Support',
     clientName: 'The McColley Family',
-    shortTitle: 'Accelerated Savings Success',
+    shortTitle: 'The McColley Family Story',
     videoUrl:
       'https://storage.googleapis.com/crown_money/Video%20Testimonials/mccolley_testimonial_(k)_v1%20(720p)_vocals_only.mp4',
     thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/Images/happy%20couple.png',
@@ -767,7 +677,7 @@ export const blogsData: BlogPost[] = [
         heading: 'Why the Average Australian Household Saves Only 3.7%—And How the McColleys Beat It',
         paragraphs: [
           'According to the Australian Bureau of Statistics (ABS), the national household saving ratio sits around 3.7% of net disposable income. Even among homeowners with a bank offset account, Crown Money’s audit of over 6,500 households revealed an average savings rate below 7%.',
-          'The McColley family’s video testimonial demonstrates what happens when you pair an optimised home loan structure with a personal financial coach: household savings rates jump toward Crown Money’s portfolio average of 24% of net income.',
+          'The McColley family’s journey demonstrates what happens when you pair an optimised home loan structure with a personal financial coach: household savings rates jump toward Crown Money’s portfolio average of 24% of net income.',
         ],
       },
       {
@@ -785,7 +695,7 @@ export const blogsData: BlogPost[] = [
       {
         heading: 'Why Ongoing Coaching Support Makes the Difference',
         paragraphs: [
-          'Having an experienced coach review your numbers every 90 days turns good intentions into verified bank balance reductions. As the McColley family shares, the support of the Crown Money team made the entire process simple and rewarding.',
+          'Having an experienced coach review your numbers every 90 days turns good intentions into verified bank balance reductions. For the McColley family, the support of the Crown Money team made the entire process simple and rewarding.',
         ],
       },
     ],
@@ -810,18 +720,18 @@ export const blogsData: BlogPost[] = [
           'Yes. Use our free Household Budget & Cash Flow Calculator at /tools/budget to calculate your current net savings rate in minutes.',
       },
     ],
-    author: CRAIG_AUTHOR,
+    author: SCOTT_AUTHOR,
     reviewedBy: SCOTT_AUTHOR,
   },
   {
     slug: 'monaghan-family-mortgage-free-generational-wealth',
     title: 'The Monaghan Family: Becoming Mortgage-Free and Creating Generational Wealth',
-    seoTitle: 'Monaghan Family Debt-Free Video Testimonial | Generational Wealth | Crown Money',
+    seoTitle: 'The Monaghan Family: Mortgage-Free & Generational Wealth | Crown Money Blog',
     metaDescription:
-      'Watch the Monaghan family celebrate becoming 100% mortgage-free with Crown Money and learn how eliminating home loan debt unlocks generational wealth.',
+      'Discover how the Monaghan family became 100% mortgage-free with Crown Money and learn how eliminating home loan debt unlocks generational wealth.',
     h1: 'Mortgage-Free Success: How the Monaghan Family Paid Off Their Home and Built Generational Wealth',
     clientName: 'The Monaghan Family',
-    shortTitle: 'Mortgage-Free Success',
+    shortTitle: 'The Monaghan Family Story',
     videoUrl:
       'https://storage.googleapis.com/crown_money/Video%20Testimonials/monaghan_-_debt_free_(k)_v1%20(720p)_vocals_only.mp4',
     thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Melanie%20and%20Jeffrey%20.jpg',
@@ -894,17 +804,17 @@ export const blogsData: BlogPost[] = [
       },
     ],
     author: SCOTT_AUTHOR,
-    reviewedBy: CRAIG_AUTHOR,
+    reviewedBy: SCOTT_AUTHOR,
   },
   {
     slug: 'peter-kerak-and-karina-kerakova-lifestyle-mortgage-strategy',
     title: 'Peter Kerak & Karina Kerakova: A Transparent Mortgage Strategy Built Around Their Lifestyle',
-    seoTitle: 'Peter & Karina Video Testimonial | Lifestyle Mortgage Strategy | Crown Money',
+    seoTitle: 'Peter & Karina: Lifestyle-First Mortgage Strategy | Crown Money Blog',
     metaDescription:
-      'Watch Peter Kerak and Karina Kerakova share why Crown Money’s transparent, reliable mortgage reduction approach worked seamlessly for their lifestyle.',
+      'Read why Crown Money’s transparent, reliable mortgage reduction approach worked seamlessly for Peter Kerak and Karina Kerakova’s lifestyle.',
     h1: 'Peter Kerak & Karina Kerakova: How a Transparent, Reliable Approach Worked Perfectly for Their Lifestyle',
     clientName: 'Peter Kerak & Karina Kerakova',
-    shortTitle: 'Peter & Karina',
+    shortTitle: 'Peter & Karina’s Strategy',
     videoUrl:
       'https://storage.googleapis.com/crown_money/Video%20Testimonials/peter_kerak_%26_karina_kerakova_v1%20(720p).mp4',
     thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/Images/happy%20couple.png',
@@ -939,7 +849,7 @@ export const blogsData: BlogPost[] = [
       {
         heading: 'Designing a Mortgage Plan That Fits Your Lifestyle—Not the Other Way Around',
         paragraphs: [
-          'As Peter and Karina explain in their video testimonial, the reason the Home Ownership Programme worked so reliably for them is that it respected their lifestyle. Instead of treating dining out, hobbies, or holidays as "financial mistakes," their coach built those exact goals into their 52-week cash-flow plan.',
+          'The reason the Home Ownership Programme worked so reliably for Peter and Karina is that it respected their lifestyle. Instead of treating dining out, hobbies, or holidays as "financial mistakes," their coach built those exact goals into their 52-week cash-flow plan.',
           'Meanwhile, every dollar not needed for that week’s allowance stayed parked against the home loan balance, quietly saving daily bank interest 365 days a year.',
         ],
         bulletPoints: [
@@ -976,18 +886,18 @@ export const blogsData: BlogPost[] = [
           'You can read our comprehensive transparency guide at /guides/crown-money-fees-suitability-and-results-explained or click "Maximum Rates and Fees" in our website footer.',
       },
     ],
-    author: CRAIG_AUTHOR,
+    author: SCOTT_AUTHOR,
     reviewedBy: SCOTT_AUTHOR,
   },
   {
     slug: 'ryan-hillman-unlocking-extraordinary-mortgage-savings',
     title: 'How Ryan Hillman Unlocked Extraordinary Mortgage Savings and Took Charge of His Financial Path',
-    seoTitle: 'Ryan Hillman Video Testimonial | Extraordinary Mortgage Savings | Crown Money',
+    seoTitle: 'Ryan Hillman: Unlocking Extraordinary Mortgage Savings | Crown Money Blog',
     metaDescription:
-      'Watch Ryan Hillman explain how partnering with Crown Money helped him unlock extraordinary home loan interest savings and take full control of his finances.',
+      'Read how partnering with Crown Money helped Ryan Hillman unlock extraordinary home loan interest savings and take full control of his finances.',
     h1: 'Unlocking Extraordinary Savings: How Ryan Hillman Took Charge of His Mortgage Path',
     clientName: 'Ryan Hillman',
-    shortTitle: 'Ryan',
+    shortTitle: 'Ryan Hillman’s Savings Story',
     videoUrl:
       'https://storage.googleapis.com/crown_money/Video%20Testimonials/ryan_hillman_(k)_v1%20(720p).mp4',
     thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Michael.png',
@@ -1009,7 +919,7 @@ export const blogsData: BlogPost[] = [
       { label: 'Client', value: 'Ryan Hillman' },
       { label: 'Primary Achievement', value: 'Extraordinary Interest Savings' },
       { label: 'Control Mechanism', value: 'Live Wealth Tracking Dashboard' },
-      { label: 'Coaching Support', value: 'Quarterly 90-Day Accountability' },
+      { label: 'Coaching Cadence', value: 'Quarterly 90-Day Accountability' },
     ],
     sections: [
       {
@@ -1034,7 +944,7 @@ export const blogsData: BlogPost[] = [
       {
         heading: 'Taking Charge of Your Financial Destiny',
         paragraphs: [
-          'As Ryan shares in his video testimonial, the biggest transformation is the sense of personal ownership. Instead of hoping to be debt-free in his 60s, Ryan has a clear, mathematically verified roadmap.',
+          'The biggest transformation for Ryan was the sense of personal ownership. Instead of hoping to be debt-free in his 60s, Ryan has a clear, mathematically verified roadmap.',
         ],
       },
     ],
@@ -1060,17 +970,17 @@ export const blogsData: BlogPost[] = [
       },
     ],
     author: SCOTT_AUTHOR,
-    reviewedBy: CRAIG_AUTHOR,
+    reviewedBy: SCOTT_AUTHOR,
   },
   {
     slug: 'sheena-budget-structure-and-financial-confidence',
     title: 'How Sheena Built Incredible Budget Structure and Financial Confidence Under Expert Guidance',
-    seoTitle: 'Sheena Video Testimonial | Budget Structure & Confidence | Crown Money',
+    seoTitle: 'Sheena: Building Budget Structure & Financial Confidence | Crown Money Blog',
     metaDescription:
-      'Watch Sheena share how Crown Money’s guided budget structure and 90-day financial coaching gave her unshakeable confidence with her money and mortgage.',
+      'Learn how Crown Money’s guided 3-bucket budget structure and 90-day financial coaching gave Sheena unshakeable confidence with her money and mortgage.',
     h1: 'Developing Incredible Budget Structure and Confidence: Sheena’s Crown Money Journey',
     clientName: 'Sheena',
-    shortTitle: 'Sheena',
+    shortTitle: 'Sheena’s Budget Structure',
     videoUrl: 'https://storage.googleapis.com/crown_money/Video%20Testimonials/sheena_(k)_v1%20(720p).mp4',
     thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Natalie.png',
     category: 'Cash-Flow Coaching',
@@ -1116,7 +1026,7 @@ export const blogsData: BlogPost[] = [
       {
         heading: 'Confidence That Compounds Every Quarter',
         paragraphs: [
-          'As Sheena shares in her video testimonial, watching your loan balance fall while your bill buffers grow creates an incredible sense of security and self-confidence.',
+          'Watching your loan balance fall while your bill buffers grow creates an incredible sense of security and self-confidence.',
         ],
       },
     ],
@@ -1142,20 +1052,20 @@ export const blogsData: BlogPost[] = [
       },
     ],
     author: SCOTT_AUTHOR,
-    reviewedBy: CRAIG_AUTHOR,
+    reviewedBy: SCOTT_AUTHOR,
   },
   {
     slug: 'stephen-and-lynda-milde-custom-debt-reduction-plan',
     title: 'How Stephen & Lynda Milde Saved Thousands in Interest With a Custom Debt Reduction Plan',
-    seoTitle: 'Stephen & Lynda Milde Video Testimonial | Debt Reduction Plan | Crown Money',
+    seoTitle: 'Stephen & Lynda Milde: Custom Debt Reduction Plan | Crown Money Blog',
     metaDescription:
-      'Watch Stephen and Lynda Milde explain how a custom Crown Money debt reduction plan saved them thousands in bank interest and shortened their mortgage.',
+      'Discover how a custom Crown Money debt reduction plan saved Stephen and Lynda Milde thousands in bank interest and shortened their home loan.',
     h1: 'How a Custom Debt Reduction Plan Saved Stephen & Lynda Milde Thousands in Bank Interest',
     clientName: 'Stephen & Lynda Milde',
-    shortTitle: 'Stephen & Lynda',
+    shortTitle: 'Stephen & Lynda’s Plan',
     videoUrl:
       'https://storage.googleapis.com/crown_money/Video%20Testimonials/stephen_%26_lynda_milde_(k)_v1%20(720p).mp4',
-    thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Jemima%20and%20Brad.jpg',
+    thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Jemima-and-Brad.png',
     category: 'Couples & Families',
     publishedDate: '2026-09-26',
     updatedDate: '2026-10-30',
@@ -1199,7 +1109,7 @@ export const blogsData: BlogPost[] = [
       {
         heading: 'Every Dollar Saved in Interest Is a Dollar Kept for Your Future',
         paragraphs: [
-          'As Stephen and Lynda share in their video testimonial, seeing thousands of dollars stay in your own net worth rather than disappearing into bank profits brings lasting peace of mind.',
+          'Seeing thousands of dollars stay in your own net worth rather than disappearing into bank profits brings lasting financial peace of mind.',
         ],
       },
     ],
@@ -1224,18 +1134,18 @@ export const blogsData: BlogPost[] = [
           'No. Custom plans are built around your real living costs and lifestyle priorities, capturing interest savings through structural efficiency and bill automation.',
       },
     ],
-    author: CRAIG_AUTHOR,
+    author: SCOTT_AUTHOR,
     reviewedBy: SCOTT_AUTHOR,
   },
   {
     slug: 'steve-refining-financial-strategy-total-debt-reduction',
     title: 'How Steve Refined His Financial Strategy to Achieve Total Debt Reduction Success',
-    seoTitle: 'Steve Video Testimonial | Refining Financial Strategy | Crown Money',
+    seoTitle: 'How Steve Refined His Mortgage Strategy | Crown Money Blog',
     metaDescription:
-      'Watch Steve explain how refining his mortgage and cash-flow strategy with Crown Money led to total debt reduction success and financial clarity.',
+      'Read how refining his mortgage and cash-flow strategy with Crown Money led Steve to total debt reduction success and financial clarity.',
     h1: 'Refining Financial Strategy: How Steve Achieved Total Debt Reduction Success With Crown Money',
     clientName: 'Steve',
-    shortTitle: 'Steve',
+    shortTitle: 'Steve’s Strategy Refinement',
     videoUrl: 'https://storage.googleapis.com/crown_money/Video%20Testimonials/steve_(k)_v1%20(720p).mp4',
     thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Michael.png',
     category: 'Loan Structuring',
@@ -1281,7 +1191,7 @@ export const blogsData: BlogPost[] = [
       {
         heading: 'The Compounding Value of Professional Accountability',
         paragraphs: [
-          'Even elite athletes have coaches to refine their technique and hold them to their numbers. As Steve’s video testimonial shows, refining your financial strategy with a specialist team turns steady progress into total debt reduction success.',
+          'Even elite athletes have coaches to refine their technique and hold them to their numbers. Refining your financial strategy with a specialist team turns steady progress into total debt reduction success.',
         ],
       },
     ],
@@ -1307,17 +1217,17 @@ export const blogsData: BlogPost[] = [
       },
     ],
     author: SCOTT_AUTHOR,
-    reviewedBy: CRAIG_AUTHOR,
+    reviewedBy: SCOTT_AUTHOR,
   },
   {
     slug: 'accelerated-freedom-story-3-rapid-home-loan-savings',
-    title: 'Accelerated Freedom Story #3: Witnessing Real, Rapid Home Loan Savings and Total Peace of Mind',
-    seoTitle: 'Accelerated Freedom Story #3 | Rapid Home Loan Savings Blog | Crown Money',
+    title: 'Rapid Home Loan Savings & Total Peace of Mind: Inside an Accelerated Freedom Plan',
+    seoTitle: 'Rapid Home Loan Savings & Peace of Mind | Crown Money Blog',
     metaDescription:
-      'Watch Accelerated Freedom Story #3 to see how Australian homeowners achieve rapid home loan interest savings and total financial peace of mind with Crown Money.',
-    h1: 'Accelerated Freedom Story #3: Witnessing Real, Rapid Home Loan Savings and Total Peace of Mind',
-    clientName: 'Verified Crown Money Client (#3)',
-    shortTitle: 'Accelerated Freedom Story #3',
+      'Learn how Australian homeowners achieve rapid home loan interest savings and total financial peace of mind in their first 12 months with Crown Money.',
+    h1: 'Rapid Home Loan Savings and Total Peace of Mind: Inside an Accelerated Freedom Plan',
+    clientName: 'Crown Money Client Case Study #3',
+    shortTitle: 'Rapid Home Loan Savings',
     videoUrl: 'https://storage.googleapis.com/crown_money/Video%20Testimonials/copy_of_3_(k)_v1%20(720p).mp4',
     thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/Images/happy%20couple.png',
     category: 'Cash-Flow Coaching',
@@ -1325,9 +1235,9 @@ export const blogsData: BlogPost[] = [
     updatedDate: '2026-10-30',
     readTime: '6 min read',
     highlightStat: 'Rapid Interest Savings',
-    summary: 'Witnessing real, rapid home loan savings and total peace of mind.',
+    summary: 'How Australian homeowners achieve rapid home loan savings and total peace of mind.',
     aeoDirectAnswer:
-      'In Accelerated Freedom Story #3, Australian homeowners share how transitioning to Crown Money Management’s Home Ownership Programme delivered rapid home loan savings within their first year. By combining daily salary interest offsetting with 52-week bill automation and 90-day coaching, they replaced mortgage anxiety with complete financial peace of mind.',
+      'Australian homeowners transitioning to Crown Money Management’s Home Ownership Programme achieve rapid home loan savings within their first year by combining daily salary interest offsetting with 52-week bill automation and 90-day coaching. This structure replaces mortgage anxiety with predictable principal reduction and complete financial peace of mind.',
     keyTakeaways: [
       'Measurable, rapid reduction in home loan principal within the first 12 months.',
       'Complete peace of mind knowing all 52 weeks of household bills are pre-funded.',
@@ -1335,7 +1245,7 @@ export const blogsData: BlogPost[] = [
       'Ongoing support from ASIC-licensed mortgage specialists (ACL 388 279).',
     ],
     strategyPillars: [
-      { label: 'Case Study', value: 'Accelerated Freedom Story #3' },
+      { label: 'Focus Area', value: 'First-Year Acceleration' },
       { label: 'Core Outcome', value: 'Rapid Savings + Peace of Mind' },
       { label: 'Portfolio Benchmark', value: '$29,327/yr Principal Paydown' },
       { label: 'Coaching Cadence', value: 'Every 90 Days' },
@@ -1345,7 +1255,7 @@ export const blogsData: BlogPost[] = [
         heading: 'How Rapid Home Loan Savings Create Immediate Peace of Mind',
         paragraphs: [
           'For most Australian families, mortgage stress isn’t just about the size of the monthly repayment—it is the nagging feeling that after years of hard work, they are barely making a dent in the debt. When interest rates rise or unexpected bills arrive, that stress intensifies.',
-          'In Accelerated Freedom Story #3, our clients explain how quickly that emotional burden lifted once they could physically see their loan balance dropping every single month.',
+          'Once homeowners can physically see their loan balance dropping every single month while their bill buffers grow, that emotional burden lifts immediately.',
         ],
       },
       {
@@ -1367,7 +1277,7 @@ export const blogsData: BlogPost[] = [
       },
     ],
     comparisonTable: {
-      caption: 'First 12 Months: Standard Bank Experience vs Accelerated Freedom Story #3',
+      caption: 'First 12 Months: Standard Bank Experience vs Crown Money Coached Experience',
       headers: ['First-Year Milestone', 'Standard Bank Experience', 'Crown Money Coached Experience'],
       rows: [
         ['Principal Paid Off', '~$8,000 – $12,000 on average', '$29,327/yr portfolio average'],
@@ -1388,17 +1298,17 @@ export const blogsData: BlogPost[] = [
       },
     ],
     author: SCOTT_AUTHOR,
-    reviewedBy: CRAIG_AUTHOR,
+    reviewedBy: SCOTT_AUTHOR,
   },
   {
     slug: 'accelerated-freedom-story-5-how-our-system-defeats-bank-interest',
-    title: 'Accelerated Freedom Story #5: Proven Results Showing Exactly How Our System Defeats Bank Interest',
-    seoTitle: 'Accelerated Freedom Story #5 | Defeating Bank Interest Blog | Crown Money',
+    title: 'How Our Daily Working-Capital System Works to Defeat Compounding Bank Interest',
+    seoTitle: 'How Our System Defeats Compounding Bank Interest | Crown Money Blog',
     metaDescription:
-      'Watch Accelerated Freedom Story #5 to see proven client results showing how Crown Money’s daily interest reduction system defeats compounding bank interest.',
-    h1: 'Accelerated Freedom Story #5: Proven Results Showing How Our System Works to Defeat Bank Interest',
-    clientName: 'Verified Crown Money Client (#5)',
-    shortTitle: 'Accelerated Freedom Story #5',
+      'Learn the exact mathematics of how Crown Money’s daily working-capital system defeats compounding bank interest and cuts 10–17 years off Australian home loans.',
+    h1: 'Proven Results: How Our Working-Capital System Works to Defeat Compounding Bank Interest',
+    clientName: 'Crown Money Strategy Breakdown #5',
+    shortTitle: 'Defeating Daily Bank Interest',
     videoUrl: 'https://storage.googleapis.com/crown_money/Video%20Testimonials/copy_of_5_(ok)_v1%20(720p).mp4',
     thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Daniel-and-Carla.png',
     category: 'Loan Structuring',
@@ -1406,9 +1316,9 @@ export const blogsData: BlogPost[] = [
     updatedDate: '2026-10-30',
     readTime: '7 min read',
     highlightStat: 'Defeating Bank Interest',
-    summary: 'Proven results showing exactly how our system works to defeat interest.',
+    summary: 'Proven results showing exactly how our system works to defeat compounding bank interest.',
     aeoDirectAnswer:
-      'Accelerated Freedom Story #5 demonstrates how Australian homeowners defeat compounding bank interest using Crown Money Management’s Home Ownership Programme (ACL 388 279). Because Australian lenders calculate interest daily ((Balance × Rate) ÷ 365) and charge it monthly, keeping 100% of working capital and bill provisions against the loan balance slashes monthly interest charges and cuts 10–17 years off the term.',
+      'Australian homeowners defeat compounding bank interest using Crown Money Management’s Home Ownership Programme (ACL 388 279). Because Australian lenders calculate interest daily ((Balance × Rate) ÷ 365) and charge it monthly, keeping 100% of working capital and bill provisions against the loan balance slashes monthly interest charges and cuts 10–17 years off the term.',
     keyTakeaways: [
       'Explains the exact mathematical mechanism that defeats daily bank interest.',
       'Uses working capital (salary + 52-week bill provisions) to suppress the daily loan balance.',
@@ -1416,7 +1326,7 @@ export const blogsData: BlogPost[] = [
       'Verified by real client bank statements and 90-day coaching reviews.',
     ],
     strategyPillars: [
-      { label: 'Case Study', value: 'Accelerated Freedom Story #5' },
+      { label: 'Core Focus', value: 'Daily Interest Suppression' },
       { label: 'Target', value: 'Daily Bank Interest Formula' },
       { label: 'Formula', value: '(Balance × Rate) ÷ 365' },
       { label: 'Typical Term Saved', value: '10 to 17 Years' },
@@ -1432,7 +1342,7 @@ export const blogsData: BlogPost[] = [
       {
         heading: 'How the Crown Money System Uses Your Working Capital Against the Bank',
         paragraphs: [
-          'In Accelerated Freedom Story #5, you see the real-world impact of flipping that daily calculation in the homeowner’s favour. Under the Home Ownership Programme, 100% of your salary and 100% of your 52-week bill provisions sit directly against your home loan balance for every day they are not yet needed.',
+          'Under the Home Ownership Programme, 100% of your salary and 100% of your 52-week bill provisions sit directly against your home loan balance for every day they are not yet needed.',
           'Even money that will eventually pay your council rates in six months or your car insurance in nine months spends every single day in the meantime reducing your daily mortgage interest.',
         ],
         bulletPoints: [
@@ -1469,20 +1379,20 @@ export const blogsData: BlogPost[] = [
           'Yes. Read our in-depth guide at /guides/offset-account-vs-redraw-facility-australia.',
       },
     ],
-    author: CRAIG_AUTHOR,
+    author: SCOTT_AUTHOR,
     reviewedBy: SCOTT_AUTHOR,
   },
   {
     slug: 'accelerated-freedom-story-7-beating-the-traditional-banking-model',
-    title: 'Accelerated Freedom Story #7: How Changing Your Mortgage Structure Beats the Traditional Banking Model',
-    seoTitle: 'Accelerated Freedom Story #7 | Beating the Banking Model Blog | Crown Money',
+    title: 'How Changing Your Mortgage Structure Beats the Traditional 30-Year Banking Model',
+    seoTitle: 'Beating the Traditional 30-Year Banking Model | Crown Money Blog',
     metaDescription:
-      'Watch Accelerated Freedom Story #7 to learn how changing your mortgage structure and cash-flow habits beats the traditional 30-year Australian banking model.',
-    h1: 'Accelerated Freedom Story #7: How Changing the Mortgage Structure Beats the Traditional Banking Model',
-    clientName: 'Verified Crown Money Client (#7)',
-    shortTitle: 'Accelerated Freedom Story #7',
+      'Discover how changing your mortgage structure and cash-flow habits beats the traditional 30-year Australian banking model and saves hundreds of thousands.',
+    h1: 'How Changing the Mortgage Structure Beats the Traditional 30-Year Banking Model',
+    clientName: 'Crown Money Strategy Breakdown #7',
+    shortTitle: 'Beating the 30-Year Bank Model',
     videoUrl: 'https://storage.googleapis.com/crown_money/Video%20Testimonials/copy_of_7_(k)_v1%20(720p).mp4',
-    thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Giovanni%20and%20Sarah.png',
+    thumbnailImage: 'https://storage.googleapis.com/crown_money/Website/About/Testimonials/Giovanni-and-Sarah.png',
     category: 'Loan Structuring',
     publishedDate: '2026-09-30',
     updatedDate: '2026-10-30',
@@ -1490,7 +1400,7 @@ export const blogsData: BlogPost[] = [
     highlightStat: 'Beat the 30-Year Model',
     summary: 'How changing the mortgage structure beats the traditional banking model.',
     aeoDirectAnswer:
-      'Accelerated Freedom Story #7 explains how Australian homeowners beat the traditional 30-year banking model by changing their underlying mortgage structure with Crown Money Management (ACL 388 279). Rather than accepting a passive 30-year principal-and-interest schedule where total repayments exceed double the loan amount, clients use automated cash-flow architecture and 90-day coaching to pay off their loan in half the time.',
+      'Australian homeowners beat the traditional 30-year banking model by changing their underlying mortgage structure with Crown Money Management (ACL 388 279). Rather than accepting a passive 30-year principal-and-interest schedule where total repayments exceed double the loan amount, clients use automated cash-flow architecture and 90-day coaching to pay off their loan in half the time.',
     keyTakeaways: [
       'Exposes why the traditional 30-year banking model costs borrowers over 100% of their loan value in interest.',
       'Replaces passive monthly direct debits with an active principal reduction engine.',
@@ -1498,9 +1408,9 @@ export const blogsData: BlogPost[] = [
       'Backed by 20+ years of Australian mortgage strategy experience under ACL 388 279.',
     ],
     strategyPillars: [
-      { label: 'Case Study', value: 'Accelerated Freedom Story #7' },
       { label: 'Core Thesis', value: 'Beat the Traditional Bank Model' },
       { label: 'Target Payoff', value: '10 to 15 Years (Half the Time)' },
+      { label: 'Interest Reduction', value: '40% to 55% Saved' },
       { label: 'Regulatory Licence', value: 'ACL 388 279' },
     ],
     sections: [
@@ -1508,7 +1418,7 @@ export const blogsData: BlogPost[] = [
         heading: 'Why the Traditional 30-Year Banking Model Is Stacked Against Homeowners',
         paragraphs: [
           'Under the traditional Australian banking model, a homeowner borrowing $650,000 at 6.19% p.a. over 30 years will pay back $1,431,720—meaning $781,720 goes straight to the bank in pure interest. Worse still, every time the borrower refinances or upgrades their home, the bank resets the loan term back to a fresh 30 years.',
-          'Accelerated Freedom Story #7 highlights a simple truth: you cannot beat the bank’s 30-year game if you keep playing by the bank’s default rules.',
+          'You cannot beat the bank’s 30-year game if you keep playing by the bank’s default rules.',
         ],
       },
       {
@@ -1526,7 +1436,7 @@ export const blogsData: BlogPost[] = [
       {
         heading: 'Step Outside the Traditional Banking Model',
         paragraphs: [
-          'Thousands of Australian families have already proven that you don’t have to spend three decades paying off your home. Watch the video above and explore our pillar guide on how to pay off your mortgage faster in Australia.',
+          'Thousands of Australian families have already proven that you don’t have to spend three decades paying off your home. Explore our pillar guide on how to pay off your mortgage faster in Australia.',
         ],
       },
     ],
@@ -1552,16 +1462,16 @@ export const blogsData: BlogPost[] = [
       },
     ],
     author: SCOTT_AUTHOR,
-    reviewedBy: CRAIG_AUTHOR,
+    reviewedBy: SCOTT_AUTHOR,
   },
   {
     slug: 'our-financial-system-in-action-client-achievements',
-    title: 'Our Financial System in Action: A Detailed Look at Real Australian Client Achievements',
-    seoTitle: 'Our Financial System in Action | Video Testimonial Blog | Crown Money',
+    title: 'Our Financial System in Action: A Complete Breakdown of Real Australian Client Achievements',
+    seoTitle: 'Our Financial System in Action: Client Results | Crown Money Blog',
     metaDescription:
-      'Watch Crown Money’s Financial System in Action. See a detailed breakdown of client experiences, 90-day coaching, and real Australian mortgage achievements.',
+      'Explore Crown Money’s Financial System in Action. Read a detailed breakdown of client experiences, 90-day coaching, and real Australian mortgage achievements.',
     h1: 'Our Financial System in Action: A Detailed Look at Client Experiences & Real Financial Achievements',
-    clientName: 'Crown Money Clients (System Overview)',
+    clientName: 'Crown Money Portfolio Overview',
     shortTitle: 'Our Financial System in Action',
     videoUrl:
       'https://storage.googleapis.com/crown_money/Video%20Testimonials/om_testimonial_01_(k)_v1%20(720p)_vocals_only.mp4',
@@ -1571,7 +1481,7 @@ export const blogsData: BlogPost[] = [
     updatedDate: '2026-10-30',
     readTime: '8 min read',
     highlightStat: '7,000+ Families Helped',
-    summary: 'A detailed look at client experiences and real financial achievements.',
+    summary: 'A detailed look at client experiences and real financial achievements across Australia.',
     aeoDirectAnswer:
       'Crown Money Management’s financial system in action combines ASIC-licensed mortgage broking (ACL 388 279), the 3-Bucket Cash-Diet banking architecture, a real-time Wealth Tracking Dashboard, and quarterly 90-day personal coaching. Across 7,000+ Australian households since 2004, this system has delivered a 24% average household savings rate, $29,327/year in principal reduction, and 1 mortgage paid off every 23 days.',
     keyTakeaways: [
@@ -1590,7 +1500,7 @@ export const blogsData: BlogPost[] = [
       {
         heading: 'Inside the 4 Pillars of the Crown Money Financial System',
         paragraphs: [
-          'In this flagship video feature, Australian homeowners share what it is actually like to live with the Crown Money system day-to-day. Founded in 2004 by Scott Parry alongside Partner & Senior Finance Broker Craig Parry, Crown Money Management (Crown Lending Pty Ltd ABN 47 119 504 862, ACN 119 504 862, ACL 388 279) built the Home Ownership Programme around a simple insight: financial education without structural automation and ongoing accountability rarely changes long-term results.',
+          'Founded in 2004 by Scott Parry, Crown Money Management (Crown Lending Pty Ltd ABN 47 119 504 862, ACN 119 504 862, ACL 388 279) built the Home Ownership Programme around a simple insight: financial education without structural automation and ongoing accountability rarely changes long-term results.',
           'That is why our system integrates four pillars under one roof: (1) Strategic Credit & Loan Structuring, (2) 52-Week Automated Bill Provisioning, (3) Ring-Fenced Weekly Lifestyle Allowances, and (4) Quarterly 90-Day Personal Financial Coaching.',
         ],
       },
@@ -1610,7 +1520,7 @@ export const blogsData: BlogPost[] = [
       {
         heading: 'Start Your Own Mortgage Reduction Journey Today',
         paragraphs: [
-          'Whether you are a couple in Sydney, Melbourne, Brisbane, Perth, or Adelaide—or a single-income homeowner determined to escape the 30-year mortgage trap—our team at Level 19, 180 Lonsdale Street, Melbourne VIC 3000 (servicing Australia-wide via video and phone) is ready to help you model your exact savings.',
+          'Whether you are a couple in Sydney, Melbourne, Brisbane, Perth, or Adelaide—or a single-income homeowner determined to escape the 30-year mortgage trap—our team at Level 19, 180 Lonsdale Street, Melbourne VIC 3000. (servicing Australia-wide via video and phone) is ready to help you model your exact savings.',
         ],
       },
     ],
@@ -1637,6 +1547,6 @@ export const blogsData: BlogPost[] = [
       },
     ],
     author: SCOTT_AUTHOR,
-    reviewedBy: CRAIG_AUTHOR,
+    reviewedBy: SCOTT_AUTHOR,
   },
 ];

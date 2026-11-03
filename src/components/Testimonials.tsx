@@ -35,7 +35,7 @@ const testimonials = [
   },
   {
     name: "Giovanni and Sarah",
-    story: "After making a massive dent in our home loan this past year, we are now planning our first family overseas holiday all thanks to Crown Money. We highly recommend Craig and the team.",
+    story: "After making a massive dent in our home loan this past year, we are now planning our first family overseas holiday all thanks to Crown Money. We highly recommend Scott and the team.",
     outcome: "12 Years Saved",
     image: "https://storage.googleapis.com/crown_money/Website/About/Testimonials/Giovanni-and-Sarah.png"
   }

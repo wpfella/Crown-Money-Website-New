@@ -348,8 +348,8 @@ const staticRoutes: Record<string, RouteSeoData> = {
     ],
     paragraphs: [
       'Crown Money Management (Crown Lending Pty Ltd, ABN 47 119 504 862, Australian Credit Licence 388 279) holds a 4.9 out of 5.0 star rating across 384+ verified Google and Trustpilot reviews from Australian homeowners. 95% of verified reviewers rate Crown Money 5 stars, 4% rate 4 stars, and 1% rate 3 stars.',
-      'Melanie & Jeffrey (NSW, 5 Stars): "We’ve been with Crown Money for just over 12 months and it’s been a real game-changer for us. Previously we were on track to pay our mortgage off in another 20 years, but now it’s looking like we could get it done in 3! Scott and the team made the entire process clear, supportive, and completely stress-free." | Natalie (VIC, 5 Stars): "When I joined Crown I paid off in my first year as much as I had in the previous 3 years!! I was amazed how the programme made me so disciplined and allowed me to actually enjoy life while staying on track." | Jemima & Brad (SA, 5 Stars): "Brad has been with Crown for 17 years. Scott’s guidance and advice has helped us progress to an amazing financial position where we are getting close to paying off our house mortgage completely at age 36." | Daniel & Carla (WA, 5 Stars): "On track to save 10 years of loan repayments with a whopping 28% savings rate." | Michael (QLD, 5 Stars): "Results have surpassed any of my wildest expectations and I am tracking for an 8-year total payoff on a single income." | Giovanni & Sarah (SA, 5 Stars): "After making a massive dent in our home loan this past year, we are now planning our first family overseas holiday all thanks to Crown Money. We highly recommend Craig and the team."',
-      'Watch 10+ unedited client video testimonials including Kamani & Scott, Chris Battistuzzi, Dominic & Elisabeth Lobosso, Ella, Graham, Linda Taylor (Debt Free), Marcus & Taryn Burdett, the McColley Family, and the Monaghan Family.',
+      'Melanie & Jeffrey (NSW, 5 Stars): "We’ve been with Crown Money for just over 12 months and it’s been a real game-changer for us. Previously we were on track to pay our mortgage off in another 20 years, but now it’s looking like we could get it done in 3! Scott and the team made the entire process clear, supportive, and completely stress-free." | Natalie (VIC, 5 Stars): "When I joined Crown I paid off in my first year as much as I had in the previous 3 years!! I was amazed how the programme made me so disciplined and allowed me to actually enjoy life while staying on track." | Jemima & Brad (SA, 5 Stars): "Brad has been with Crown for 17 years. Scott’s guidance and advice has helped us progress to an amazing financial position where we are getting close to paying off our house mortgage completely at age 36." | Daniel & Carla (WA, 5 Stars): "On track to save 10 years of loan repayments with a whopping 28% savings rate." | Michael (QLD, 5 Stars): "Results have surpassed any of my wildest expectations and I am tracking for an 8-year total payoff on a single income." | Giovanni & Sarah (SA, 5 Stars): "After making a massive dent in our home loan this past year, we are now planning our first family overseas holiday all thanks to Crown Money. We highly recommend Scott and the team."',
+      'Watch unedited client video testimonials including Kamani & Scott, Chris Battistuzzi, Dominic & Elisabeth Lobosso, Graham, Linda Taylor (Debt Free), Marcus & Taryn Burdett, the McColley Family, and the Monaghan Family.',
       'All reviews are from verified Australian clients coached under ACL 388 279. Read our full fee and results methodology guide at /guides/crown-money-fees-suitability-and-results-explained.',
     ],
     tables: [
@@ -826,20 +826,20 @@ const staticRoutes: Record<string, RouteSeoData> = {
   },
   '/blog': {
     path: '/blog',
-    title: 'Mortgage Reduction Blog & Video Stories | Crown Money',
-    description: 'Read 19 in-depth Australian mortgage reduction blog posts and watch verified client video testimonials showing how homeowners pay off their loans faster.',
+    title: 'Mortgage Reduction & Cash-Flow Strategy Blog | Crown Money',
+    description: 'Read in-depth Australian mortgage reduction blog posts, real household strategy breakdowns, and cash-flow coaching insights from Crown Money.',
     canonical: `${BASE_URL}/blog`,
-    h1: 'Mortgage Reduction Blog & Video Testimonials',
+    h1: 'The Crown Money Blog',
     images: [
       {
         src: 'https://storage.googleapis.com/crown_money/Website/Images/happy%20couple.png',
-        alt: 'Crown Money Mortgage Reduction Blog and Verified Client Video Testimonials',
+        alt: 'The Crown Money Blog — Australian Mortgage Reduction and Cash-Flow Strategy',
       },
     ],
     h2s: blogsData.map((b) => b.title),
     paragraphs: [
-      ...blogsData.map((b) => `${b.clientName} (${b.highlightStat}, ${b.readTime}): ${b.aeoDirectAnswer} Watch video: ${b.videoUrl}`),
-      'All 19 video testimonial blogs are authored and peer-reviewed by Scott Parry (Founder & CEO) and Craig Parry (Partner & Senior Finance Broker, MFAA Member) under Crown Lending Pty Ltd (ABN 47 119 504 862, Australian Credit Licence 388 279, Level 19, 180 Lonsdale Street, Melbourne VIC 3000.).',
+      ...blogsData.map((b) => `${b.clientName} (${b.highlightStat}, ${b.readTime}): ${b.aeoDirectAnswer}`),
+      'All blog articles are authored and reviewed by Scott Parry (Founder & CEO) under Crown Lending Pty Ltd (ABN 47 119 504 862, Australian Credit Licence 388 279, Level 19, 180 Lonsdale Street, Melbourne VIC 3000.).',
     ],
     schema: {
       '@context': 'https://schema.org',
@@ -848,7 +848,7 @@ const staticRoutes: Record<string, RouteSeoData> = {
         {
           '@type': 'Blog',
           '@id': `${BASE_URL}/blog#blog`,
-          name: 'Mortgage Reduction Blog & Video Stories | Crown Money',
+          name: 'Mortgage Reduction & Cash-Flow Strategy Blog | Crown Money',
           url: `${BASE_URL}/blog`,
           publisher: organizationSchema,
         },
@@ -1177,21 +1177,26 @@ for (const blog of blogsData) {
     images: [
       {
         src: blog.thumbnailImage,
-        alt: `${blog.clientName} — Crown Money Video Testimonial Blog`,
+        alt: `${blog.title} — Crown Money Blog`,
         caption: `${blog.clientName}: ${blog.summary}`,
       },
     ],
     h2s: [
-      `Quick Summary: ${blog.clientName} (${blog.highlightStat})`,
+      `Quick Summary: ${blog.shortTitle} (${blog.highlightStat})`,
       ...blog.sections.map((s) => s.heading),
     ],
     paragraphs: [
-      `${blog.aeoDirectAnswer} Key Takeaways: ${blog.keyTakeaways.join(' ')} Watch video testimonial: ${blog.videoUrl}`,
+      `${blog.aeoDirectAnswer} Key Takeaways: ${blog.keyTakeaways.join(' ')}`,
       ...blog.sections.map((s) => [...s.paragraphs, ...(s.bulletPoints || [])].join(' ')),
     ],
     tables: [blog.comparisonTable],
     faqs: blog.faqs,
     contextualLinks: [
+      {
+        label: 'Watch Client Video Testimonials on Success Stories',
+        path: '/success-stories',
+        description: 'Watch verified Australian homeowner video testimonials and explore client case studies.',
+      },
       {
         label: 'Mortgage Reduction Calculator Australia',
         path: '/mortgage-reduction-calculator',
@@ -1230,14 +1235,6 @@ for (const blog of blogsData) {
           },
           publisher: organizationSchema,
           mainEntityOfPage: `${BASE_URL}${path}`,
-          video: {
-            '@type': 'VideoObject',
-            name: `${blog.clientName} — Crown Money Video Testimonial`,
-            description: blog.aeoDirectAnswer,
-            contentUrl: blog.videoUrl,
-            thumbnailUrl: blog.thumbnailImage,
-            uploadDate: `${blog.publishedDate}T09:00:00+10:00`,
-          },
         },
         {
           '@type': 'FAQPage',
@@ -1293,7 +1290,7 @@ export function buildPrerenderedBodyHtml(route: RouteSeoData): string {
     { href: '/', label: 'Home' },
     { href: '/about', label: 'About Us' },
     { href: '/how-it-works', label: 'How It Works' },
-    { href: '/blog', label: 'Mortgage Reduction Blog & Video Stories' },
+    { href: '/blog', label: 'Blog' },
     { href: '/guides', label: 'Mortgage Reduction Guides' },
     { href: '/tools', label: 'Financial Calculators' },
     { href: '/mortgage-reduction-calculator', label: 'Mortgage Reduction Calculator' },
@@ -1465,12 +1462,12 @@ export function buildPrerenderedBodyHtml(route: RouteSeoData): string {
           ${citationsHtml}
           ${standaloneFaqsHtml}
         </article>
-        <aside aria-label="Australian Mortgage Guides, Video Blogs & Case Studies">
+        <aside aria-label="Australian Mortgage Guides, Blog & Case Studies">
           <h2>Australian Mortgage Reduction Guides</h2>
           <ul>
             ${guideLinks}
           </ul>
-          <h2>Client Video Testimonial Blogs</h2>
+          <h2>Mortgage Reduction Blog Articles</h2>
           <ul>
             ${blogLinks}
           </ul>

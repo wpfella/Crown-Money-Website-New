@@ -61,7 +61,7 @@ export const SuccessStories = () => {
       name: "Giovanni and Sarah",
       image: "https://storage.googleapis.com/crown_money/Website/About/Testimonials/Giovanni-and-Sarah.png",
       result: "12 Years Saved",
-      summary: "After making a massive dent in our home loan this past year, we are now planning our first family overseas holiday all thanks to Crown Money. We highly recommend Craig and the team.",
+      summary: "After making a massive dent in our home loan this past year, we are now planning our first family overseas holiday all thanks to Crown Money. We highly recommend Scott and the team.",
       outcome: "12 Years Cut Off Loan"
     }
   ];
@@ -215,7 +215,7 @@ export const SuccessStories = () => {
       </section>
 
       {/* Video Testimonials Section */}
-      <section className="py-24 bg-gray-50/50 border-t border-b border-gray-100">
+      <section id="video-testimonials" className="py-24 bg-gray-50/50 border-t border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <span className="text-xs text-primary font-bold uppercase tracking-widest bg-crown-lavender px-3 py-1.5 rounded-full">
@@ -225,13 +225,13 @@ export const SuccessStories = () => {
               Watch Success Testimonials
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto mb-6">
-              Hear directly from real Australians who have accelerated their timeline and achieved complete financial freedom—or read the full strategy breakdown blog for each video.
+              Hear directly from real Australians who have accelerated their timeline and achieved complete financial freedom.
             </p>
             <Link
               to="/blog"
               className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-gold transition-colors"
             >
-              Explore All 19 Video Testimonial Strategy Blogs <ArrowRight size={16} />
+              Prefer to read? Explore our Mortgage Strategy Blog <ArrowRight size={16} />
             </Link>
           </div>
 
@@ -259,7 +259,7 @@ export const SuccessStories = () => {
                 <div className="p-6 flex-grow flex flex-col justify-between">
                   <div>
                     <h3 className="text-lg font-bold text-primary font-display mb-2 group-hover:text-gold transition-colors duration-200">
-                      <Link to={`/blog/${video.blogSlug}`}>{video.title}</Link>
+                      {video.title}
                     </h3>
                     <p className="text-sm text-gray-600 leading-relaxed mb-4">
                       {video.description}
@@ -270,7 +270,7 @@ export const SuccessStories = () => {
                       to={`/blog/${video.blogSlug}`}
                       className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-gold transition-colors"
                     >
-                      Read Full Strategy Blog <ArrowRight size={13} />
+                      Read Related Blog <ArrowRight size={13} />
                     </Link>
                     <span className="text-xs text-gold font-bold flex items-center gap-1">
                       <Star size={12} className="fill-current" /> Verified Result
