@@ -508,7 +508,7 @@ export const About = () => {
               <p><strong>ABN:</strong> 47 119 504 862 · <strong>ACN:</strong> 119 504 862</p>
               <p><strong>Industry Membership:</strong> Full Member, Mortgage & Finance Association of Australia (MFAA)</p>
               <p><strong>Founded:</strong> 2004 by Scott Parry (22+ years operating in Australia)</p>
-              <p><strong>Head Office Address:</strong> Level 1, 100 Havelock Street, West Perth WA 6005 (Servicing homeowners Australia-wide across NSW, VIC, QLD, SA & WA)</p>
+              <p><strong>Head Office Address:</strong> Level 19, 180 Lonsdale Street, Melbourne VIC 3000.</p>
               <p><strong>Phone:</strong> 1300 882 981 · <strong>Email:</strong> admin@crown.money</p>
             </div>
             <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm space-y-3 text-sm text-gray-700">

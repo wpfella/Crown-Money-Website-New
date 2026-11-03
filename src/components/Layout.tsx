@@ -310,7 +310,7 @@ const Footer = ({ onBookToggle, onRatesToggle }: { onBookToggle: () => void; onR
               admin@crown.money
             </a>
             <p className="text-xs text-gray-300 leading-relaxed pt-1">
-              Level 1, 100 Havelock Street, West Perth WA 6005 (Servicing Australia-Wide)
+              Level 19, 180 Lonsdale Street, Melbourne VIC 3000.
             </p>
           </div>
           <button

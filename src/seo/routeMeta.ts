@@ -98,10 +98,10 @@ export const organizationSchema = {
   priceRange: '$0 - $4,950',
   address: {
     '@type': 'PostalAddress',
-    streetAddress: 'Level 1, 100 Havelock Street',
-    addressLocality: 'West Perth',
-    addressRegion: 'WA',
-    postalCode: '6005',
+    streetAddress: 'Level 19, 180 Lonsdale Street',
+    addressLocality: 'Melbourne',
+    addressRegion: 'VIC',
+    postalCode: '3000',
     addressCountry: 'AU',
   },
   areaServed: {
@@ -264,7 +264,7 @@ const staticRoutes: Record<string, RouteSeoData> = {
     ],
     paragraphs: [
       'Founded in 2004 by CEO Scott Parry alongside Partner & Senior Finance Broker Craig Parry, Crown Money Management (Crown Lending Pty Ltd ABN 47 119 504 862, ACN 119 504 862, Australian Credit Licence 388 279) is on a mission to help Australian families escape the 30-year mortgage trap.',
-      'Our multidisciplinary team includes Senior Financial Strategists, MFAA-accredited Senior Finance and Mortgage Brokers, dedicated Post-Settlement Financial Coaches, Financial Associates, Credit Assessors, and Client Care Officers servicing homeowners across Australia from our West Perth head office (Level 1, 100 Havelock Street, West Perth WA 6005).',
+      'Our multidisciplinary team includes Senior Financial Strategists, MFAA-accredited Senior Finance and Mortgage Brokers, dedicated Post-Settlement Financial Coaches, Financial Associates, Credit Assessors, and Client Care Officers servicing homeowners across Australia from our Melbourne head office (Level 19, 180 Lonsdale Street, Melbourne VIC 3000.).',
       'Canonical Verified Results: Over 7,000 Australian households coached since 2004; $29,327 average annual principal reduction (vs $12,000 national average); 24% average client household savings rate (vs 3.7% ABS national average); 1 client mortgage paid off in full every 23 days.',
     ],
     schema: {
@@ -443,7 +443,7 @@ const staticRoutes: Record<string, RouteSeoData> = {
     images: [
       {
         src: 'https://storage.googleapis.com/crown_money/Logo%20%26%20Icon/Crown%20Money%20Cropped%20Logo.png',
-        alt: 'Crown Money Management Head Office — West Perth WA',
+        alt: 'Crown Money Management Head Office — Melbourne VIC',
       },
     ],
     h2s: [
@@ -453,7 +453,7 @@ const staticRoutes: Record<string, RouteSeoData> = {
     ],
     paragraphs: [
       'Speak with a licensed Financial Strategist at Crown Money Management (Crown Lending Pty Ltd ABN 47 119 504 862, ACN 119 504 862, Australian Credit Licence 388 279).',
-      'Phone: 1300 882 981 (Monday to Friday, 8:30am – 5:30pm AWST). Email: admin@crown.money. Head Office: Level 1, 100 Havelock Street, West Perth WA 6005. Video and phone consultations available Australia-wide across Sydney, Melbourne, Brisbane, Adelaide, and Perth.',
+      'Phone: 1300 882 981 (Monday to Friday, 8:30am – 5:30pm AEST). Email: admin@crown.money. Head Office: Level 19, 180 Lonsdale Street, Melbourne VIC 3000. Video and phone consultations available Australia-wide across Sydney, Melbourne, Brisbane, Adelaide, and Perth.',
       'During your free 45-minute strategy call, we model your current mortgage payoff trajectory against our Home Ownership Programme so you can see exactly how many years and how much interest you can save before making any decision.',
     ],
     schema: {
@@ -1336,7 +1336,7 @@ export function buildPrerenderedBodyHtml(route: RouteSeoData): string {
       </main>
       <footer>
         <p>Crown Money Management — Operated by Crown Lending Pty Ltd · ABN 47 119 504 862 · ACN 119 504 862 · Australian Credit Licence (ACL) Number 388 279 · MFAA Full Member.</p>
-        <p>Head Office: Level 1, 100 Havelock Street, West Perth WA 6005 · Phone: <a href="tel:1300882981">1300 882 981</a> · Email: <a href="mailto:admin@crown.money">admin@crown.money</a></p>
+        <p>Head Office: Level 19, 180 Lonsdale Street, Melbourne VIC 3000. · Phone: <a href="tel:1300882981">1300 882 981</a> · Email: <a href="mailto:admin@crown.money">admin@crown.money</a></p>
       </footer>
     </div>`;
 }

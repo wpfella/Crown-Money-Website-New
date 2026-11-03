@@ -140,10 +140,10 @@ export const Contact = () => {
       "url": "https://crownmoney.com.au",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Level 1, 100 Havelock Street",
-        "addressLocality": "West Perth",
-        "addressRegion": "WA",
-        "postalCode": "6005",
+        "streetAddress": "Level 19, 180 Lonsdale Street",
+        "addressLocality": "Melbourne",
+        "addressRegion": "VIC",
+        "postalCode": "3000",
         "addressCountry": "AU"
       },
       "contactPoint": {
@@ -214,7 +214,7 @@ export const Contact = () => {
                     </div>
                     <div>
                       <p className="text-sm text-gray-500 font-bold uppercase tracking-widest">Head Office & National Service</p>
-                      <p className="text-base font-bold text-primary">Level 1, 100 Havelock Street, West Perth WA 6005</p>
+                      <p className="text-base font-bold text-primary">Level 19, 180 Lonsdale Street, Melbourne VIC 3000.</p>
                       <p className="text-sm text-gray-600 mt-1">
                         Video & phone strategy sessions available Australia-wide across Melbourne (VIC), Sydney (NSW), Brisbane (QLD), Adelaide (SA) & Perth (WA).
                       </p>
