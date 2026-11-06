@@ -589,20 +589,6 @@ export const Reviews = () => {
                 </div>
                 <span className="w-10 text-gray-400">0%</span>
               </div>
-
-              <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-gray-100 mt-4">
-                <p className="text-xs text-gray-500">
-                  Are you a Crown Money client? Share your experience with us!
-                </p>
-                <a 
-                  href="https://g.page/r/CrownMoney/review" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-gold transition-colors underline underline-offset-4"
-                >
-                  Leave a Google Review <ExternalLink size={12} />
-                </a>
-              </div>
             </div>
           </div>
         </div>
