@@ -128,6 +128,7 @@ export const About = () => {
       members: [
         { name: "Joel Hannan", role: "Credit Assessor", image: "https://storage.googleapis.com/crown_money/Website/About/People/Joel%20H_Headshot_BW.jpeg" },
         { name: "Chad Laurente", role: "Credit Assessor", image: "https://storage.googleapis.com/crown_money/Website/About/People/Chad%20Display%20Photo.jpg" },
+        { name: "Lachlan Wallis", role: "Credit Assessor", image: "https://storage.googleapis.com/crown_money/Website/About/People/Headshot%20-%20Lachlan%20Wallis_BW.jpeg" },
         { name: "Jimmy Walker", role: "Sales Support Coordinator", image: "https://storage.googleapis.com/crown_money/Website/About/People/Jimmy.png" },
         { name: "Bec Derksen", role: "Loan Application Concierge", image: "https://storage.googleapis.com/crown_money/Website/About/People/bec%20derksen.png" },
         { name: "Zu Rahman", role: "Loan Application Concierge", image: "https://storage.googleapis.com/crown_money/Website/About/People/Zu_BW.jpg" },
