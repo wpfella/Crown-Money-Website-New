@@ -87,6 +87,7 @@ export const About = () => {
         { name: "Jeanelle Penalosa", role: "Sales Operations Assistant", image: "https://storage.googleapis.com/crown_money/Website/About/People/Jeanelle%20Penalosa_BW.jpeg" },
         { name: "Kim Ornopia", role: "Sales Administration", image: "https://storage.googleapis.com/crown_money/Website/About/People/Kim%20O_BW.png" },
         { name: "Key Cadungog", role: "Sales VA", image: "https://storage.googleapis.com/crown_money/Website/About/People/Key_BW.jpg" },
+        { name: "Michael Allere", role: "Executive VA", image: "https://storage.googleapis.com/crown_money/Website/About/People/michael-allere.jpg" },
       ]
     },
     {
