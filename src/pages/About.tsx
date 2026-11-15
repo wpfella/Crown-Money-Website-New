@@ -159,7 +159,6 @@ export const About = () => {
       members: [
         { name: "Nicola Parry", role: "Office Manager", image: "https://storage.googleapis.com/crown_money/Website/About/People/Nicola%20Parry.png" },
         { name: "Celeen Ibañez", role: "Executive Assistant", image: "https://storage.googleapis.com/crown_money/Website/About/People/Celeen%20Iban%CC%83ez_B%26W.png" },
-        { name: "Jas Durdin", role: "Client Services Manager", image: "https://storage.googleapis.com/crown_money/Website/About/People/Jas%20Durdin.png" },
         { name: "Josie Carreon", role: "Credit & Settlement Support Officer", image: "https://storage.googleapis.com/crown_money/Website/About/People/Josie.jpg" },
         { name: "Eloisa Llaneta", role: "Credit & Settlement Support Officer", image: "https://storage.googleapis.com/crown_money/Website/About/People/Eloisa%20Llaneta.png" },
         { name: "Shiena Saballa", role: "Credit & Settlements Support Officer", image: "https://storage.googleapis.com/crown_money/Website/About/People/Shiena%20Saballa.png" },
