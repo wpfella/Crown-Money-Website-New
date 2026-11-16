@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { Calculator, ArrowRight, Info, TrendingUp, DollarSign, PieChart as PieChartIcon, Wallet, Landmark, CreditCard } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend } from 'recharts';
+import { safeJsonLd } from '../../utils/security';
 
 export const NetWorth = () => {
   const [assets, setAssets] = useState<Record<string, number>>({
@@ -59,7 +60,7 @@ export const NetWorth = () => {
         <meta property="og:url" content="https://crownmoney.com.au/tools/net-worth" />
         <link rel="canonical" href="https://crownmoney.com.au/tools/net-worth" />
         <script type="application/ld+json">
-          {JSON.stringify({
+          {safeJsonLd({
             "@context": "https://schema.org",
             "@graph": [
               {

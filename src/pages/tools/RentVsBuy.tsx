@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { Home, Calculator, ArrowRight, Info, TrendingUp, DollarSign, PieChart, BarChart as BarChartIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { PieChart as RePieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { safeJsonLd } from '../../utils/security';
 
 export const RentVsBuy = () => {
   // User Inputs
@@ -80,7 +81,7 @@ export const RentVsBuy = () => {
         <meta property="og:url" content="https://crownmoney.com.au/tools/rent-vs-buy" />
         <link rel="canonical" href="https://crownmoney.com.au/tools/rent-vs-buy" />
         <script type="application/ld+json">
-          {JSON.stringify({
+          {safeJsonLd({
             "@context": "https://schema.org",
             "@graph": [
               {

@@ -1,5 +1,8 @@
 {
   "name": "Crown Money",
   "description": "Australia's leading specialists in debt reduction and money management. Helping homeowners pay off mortgages faster and build wealth.",
-  "requestFramePermissions": []
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

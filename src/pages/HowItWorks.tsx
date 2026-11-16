@@ -4,8 +4,8 @@ import { Phone, FileText, Settings, TrendingUp, CheckCircle, Play } from 'lucide
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/SEO';
-
 import { Newsletter } from '../components/Newsletter';
+import { safeJsonLd } from '../utils/security';
 
 export const HowItWorks = () => {
   const steps = [
@@ -62,7 +62,7 @@ export const HowItWorks = () => {
       />
       <Helmet>
         <script type="application/ld+json">
-          {JSON.stringify(howToSchema)}
+          {safeJsonLd(howToSchema)}
         </script>
       </Helmet>
       {/* Hero */}
@@ -83,9 +83,10 @@ export const HowItWorks = () => {
             <div className="aspect-video rounded-3xl overflow-hidden shadow-2xl border-8 border-white">
               <iframe 
                 className="w-full h-full"
-                src="https://www.youtube.com/embed/vAKiVus_r7k" 
+                src="https://www.youtube-nocookie.com/embed/vAKiVus_r7k" 
                 title="How Crown Money Works" 
-                frameBorder="0" 
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowFullScreen
               ></iframe>

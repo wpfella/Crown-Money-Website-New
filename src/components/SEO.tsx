@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import { ALL_ROUTES } from '../seo/routeMeta';
+import { safeJsonLd } from '../utils/security';
 
 interface SEOProps {
   title?: string;
@@ -65,7 +66,7 @@ export const SEO: React.FC<SEOProps> = ({
       scriptEl.type = 'application/ld+json';
       document.head.appendChild(scriptEl);
     }
-    scriptEl.textContent = JSON.stringify(routeSeo.schema);
+    scriptEl.textContent = safeJsonLd(routeSeo.schema);
   }, [currentPath, routeSeo]);
 
   return (

@@ -1,6 +1,7 @@
 import { guidesData } from '../data/guidesData';
 import { caseStudiesData } from '../data/caseStudiesData';
 import { blogsData } from '../data/blogsData';
+import { safeJsonLd } from '../utils/security';
 
 export interface RouteSeoData {
   path: string;
@@ -1489,7 +1490,11 @@ export function renderRouteHtml(templateHtml: string, rawPath: string): {
   redirectTo?: string;
   html: string;
 } {
-  const cleanPath = rawPath === '/' ? '/' : rawPath.replace(/\/+$/, '');
+  const normalizedPath = (rawPath || '/')
+    .replace(/[\x00-\x1F\x7F]/g, '')
+    .replace(/\\+/g, '/')
+    .replace(/\/{2,}/g, '/');
+  const cleanPath = normalizedPath === '/' ? '/' : normalizedPath.replace(/\/+$/, '');
   const lowerPath = cleanPath.toLowerCase();
 
   if (LEGACY_REDIRECTS[lowerPath]) {
@@ -1529,7 +1534,7 @@ export function renderRouteHtml(templateHtml: string, rawPath: string): {
     <meta name="twitter:title" content="${escapeHtml(seo.title)}" />
     <meta name="twitter:description" content="${escapeHtml(seo.description)}" />
     <meta name="twitter:image" content="${escapeHtml(ogImage)}" />
-    <script id="crown-schema-jsonld" type="application/ld+json">${JSON.stringify(seo.schema)}</script>`;
+    <script id="crown-schema-jsonld" type="application/ld+json">${safeJsonLd(seo.schema)}</script>`;
 
   let html = templateHtml.replace(
     /<!-- SEO_HEAD_START -->[\s\S]*?<!-- SEO_HEAD_END -->/,

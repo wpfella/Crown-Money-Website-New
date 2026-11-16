@@ -4,6 +4,7 @@ import { Calculator, TrendingUp, Home, DollarSign, Percent, PieChart, ArrowRight
 import { Link } from 'react-router-dom';
 import { PieChart as RePieChart, Pie, Cell, ResponsiveContainer, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import { Helmet } from 'react-helmet-async';
+import { safeJsonLd } from '../utils/security';
 
 // --- Helper Components ---
 
@@ -401,7 +402,7 @@ export const Tools = () => {
         <meta property="og:url" content="https://crownmoney.com.au/tools" />
         <link rel="canonical" href="https://crownmoney.com.au/tools" />
         <script type="application/ld+json">
-          {JSON.stringify(toolsSchema)}
+          {safeJsonLd(toolsSchema)}
         </script>
       </Helmet>
       {/* Hero */}

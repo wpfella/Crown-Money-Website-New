@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { safeJsonLd } from '../utils/security';
 
 // Lazy Video Card Component using IntersectionObserver for optimal mobile performance & fast page speed
 const LazyVideoCard = ({ 
@@ -445,7 +446,7 @@ export const Reviews = () => {
 
         {/* Structured Data Script */}
         <script type="application/ld+json">
-          {JSON.stringify(structuredData)}
+          {safeJsonLd(structuredData)}
         </script>
       </Helmet>
 

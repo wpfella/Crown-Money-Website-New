@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, ExternalLink } from 'lucide-react';
 import { getLeadSourceData } from '../utils/urlTracker';
+import { openSafeExternalResource } from '../utils/security';
+
+const HEALTH_CHECK_PDF_URL = "https://storage.googleapis.com/crown_money/Website/Resources/20%20Minutes%20Financial%20Health%20Check.pdf";
 
 export const Newsletter = () => {
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
+  const [honeypot, setHoneypot] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -35,24 +39,28 @@ export const Newsletter = () => {
       return;
     }
     
+    if (honeypot) {
+      return;
+    }
+
     setIsLoading(true);
     try {
       const sourceData = getLeadSourceData();
-      const response = await fetch('https://hooks.zapier.com/hooks/catch/24598887/up2fobt/', {
+      const response = await fetch('/api/lead', {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
+          type: 'newsletter',
           firstName: firstName.trim(), 
           email: email.trim(),
+          _honeypot: honeypot,
           ...sourceData
         }),
       });
 
       if (response.ok) {
         setIsSubmitted(true);
-        // Redirect to PDF after a short delay
-        setTimeout(() => {
-          window.open('https://storage.googleapis.com/crown_money/Website/Resources/20%20Minutes%20Financial%20Health%20Check.pdf', '_blank');
-        }, 1500);
+        openSafeExternalResource(HEALTH_CHECK_PDF_URL);
       } else {
         setErrorMessage('Submission failed. Please try again.');
         console.error('Newsletter signup failed');
@@ -100,14 +108,32 @@ export const Newsletter = () => {
                   <div>
                     <p className="font-bold text-primary">Thank you for signing up!</p>
                     <p className="text-sm text-gray-600">Your resource is opening in a new tab.</p>
+                    <a
+                      href={HEALTH_CHECK_PDF_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs font-bold text-primary underline hover:text-gold mt-1"
+                    >
+                      Download 20 Minutes Financial Health Check PDF <ExternalLink size={12} />
+                    </a>
                   </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+                  <div className="hidden" aria-hidden="true">
+                    <input
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </div>
                   <div className="flex flex-col sm:flex-row gap-4">
                     <input 
                       type="text" 
                       aria-label="First Name"
+                      maxLength={100}
                       placeholder="First Name *" 
                       className="flex-grow px-6 py-4 rounded-full border-2 border-primary/5 focus:border-primary outline-none transition-all"
                       required
@@ -122,6 +148,7 @@ export const Newsletter = () => {
                     <input 
                       type="email" 
                       aria-label="Email Address"
+                      maxLength={254}
                       placeholder="Enter your email * (required)" 
                       className={`flex-grow px-6 py-4 rounded-full border-2 ${errorMessage ? 'border-red-500' : 'border-primary/5'} focus:border-primary outline-none transition-all`}
                       required

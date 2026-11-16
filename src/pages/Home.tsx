@@ -360,10 +360,10 @@ const HowItWorksPreview = () => {
             <div className="aspect-video rounded-3xl overflow-hidden shadow-2xl border-4 border-white/10 bg-black relative">
               {isVideoPlaying ? (
                 <iframe 
-                  className="w-full h-full"
+                  className="w-full h-full border-0"
                   src="https://www.youtube-nocookie.com/embed/vAKiVus_r7k?autoplay=1" 
                   title="How Crown Money Works" 
-                  frameBorder="0" 
+                  referrerPolicy="strict-origin-when-cross-origin"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                   allowFullScreen
                 ></iframe>

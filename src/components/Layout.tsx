@@ -7,6 +7,12 @@ import { twMerge } from 'tailwind-merge';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { getLeadSourceData } from '../utils/urlTracker';
+import {
+  safeLocalStorageGet,
+  safeLocalStorageSet,
+  sanitizeUrl,
+  openSafeExternalResource,
+} from '../utils/security';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -448,23 +454,37 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
   const [directName, setDirectName] = useState("");
   const [directEmail, setDirectEmail] = useState("");
   const [directPhone, setDirectPhone] = useState("");
+  const [directHoneypot, setDirectHoneypot] = useState("");
   const [directSubmitted, setDirectSubmitted] = useState(false);
 
   // Load history & webhook status on mount
   useEffect(() => {
-    const saved = localStorage.getItem('crown_chat_history');
+    const defaultGreeting = [{ text: "Hi! I'm the Crown Money AI assistant. How can I help you today?", isBot: true }];
+    const saved = safeLocalStorageGet('crown_chat_history');
     if (saved && saved !== "undefined") {
       try {
-        setMessages(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed)) {
+          const validMessages = parsed
+            .filter(
+              (m): m is { text: string; isBot: boolean } =>
+                Boolean(m) && typeof m.text === 'string' && typeof m.isBot === 'boolean'
+            )
+            .slice(-40)
+            .map((m) => ({ text: m.text.slice(0, 4000), isBot: m.isBot }));
+          setMessages(validMessages.length > 0 ? validMessages : defaultGreeting);
+        } else {
+          setMessages(defaultGreeting);
+        }
       } catch (e) {
         console.error("Failed to parse chat history:", e);
-        setMessages([{ text: "Hi! I'm the Crown Money AI assistant. How can I help you today?", isBot: true }]);
+        setMessages(defaultGreeting);
       }
     } else {
-      setMessages([{ text: "Hi! I'm the Crown Money AI assistant. How can I help you today?", isBot: true }]);
+      setMessages(defaultGreeting);
     }
 
-    const webhookSent = localStorage.getItem('crown_chat_webhook_sent');
+    const webhookSent = safeLocalStorageGet('crown_chat_webhook_sent');
     if (webhookSent === 'true') {
       setHasSentWebhook(true);
     }
@@ -473,7 +493,7 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
   // Save history on change
   useEffect(() => {
     if (messages.length > 0) {
-      localStorage.setItem('crown_chat_history', JSON.stringify(messages));
+      safeLocalStorageSet('crown_chat_history', JSON.stringify(messages.slice(-40)));
     }
   }, [messages]);
 
@@ -537,13 +557,14 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
     return { email, phone, name };
   };
 
-  // Send lead details to Zapier Webhook
+  // Send lead details via validated server-side /api/lead proxy
   const sendLeadToZapier = async (leadName: string, leadEmail: string, leadPhone: string, currentMsgs: { text: string; isBot: boolean }[]) => {
     try {
       const formattedChat = currentMsgs.map(m => `${m.isBot ? 'Bot' : 'User'}: ${m.text}`).join('\n');
       const sourceData = getLeadSourceData();
       
       const payload = {
+        type: 'chat_lead',
         name: leadName,
         email: leadEmail,
         phone: leadPhone,
@@ -551,15 +572,16 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
         ...sourceData
       };
 
-      await fetch('https://hooks.zapier.com/hooks/catch/24598887/42ljmvx/', {
+      await fetch('/api/lead', {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
 
       setHasSentWebhook(true);
-      localStorage.setItem('crown_chat_webhook_sent', 'true');
+      safeLocalStorageSet('crown_chat_webhook_sent', 'true');
     } catch (err) {
-      console.error('Error sending chatbot webhook to Zapier:', err);
+      console.error('Error sending chatbot lead:', err);
     }
   };
 
@@ -582,31 +604,35 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
   // Handle manual callback request submission
   const handleDirectFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!directName || !directEmail || !directPhone) return;
+    if (directHoneypot) return;
+    if (!directName.trim() || !directEmail.trim() || !directPhone.trim()) return;
 
     try {
       const formattedChat = messages.map(m => `${m.isBot ? 'Bot' : 'User'}: ${m.text}`).join('\n');
       const sourceData = getLeadSourceData();
       const payload = {
-        name: directName,
-        email: directEmail,
-        phone: directPhone,
+        type: 'chat_lead',
+        name: directName.trim(),
+        email: directEmail.trim(),
+        phone: directPhone.trim(),
         message: formattedChat || "Form request without prior chat history.",
+        _honeypot: directHoneypot,
         ...sourceData
       };
 
-      await fetch('https://hooks.zapier.com/hooks/catch/24598887/42ljmvx/', {
+      await fetch('/api/lead', {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
 
       setDirectSubmitted(true);
       setHasSentWebhook(true);
-      localStorage.setItem('crown_chat_webhook_sent', 'true');
+      safeLocalStorageSet('crown_chat_webhook_sent', 'true');
 
       // Add bot message
       setMessages(prev => [...prev, {
-        text: `✨ **System Notification:** Thanks ${directName}! Your callback request has been logged successfully. One of our Senior Debt Strategy Specialists will call you shortly on **${directPhone}**!`,
+        text: `✨ **System Notification:** Thanks ${directName.trim()}! Your callback request has been logged successfully. One of our Senior Debt Strategy Specialists will call you shortly on **${directPhone.trim()}**!`,
         isBot: true
       }]);
 
@@ -621,95 +647,41 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
 
   const handleSend = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!input.trim() || isLoading) return;
+    const trimmedInput = input.trim();
+    if (!trimmedInput || isLoading) return;
 
-    const userMsg = input;
-    const newMessages = [...messages, { text: userMsg, isBot: false }];
-    setMessages(newMessages);
+    const userMsg = trimmedInput.slice(0, 1500);
+    const historySnapshot = messages.slice(-10);
+    setMessages([...messages, { text: userMsg, isBot: false }]);
     setInput("");
     setIsLoading(true);
 
     try {
-      const { GoogleGenAI } = await import("@google/genai");
-      const genAI = new GoogleGenAI({ 
-        apiKey: process.env.GEMINI_API_KEY || "",
-      });
-      const model = "gemini-3-flash-preview";
-      
-      const systemPrompt = `You are a professional, helpful, and trustworthy AI assistant for Crown Money, an Australian financial strategy company. 
-          Crown Money specialises in debt reduction and wealth building. 
-          
-          Key Services & Concepts:
-          - Mortgage reduction strategies that help homeowners pay off their 30-year mortgage in half the time.
-          - Financial coaching and tracking through a proprietary dashboard.
-          - Optimising mortgage structures to work for the homeowner, not the bank.
-          - Wealth building and investment property strategy.
-          - The Passive Income Plan (PIP): Uses debt recycling to turn home equity into passive income, converting bad debt into tax-deductible good debt. Contact fsfl@crown.money for more.
-          
-          General Information & FAQ:
-          - Reviews: 
-            - Google: g.page/CrownMoney (Click Reviews > Leave a Review)
-            - Facebook: https://www.facebook.com/CrownMoneyManagement/reviews/
-            - Trustpilot: https://www.trustpilot.com/review/crownmoneymanagement.com.au/location/melbourne
-          - Depositing Cash: Deposit into everyday account, then transfer to home loan BSB/Account OR email clientcare@crown.money to arrange direct debit.
-          - Phone Banking (Origin): App available for iOS (App Store) and Android (Play Store). Search for "Origin Mortgages Mobile Access". Note: Redraws cannot be done via app; email redraws@crown.money.
-          - Lost Superannuation: Log in to myGov, link to ATO, access "Super" section to search.
-          - Licensing: Crown Money holds an Australian Credit Licence (ACL). Operated by Crown Lending Pty Ltd, ACL Number 388 279, ACN 119 504 862. [View Licence PDF](https://storage.googleapis.com/crown_money/Website/License%20%26%20Legal/Crown%20Lending%20ASIC%20ACL.pdf).
-          
-          Support & Operations:
-          - 90 Day Review: Speak to your Financial Strategist or email coaches@crown.money.
-          - Loan Discharge: Email discharge@crown.money. Process takes 3-4 weeks. Important: Redirect income and stop direct debits before discharge.
-          - Change Redraw Account: Email clientcare@crown.money for a DDR form.
-          - Employer Payments: Provide BSB and Account details from your settlement email.
-          - Redraw Requests: Use the new digital [Redraw Request Form](https://share-ap1.hsforms.com/1mytJWX7yTRm1UX14zx7qzw35dvz?utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9uYGRQK4ihl_3eu3gN8sBoob4VWgvvrqaVyssvXHDV1lvYsSO4Yd4TPAXXfq3X8LFycy0Z&__hstc=163423779.5aafa6ba179ddc334514772a1ed6dd7e.1775083658539.1775083658539.1775083658539.1&__hssc=163423779.1.1775083658540&__hsfp=d16f20985dd1fa1d4eb1884d25292ed8). Redraws are no longer via email. Watch this [step-by-step video](https://hello.crownmoneymanagement.com.au/share/hubspotvideo/312935213533?utm_source=hs_email&utm_medium=email&_hsenc=p2ANqtz-9uYGRQK4ihl_3eu3gN8sBoob4VWgvvrqaVyssvXHDV1lvYsSO4Yd4TPAXXfq3X8LFycy0Z&hsLang=en&__hstc=163423779.5aafa6ba179ddc334514772a1ed6dd7e.1775083658539.1775083658539.1775083658539.1&__hssc=163423779.1.1775083658540&__hsfp=d16f20985dd1fa1d4eb1884d25292ed8&_gl=1*1a00a9b*_gcl_au*MTExMjI1MDczNi4xNzc1MDgzNjU4) to see how it works.
-          - Adding Redraw Form to Home Screen:
-            - iPhone: Open form > Share icon > Add to Home Screen.
-            - Android: Open form > Three dots > Add to Home Screen / Install App.
-          - Redraw Timing: Processed same day if before cutoff (Advantedge: 10:45am, Origin/Well Nigh: 12:45pm AEST). Funds usually available after 6pm.
-          - Account Login: 
-            - Origin: Call 1300 767 023 for access. Login: https://online.originmms.com.au/ib/crown
-            - Well Nigh: Issued at settlement. Login: https://crownmoney.emms.net.au/security/login
-          - Third-Party Transfers: Not allowed for Advantedge/Well Nigh. Origin allows via Redraw Request Form + phone confirmation.
-          - BSB Numbers:
-            - Advantedge: 083-545 (NAB)
-            - Well Nigh: 037-842 (Westpac)
-            - Origin: 636-380 (Indue/Columbus Capital)
-          
-          Your goal is to help homeowners understand these concepts and actively prompt them to book a free strategy call by visiting the contact page at /contact. Once they submit their details, they will be redirected to the booking system.
-
-          If the user shares their name, email, or phone number in the chat, acknowledge them warmly and mention that we have received them and our specialists will be in touch shortly. If any of these are missing (e.g. they only gave an email but no phone number), kindly ask them for the missing details so we can connect with them.
-          
-          Guidelines:
-          - Be concise, professional, and friendly.
-          - Use standard Markdown for links to make them clickable.
-          - Avoid using markdown symbols like * or # for headers or lists unless necessary for clarity.
-          - If asked about specific rates or products, explain that a personalised strategy session is needed to provide accurate information for their situation.
-          - Always mention the free strategy call as the next logical step.`;
-
-      const chat = genAI.chats.create({
-        model: model,
-        config: {
-          systemInstruction: systemPrompt,
-        },
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          message: userMsg,
+          history: historySnapshot,
+        }),
       });
 
-      // Include history context (last 10 messages)
-      const history = messages.slice(-10).map(m => ({
-        role: m.isBot ? "model" : "user",
-        parts: [{ text: m.text }]
-      }));
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        const errMsg =
+          typeof data?.error === 'string'
+            ? data.error
+            : "I'm sorry, I'm having a bit of trouble connecting right now. Please try again or book a call with our team!";
+        setMessages((prev) => [...prev, { text: errMsg, isBot: true }]);
+        return;
+      }
 
-      const result = await genAI.models.generateContent({
-        model: model,
-        contents: [...history, { role: "user", parts: [{ text: userMsg }] }],
-        config: {
-          systemInstruction: systemPrompt
-        }
-      });
+      const responseText =
+        typeof data?.reply === 'string' && data.reply.trim()
+          ? data.reply
+          : "I'm sorry, I couldn't generate a response. Please try again or book a call with our team!";
 
-      const responseText = result.text || "I'm sorry, I couldn't generate a response. Please try again or book a call with our team!";
-      
-      setMessages(prev => [...prev, { text: responseText, isBot: true }]);
+      setMessages((prev) => [...prev, { text: responseText, isBot: true }]);
     } catch (error) {
       console.error("Chatbot error:", error);
       setMessages(prev => [...prev, { text: "I'm sorry, I'm having a bit of trouble connecting right now. Please try again or book a call with our team!", isBot: true }]);
@@ -749,10 +721,20 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
                   </div>
                 ) : (
                   <form onSubmit={handleDirectFormSubmit} className="space-y-2">
+                    <div className="hidden" aria-hidden="true">
+                      <input
+                        type="text"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={directHoneypot}
+                        onChange={(e) => setDirectHoneypot(e.target.value)}
+                      />
+                    </div>
                     <input 
                       type="text" 
                       aria-label="Your Name"
                       placeholder="Your Name" 
+                      maxLength={100}
                       value={directName}
                       onChange={(e) => setDirectName(e.target.value)}
                       required
@@ -762,6 +744,7 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
                       type="email" 
                       aria-label="Your Email"
                       placeholder="Your Email * (required)" 
+                      maxLength={254}
                       value={directEmail}
                       onChange={(e) => setDirectEmail(e.target.value)}
                       required
@@ -772,6 +755,7 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
                       type="tel" 
                       aria-label="Your Phone Number"
                       placeholder="Your Phone Number" 
+                      maxLength={30}
                       value={directPhone}
                       onChange={(e) => setDirectPhone(e.target.value)}
                       required
@@ -808,8 +792,27 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
                   )}>
                     {msg.isBot ? (
                       <div className="markdown-body">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                           {msg.text}
+                        <ReactMarkdown
+                          remarkPlugins={[remarkGfm]}
+                          urlTransform={(url) => sanitizeUrl(url)}
+                          components={{
+                            a: ({ href, children }) => {
+                              const safeHref = sanitizeUrl(href);
+                              if (!safeHref) return <span>{children}</span>;
+                              const isExternal = !safeHref.startsWith('/');
+                              return (
+                                <a
+                                  href={safeHref}
+                                  target={isExternal ? '_blank' : undefined}
+                                  rel={isExternal ? 'noopener noreferrer' : undefined}
+                                >
+                                  {children}
+                                </a>
+                              );
+                            },
+                          }}
+                        >
+                          {msg.text}
                         </ReactMarkdown>
                       </div>
                     ) : (
@@ -833,6 +836,7 @@ const Chatbot = ({ isOpen, setIsOpen }: { isOpen: boolean, setIsOpen: (val: bool
               <input 
                 type="text" 
                 aria-label="Type your message to Crown AI Assistant"
+                maxLength={1500}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your message..." 
@@ -862,18 +866,17 @@ interface LayoutProps {
 }
 
 const EXIT_POPUP_STORAGE_KEY = 'crown_exit_popup_shown';
+const HEALTH_CHECK_PDF_URL = 'https://storage.googleapis.com/crown_money/Website/Resources/20%20Minutes%20Financial%20Health%20Check.pdf';
 
 const ExitPopup = () => {
   const location = useLocation();
   const [isVisible, setIsVisible] = useState(false);
   const [hasShown, setHasShown] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem(EXIT_POPUP_STORAGE_KEY) === 'true';
-    }
-    return false;
+    return safeLocalStorageGet(EXIT_POPUP_STORAGE_KEY) === 'true';
   });
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
+  const [honeypot, setHoneypot] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const isExcludedPage =
@@ -891,8 +894,8 @@ const ExitPopup = () => {
     if (isExcludedPage || hasShown) return;
 
     const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 0 && !hasShown && localStorage.getItem(EXIT_POPUP_STORAGE_KEY) !== 'true') {
-        localStorage.setItem(EXIT_POPUP_STORAGE_KEY, 'true');
+      if (e.clientY <= 0 && !hasShown && safeLocalStorageGet(EXIT_POPUP_STORAGE_KEY) !== 'true') {
+        safeLocalStorageSet(EXIT_POPUP_STORAGE_KEY, 'true');
         setHasShown(true);
         setIsVisible(true);
       }
@@ -907,34 +910,39 @@ const ExitPopup = () => {
   }
 
   const handleClose = () => {
-    localStorage.setItem(EXIT_POPUP_STORAGE_KEY, 'true');
+    safeLocalStorageSet(EXIT_POPUP_STORAGE_KEY, 'true');
     setHasShown(true);
     setIsVisible(false);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email || !firstName) return;
+    if (honeypot) return;
+    const cleanFirstName = firstName.trim();
+    const cleanEmail = email.trim();
+    if (!cleanEmail || !cleanFirstName) return;
     
     try {
-      localStorage.setItem(EXIT_POPUP_STORAGE_KEY, 'true');
+      safeLocalStorageSet(EXIT_POPUP_STORAGE_KEY, 'true');
       setHasShown(true);
       const sourceData = getLeadSourceData();
-      await fetch('https://hooks.zapier.com/hooks/catch/24598887/up2fobt/', {
+      await fetch('/api/lead', {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
-          firstName, 
-          email, 
-          source: 'exit_popup',
+          type: 'exit_popup',
+          firstName: cleanFirstName, 
+          email: cleanEmail, 
+          _honeypot: honeypot,
           ...sourceData 
         }),
       });
       
       setIsSubmitted(true);
+      openSafeExternalResource(HEALTH_CHECK_PDF_URL);
       setTimeout(() => {
-        window.open('https://storage.googleapis.com/crown_money/Website/Resources/20%20Minutes%20Financial%20Health%20Check.pdf', '_blank');
         setIsVisible(false);
-      }, 2000);
+      }, 3000);
     } catch (error) {
       console.error('Error:', error);
     }
@@ -970,14 +978,34 @@ const ExitPopup = () => {
                 Get access to our <span className="font-bold text-primary">20 Minutes Financial Health Check</span> and see how you can save $100k+ in interest.
               </p>
               {isSubmitted ? (
-                <div className="text-green-600 font-bold py-4">
-                  Success! Opening your health check...
+                <div className="space-y-3 py-4">
+                  <div className="text-green-600 font-bold">
+                    Success! Opening your health check...
+                  </div>
+                  <a
+                    href={HEALTH_CHECK_PDF_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary underline hover:text-gold"
+                  >
+                    Click here if your PDF did not open automatically <ExternalLink size={14} />
+                  </a>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="hidden" aria-hidden="true">
+                    <input
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={honeypot}
+                      onChange={(e) => setHoneypot(e.target.value)}
+                    />
+                  </div>
                   <input 
                     type="text" 
                     aria-label="First Name"
+                    maxLength={100}
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     placeholder="First Name" 
@@ -987,6 +1015,7 @@ const ExitPopup = () => {
                   <input 
                     type="email" 
                     aria-label="Email Address"
+                    maxLength={254}
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email * (required)" 

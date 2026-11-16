@@ -8,6 +8,7 @@ import { getLeadSourceData } from '../utils/urlTracker';
 export const ErrorPage = () => {
   const [searchParams] = useSearchParams();
   const [email, setEmail] = useState('');
+  const [honeypot, setHoneypot] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -15,17 +16,21 @@ export const ErrorPage = () => {
   useEffect(() => {
     const emailParam = searchParams.get('email') || searchParams.get('e');
     if (emailParam) {
-      setEmail(emailParam);
+      setEmail(emailParam.slice(0, 254));
     }
   }, [searchParams]);
 
   const validateEmail = (val: string) => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+    return val.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage('');
+
+    if (honeypot) {
+      return;
+    }
 
     const trimmedEmail = email.trim();
     if (!trimmedEmail) {
@@ -42,29 +47,20 @@ export const ErrorPage = () => {
 
     try {
       const sourceData = getLeadSourceData();
-      const payload = {
-        email: trimmedEmail,
-        Email: trimmedEmail,
-        email_address: trimmedEmail,
-        emailAddress: trimmedEmail,
-        source: 'bank_statement_error_reconnect',
-        page: '/error',
-        timestamp: new Date().toISOString(),
-        landing_url: sourceData.landing_url || window.location.href,
-        current_url: sourceData.current_url || window.location.href,
-      };
-
-      const webhookUrl = `https://hooks.zapier.com/hooks/catch/24598887/4h9kvht/?email=${encodeURIComponent(trimmedEmail)}&source=bank_statement_error_reconnect`;
-
-      await fetch(webhookUrl, {
+      await fetch('/api/lead', {
         method: 'POST',
-        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'bank_reconnect',
+          email: trimmedEmail,
+          _honeypot: honeypot,
+          ...sourceData,
+        }),
       });
 
       setIsSubmitted(true);
     } catch (err) {
       console.error('Error submitting reconnection request:', err);
-      // Ensure user receives confirmation even in strict adblocker browser environments
       setIsSubmitted(true);
     } finally {
       setIsSubmitting(false);
@@ -127,6 +123,15 @@ export const ErrorPage = () => {
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    <div className="hidden" aria-hidden="true">
+                      <input
+                        type="text"
+                        tabIndex={-1}
+                        autoComplete="off"
+                        value={honeypot}
+                        onChange={(e) => setHoneypot(e.target.value)}
+                      />
+                    </div>
                     <div>
                       <label htmlFor="reconnect-email" className="block text-xs font-semibold text-gray-700 mb-1.5">
                         Your Email Address <span className="text-rose-500">*</span>
@@ -134,6 +139,7 @@ export const ErrorPage = () => {
                       <input 
                         id="reconnect-email"
                         type="email" 
+                        maxLength={254}
                         value={email}
                         onChange={(e) => {
                           setEmail(e.target.value);

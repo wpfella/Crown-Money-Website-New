@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { MortgageCalculator } from '../components/MortgageCalculator';
 import { ShieldCheck, TrendingUp, CheckCircle, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { safeJsonLd } from '../utils/security';
 
 export const CalculatorLanding = () => {
   return (
@@ -18,7 +19,7 @@ export const CalculatorLanding = () => {
         <meta property="og:url" content="https://crownmoney.com.au/mortgage-reduction-calculator" />
         <link rel="canonical" href="https://crownmoney.com.au/mortgage-reduction-calculator" />
         <script type="application/ld+json">
-          {JSON.stringify({
+          {safeJsonLd({
             "@context": "https://schema.org",
             "@type": "WebApplication",
             "name": "Mortgage Reduction Calculator",

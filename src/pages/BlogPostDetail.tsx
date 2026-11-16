@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { safeJsonLd } from '../utils/security';
 import {
   ArrowLeft,
   ArrowRight,
@@ -138,7 +139,7 @@ export const BlogPostDetail = () => {
         ogImage={post.thumbnailImage}
       />
       <Helmet>
-        <script type="application/ld+json">{JSON.stringify(schemaGraph)}</script>
+        <script type="application/ld+json">{safeJsonLd(schemaGraph)}</script>
       </Helmet>
 
       {/* Header / Breadcrumb Hero */}

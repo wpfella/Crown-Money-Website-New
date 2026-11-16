@@ -30,7 +30,8 @@ export const PayOffMortgage = () => {
     keysToCapture.forEach(key => {
       const value = params.get(key);
       if (value) {
-        prefillParts.push(`${key}=${encodeURIComponent(value)}`);
+        const sanitizedVal = value.replace(/[\x00-\x1F\x7F]/g, '').slice(0, 200);
+        prefillParts.push(`${key}=${encodeURIComponent(sanitizedVal)}`);
       }
     });
     return prefillParts.join('&');
@@ -40,12 +41,16 @@ export const PayOffMortgage = () => {
 
   // Inject Paperform Embed Script on Mount
   useEffect(() => {
+    const existing = document.querySelector('script[src="https://paperform.co/__embed.min.js"]');
+    if (existing) return;
     const script = document.createElement('script');
     script.src = "https://paperform.co/__embed.min.js";
     script.async = true;
     document.body.appendChild(script);
     return () => {
-      document.body.removeChild(script);
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
     };
   }, []);
 
@@ -389,12 +394,13 @@ export const PayOffMortgage = () => {
                   <iframe 
                     width="100%" 
                     height="100%" 
-                    src={`https://www.youtube.com/embed/${video.id}`}
+                    src={`https://www.youtube-nocookie.com/embed/${video.id}`}
                     title={video.title}
-                    frameBorder="0" 
+                    loading="lazy"
+                    referrerPolicy="strict-origin-when-cross-origin"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                     allowFullScreen
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover border-0"
                   ></iframe>
                 </div>
                 <div className="mt-4 space-y-1 px-1">

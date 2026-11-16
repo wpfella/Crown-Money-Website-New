@@ -17,6 +17,7 @@ import {
   HelpCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { safeLocalStorageGet, safeLocalStorageSet, safeJsonLd } from '../../utils/security';
 import { 
   BarChart, 
   Bar, 
@@ -51,16 +52,18 @@ export const WishlistImpact = () => {
 
   // Load saved data
   useEffect(() => {
-    const saved = localStorage.getItem('crown_wishlist_calc_data');
+    const saved = safeLocalStorageGet('crown_wishlist_calc_data');
     if (saved && saved !== "undefined") {
       try {
         const data = JSON.parse(saved);
-        setPrincipal(data.principal || 450000);
-        setInterestRate(data.interestRate || 6.15);
-        setRemainingTerm(data.remainingTerm || 22);
-        setCurrentAge(data.currentAge || 35);
-        setItemName(data.itemName || 'New Boat');
-        setPurchaseCost(data.purchaseCost || 45000);
+        if (data && typeof data === 'object') {
+          if (typeof data.principal === 'number' && Number.isFinite(data.principal) && data.principal > 0) setPrincipal(Math.min(data.principal, 10_000_000));
+          if (typeof data.interestRate === 'number' && Number.isFinite(data.interestRate) && data.interestRate > 0) setInterestRate(Math.min(data.interestRate, 25));
+          if (typeof data.remainingTerm === 'number' && Number.isFinite(data.remainingTerm) && data.remainingTerm >= 1) setRemainingTerm(Math.min(data.remainingTerm, 40));
+          if (typeof data.currentAge === 'number' && Number.isFinite(data.currentAge) && data.currentAge >= 18) setCurrentAge(Math.min(data.currentAge, 100));
+          if (typeof data.itemName === 'string' && data.itemName.trim()) setItemName(data.itemName.trim().slice(0, 80));
+          if (typeof data.purchaseCost === 'number' && Number.isFinite(data.purchaseCost) && data.purchaseCost >= 0) setPurchaseCost(Math.min(data.purchaseCost, 5_000_000));
+        }
       } catch (e) {
         console.error("Failed to load saved data", e);
       }
@@ -70,7 +73,7 @@ export const WishlistImpact = () => {
   // Save data
   useEffect(() => {
     const data = { principal, interestRate, remainingTerm, currentAge, itemName, purchaseCost };
-    localStorage.setItem('crown_wishlist_calc_data', JSON.stringify(data));
+    safeLocalStorageSet('crown_wishlist_calc_data', JSON.stringify(data));
   }, [principal, interestRate, remainingTerm, currentAge, itemName, purchaseCost]);
 
   const results = useMemo(() => {
@@ -164,7 +167,7 @@ export const WishlistImpact = () => {
         <meta property="og:url" content="https://crownmoney.com.au/tools/wishlist-impact" />
         <link rel="canonical" href="https://crownmoney.com.au/tools/wishlist-impact" />
         <script type="application/ld+json">
-          {JSON.stringify({
+          {safeJsonLd({
             "@context": "https://schema.org",
             "@graph": [
               {

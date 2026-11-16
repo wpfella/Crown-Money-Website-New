@@ -1,0 +1,5 @@
+Contact: mailto:admin@crown.money
+Preferred-Languages: en
+Canonical: https://crownmoney.com.au/.well-known/security.txt
+Policy: https://crownmoney.com.au/privacy
+Expires: 2028-01-01T00:00:00.000Z

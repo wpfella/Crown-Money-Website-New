@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { Helmet } from 'react-helmet-async';
 import { Linkedin, Twitter, Mail, ArrowLeft, Award, BookOpen, MessageSquare } from 'lucide-react';
+import { safeJsonLd } from '../utils/security';
 
 const authors = {
   'scott-parry': {
@@ -54,7 +55,7 @@ export const AuthorProfile = () => {
         <meta name="keywords" content={`${author.name}, ${author.role}, Crown Money expert, mortgage reduction expert, financial strategy australia, ${author.expertise.join(', ')}`} />
         <link rel="canonical" href={`https://crownmoney.com.au/author/${slug}`} />
         <script type="application/ld+json">
-          {JSON.stringify({
+          {safeJsonLd({
             "@context": "https://schema.org",
             "@type": "Person",
             "name": author.name,

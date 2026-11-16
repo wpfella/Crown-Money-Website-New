@@ -4,6 +4,7 @@ import { Send, Phone, Mail, MapPin, CheckCircle, MessageSquare, ArrowRight } fro
 import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/SEO';
 import { getLeadSourceData } from '../utils/urlTracker';
+import { safeJsonLd } from '../utils/security';
 
 const formatPhoneForOnceHub = (phone: string): string => {
   if (!phone) return '';
@@ -109,9 +110,11 @@ export const Contact = () => {
 
     try {
       const sourceData = getLeadSourceData();
-      const response = await fetch('https://hooks.zapier.com/hooks/catch/24598887/up2kqpo/', {
+      const response = await fetch('/api/lead', {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          type: 'contact',
           ...formState,
           ...sourceData
         }),
@@ -165,7 +168,7 @@ export const Contact = () => {
       />
       <Helmet>
         <script type="application/ld+json">
-          {JSON.stringify(contactSchema)}
+          {safeJsonLd(contactSchema)}
         </script>
       </Helmet>
       {/* Hero */}
@@ -323,6 +326,7 @@ export const Contact = () => {
                       <input 
                         type="text" 
                         required
+                        maxLength={100}
                         className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all outline-none bg-gray-50/50"
                         placeholder="Your name"
                         value={formState.firstName}
@@ -334,6 +338,7 @@ export const Contact = () => {
                       <input 
                         type="email" 
                         required
+                        maxLength={254}
                         aria-required="true"
                         className={`w-full px-5 py-4 rounded-xl border ${emailError ? 'border-red-500' : 'border-gray-200'} focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all outline-none bg-gray-50/50`}
                         placeholder="your@email.com (required)"
@@ -350,6 +355,7 @@ export const Contact = () => {
                       <input 
                         type="tel" 
                         required
+                        maxLength={30}
                         className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all outline-none bg-gray-50/50"
                         placeholder="0400 000 000"
                         value={formState.mobile}
@@ -361,6 +367,7 @@ export const Contact = () => {
                       <input 
                         type="text" 
                         required
+                        maxLength={10}
                         className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all outline-none bg-gray-50/50"
                         placeholder="e.g. 2000"
                         value={formState.postcode}
@@ -451,6 +458,7 @@ export const Contact = () => {
                       <label className="text-sm font-bold text-gray-700">Message (Optional)</label>
                       <textarea 
                         rows={4}
+                        maxLength={2500}
                         className="w-full px-5 py-4 rounded-xl border border-gray-200 focus:border-primary focus:ring-4 focus:ring-primary/5 transition-all outline-none resize-none bg-gray-50/50"
                         placeholder="How can we help?"
                         value={formState.message}

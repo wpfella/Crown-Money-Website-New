@@ -6,6 +6,7 @@ import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/SEO';
+import { safeJsonLd } from '../utils/security';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -225,7 +226,7 @@ export const About = () => {
       />
       <Helmet>
         <script type="application/ld+json">
-          {JSON.stringify(aboutSchema)}
+          {safeJsonLd(aboutSchema)}
         </script>
       </Helmet>
       {/* Hero */}

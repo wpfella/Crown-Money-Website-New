@@ -6,6 +6,7 @@ import { Helmet } from 'react-helmet-async';
 import { SEO } from '../components/SEO';
 import { caseStudiesData } from '../data/caseStudiesData';
 import { blogsData } from '../data/blogsData';
+import { safeJsonLd } from '../utils/security';
 
 export const SuccessStories = () => {
   const [visibleCount, setVisibleCount] = useState(6);
@@ -112,7 +113,7 @@ export const SuccessStories = () => {
       />
       <Helmet>
         <script type="application/ld+json">
-          {JSON.stringify(reviewSchema)}
+          {safeJsonLd(reviewSchema)}
         </script>
       </Helmet>
       

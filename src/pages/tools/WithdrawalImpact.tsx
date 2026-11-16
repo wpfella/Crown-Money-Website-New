@@ -17,6 +17,7 @@ import {
   HelpCircle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { safeLocalStorageGet, safeLocalStorageSet, safeJsonLd } from '../../utils/security';
 import { 
   BarChart, 
   Bar, 
@@ -51,16 +52,18 @@ export const WithdrawalImpact = () => {
 
   // Load saved data
   useEffect(() => {
-    const saved = localStorage.getItem('crown_withdrawal_calc_data');
+    const saved = safeLocalStorageGet('crown_withdrawal_calc_data');
     if (saved && saved !== "undefined") {
       try {
         const data = JSON.parse(saved);
-        setPrincipal(data.principal || 450000);
-        setInterestRate(data.interestRate || 6.15);
-        setRemainingTerm(data.remainingTerm || 22);
-        setCurrentAge(data.currentAge || 35);
-        setWithdrawalReason(data.withdrawalReason || 'Lifestyle Purchase');
-        setWithdrawalAmount(data.withdrawalAmount || 45000);
+        if (data && typeof data === 'object') {
+          if (typeof data.principal === 'number' && Number.isFinite(data.principal) && data.principal > 0) setPrincipal(Math.min(data.principal, 10_000_000));
+          if (typeof data.interestRate === 'number' && Number.isFinite(data.interestRate) && data.interestRate > 0) setInterestRate(Math.min(data.interestRate, 25));
+          if (typeof data.remainingTerm === 'number' && Number.isFinite(data.remainingTerm) && data.remainingTerm >= 1) setRemainingTerm(Math.min(data.remainingTerm, 40));
+          if (typeof data.currentAge === 'number' && Number.isFinite(data.currentAge) && data.currentAge >= 18) setCurrentAge(Math.min(data.currentAge, 100));
+          if (typeof data.withdrawalReason === 'string' && data.withdrawalReason.trim()) setWithdrawalReason(data.withdrawalReason.trim().slice(0, 80));
+          if (typeof data.withdrawalAmount === 'number' && Number.isFinite(data.withdrawalAmount) && data.withdrawalAmount >= 0) setWithdrawalAmount(Math.min(data.withdrawalAmount, 5_000_000));
+        }
       } catch (e) {
         console.error("Failed to load saved data", e);
       }
@@ -70,7 +73,7 @@ export const WithdrawalImpact = () => {
   // Save data
   useEffect(() => {
     const data = { principal, interestRate, remainingTerm, currentAge, withdrawalReason, withdrawalAmount };
-    localStorage.setItem('crown_withdrawal_calc_data', JSON.stringify(data));
+    safeLocalStorageSet('crown_withdrawal_calc_data', JSON.stringify(data));
   }, [principal, interestRate, remainingTerm, currentAge, withdrawalReason, withdrawalAmount]);
 
   const results = useMemo(() => {
@@ -160,7 +163,7 @@ export const WithdrawalImpact = () => {
         <meta property="og:url" content="https://crownmoney.com.au/tools/withdrawal-impact" />
         <link rel="canonical" href="https://crownmoney.com.au/tools/withdrawal-impact" />
         <script type="application/ld+json">
-          {JSON.stringify({
+          {safeJsonLd({
             "@context": "https://schema.org",
             "@graph": [
               {

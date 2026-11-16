@@ -6,6 +6,7 @@ import { Clock, ArrowRight, Search, CheckCircle2, Sparkles, BookOpen, ShieldChec
 import { SEO } from '../components/SEO';
 import { blogsData, BlogPost } from '../data/blogsData';
 import { getProfileForSlug } from '../components/BlogInteractiveVisualizer';
+import { safeJsonLd } from '../utils/security';
 
 const CATEGORIES: Array<'All' | BlogPost['category']> = [
   'All',
@@ -91,7 +92,7 @@ export const Blog = () => {
         canonicalUrl="https://crownmoney.com.au/blog"
       />
       <Helmet>
-        <script type="application/ld+json">{JSON.stringify(blogSchema)}</script>
+        <script type="application/ld+json">{safeJsonLd(blogSchema)}</script>
       </Helmet>
 
       {/* Hero Section */}

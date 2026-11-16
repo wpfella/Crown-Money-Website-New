@@ -54,13 +54,32 @@ const redirectLines: string[] = [
 ];
 fs.writeFileSync(path.join(distDir, '_redirects'), redirectLines.join('\n') + '\n', 'utf-8');
 
-// Generate dist/_headers for static CDN cache lifetimes & security headers (PageSpeed Insights)
+// Generate dist/_headers for static CDN cache lifetimes & security headers
+const prodCsp = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.google-analytics.com https://*.crownmoney.com.au https://*.posthog.com https://cdn.oncehub.com https://*.oncehub.com https://paperform.co https://*.paperform.co https://elfsightcdn.com https://*.elfsight.com https://*.elfsightcdn.com",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.oncehub.com https://*.paperform.co https://*.elfsight.com https://*.elfsightcdn.com",
+  "img-src 'self' data: blob: https:",
+  "media-src 'self' blob: https://storage.googleapis.com",
+  "font-src 'self' data: https://fonts.gstatic.com https://*.elfsight.com https://*.elfsightcdn.com https://*.oncehub.com",
+  "connect-src 'self' https: wss:",
+  "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.googletagmanager.com https://*.crownmoney.com.au https://*.oncehub.com https://go.oncehub.com https://paperform.co https://*.paperform.co https://*.elfsight.com",
+  "frame-ancestors 'self' https://crownmoney.com.au https://*.crownmoney.com.au https://*.google.com https://*.googleapis.com https://*.googleusercontent.com",
+  "form-action 'self' https://*.paperform.co https://*.oncehub.com",
+  "upgrade-insecure-requests",
+].join('; ');
+
 const headersContent = `/*
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   X-Content-Type-Options: nosniff
-  X-Frame-Options: SAMEORIGIN
   Cross-Origin-Opener-Policy: same-origin-allow-popups
   Referrer-Policy: strict-origin-when-cross-origin
+  X-Permitted-Cross-Domain-Policies: none
+  X-DNS-Prefetch-Control: on
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()
+  Content-Security-Policy: ${prodCsp}
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
