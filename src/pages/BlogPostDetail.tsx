@@ -69,7 +69,7 @@ export const BlogPostDetail = () => {
         url: 'https://crownmoney.com.au',
         telephone: '1300 882 981',
         email: 'admin@crown.money',
-        taxID: 'ABN 47 119 504 862',
+        taxID: 'ABN 23 389 248 852',
         identifier: 'Australian Credit Licence (ACL) 388 279 | ACN 119 504 862',
         address: {
           '@type': 'PostalAddress',
@@ -490,7 +490,7 @@ export const BlogPostDetail = () => {
               </h2>
               <p className="text-xs font-semibold text-gray-500">{post.author.credentials}</p>
               <p className="text-sm text-gray-600 leading-relaxed">
-                Crown Money Management (operated by Crown Lending Pty Ltd, ABN 47 119 504 862, ACN 119 504 862, Australian Credit Licence 388 279) is located at Level 19, 180 Lonsdale Street, Melbourne VIC 3000. and helps homeowners Australia-wide pay off their mortgages in half the time.
+                Crown Money Management (a trading name of Crown Lending Pty. Ltd. (ACN 119 504 862) as trustee for the Crown Lending Unit Trust · ABN 23 389 248 852 · Australian Credit Licence 388 279) is located at Level 19, 180 Lonsdale Street, Melbourne VIC 3000. and helps homeowners Australia-wide pay off their mortgages in half the time.
               </p>
             </div>
           </section>

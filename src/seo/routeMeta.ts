@@ -94,7 +94,7 @@ export const organizationSchema = {
   },
   telephone: '1300 882 981',
   email: 'admin@crown.money',
-  taxID: 'ABN 47 119 504 862',
+  taxID: 'ABN 23 389 248 852',
   identifier: 'Australian Credit Licence (ACL) 388 279 | ACN 119 504 862',
   priceRange: '$0 - $4,950',
   address: {
@@ -124,7 +124,7 @@ export const organizationSchema = {
 const homepageFaqs = [
   {
     question: 'What is Crown Money Management?',
-    answer: 'Crown Money Management (operated by Crown Lending Pty Ltd, ABN 47 119 504 862, ACN 119 504 862, Australian Credit Licence 388 279) is Australia’s leading mortgage reduction and personal cash-flow coaching specialist. Founded in 2004 by Scott Parry, we have helped over 7,000 Australian families pay off 30-year home loans in 10 to 15 years without lifestyle sacrifices.',
+    answer: 'Crown Money Management (operated by Crown Lending Pty Ltd, ABN 23 389 248 852, ACN 119 504 862, Australian Credit Licence 388 279) is Australia’s leading mortgage reduction and personal cash-flow coaching specialist. Founded in 2004 by Scott Parry, we have helped over 7,000 Australian families pay off 30-year home loans in 10 to 15 years without lifestyle sacrifices.',
   },
   {
     question: 'How is Crown Money different from a standard bank offset account?',
@@ -136,7 +136,7 @@ const homepageFaqs = [
   },
   {
     question: 'Is Crown Money licensed and regulated in Australia?',
-    answer: 'Yes. Crown Money holds Australian Credit Licence (ACL) Number 388 279 regulated by ASIC under the National Consumer Credit Protection Act, operated by Crown Lending Pty Ltd (ABN 47 119 504 862, ACN 119 504 862). We are full members of the Mortgage & Finance Association of Australia (MFAA) and the Australian Financial Complaints Authority (AFCA).',
+    answer: 'Yes. Crown Money holds Australian Credit Licence (ACL) Number 388 279 regulated by ASIC under the National Consumer Credit Protection Act, operated by Crown Lending Pty Ltd (ABN 23 389 248 852, ACN 119 504 862). We are full members of the Mortgage & Finance Association of Australia (MFAA) and the Australian Financial Complaints Authority (AFCA).',
   },
   {
     question: 'Does Crown Money hold my money or pay my bills for me?',
@@ -193,7 +193,7 @@ const staticRoutes: Record<string, RouteSeoData> = {
     ],
     paragraphs: [
       'On a typical $650,000 Australian mortgage at 6.19% p.a. over 30 years, a homeowner pays $781,720 in bank interest alone—bringing total repayments to $1,431,720. Use our interactive Australian Mortgage Reduction Calculator below to compare a standard 30-year bank schedule against the Crown Money Home Ownership Programme (HOP).',
-      'Crown Money Management (Crown Lending Pty Ltd ABN 47 119 504 862, ACN 119 504 862, Australian Credit Licence 388 279) is Australia’s leading mortgage reduction and cash-flow coaching specialist. Founded in 2004 by Scott Parry alongside Partner & Senior Finance Broker Craig Parry, we have helped over 7,000 Australian families cut 40% to 50% off their home loan term and interest without sacrificing their lifestyle.',
+      'Crown Money Management (Crown Lending Pty Ltd ABN 23 389 248 852, ACN 119 504 862, Australian Credit Licence 388 279) is Australia’s leading mortgage reduction and cash-flow coaching specialist. Founded in 2004 by Scott Parry alongside Partner & Senior Finance Broker Craig Parry, we have helped over 7,000 Australian families cut 40% to 50% off their home loan term and interest without sacrificing their lifestyle.',
       'Our 4-step process combines (1) a free 1-on-1 Discovery & Cash-Flow Audit, (2) a custom 3-Bucket Mortgage & Cash-Diet Structure where 100% of income reduces daily loan interest while annual bills and weekly living allowances are automated, (3) a live Wealth Tracking Dashboard showing your exact debt-free calendar date, and (4) quarterly 90-day personal coaching accountability reviews.',
       'Your initial Strategy Session is $0 (free, no obligation). Standard brokerage is paid by the lender (disclosed in your Credit Proposal Disclosure), and custom Money Management & Coaching establishment ($0–$4,950 depending on household complexity) is backed by our 12-Month Debt Reduction Guarantee with zero lock-in contracts and zero exit fees. Your bank accounts and loan remain 100% in your own name with regulated Australian banking institutions.',
       'Audited client results across our active Home Ownership Programme portfolio show an average annual principal reduction of $29,327 per year (compared to the $12,000 Australian national average), an average household savings rate of 24% of net income (compared to the 3.7% ABS national household saving ratio), and 1 Crown Money client paying off their mortgage in full every 23 days.',
@@ -264,7 +264,7 @@ const staticRoutes: Record<string, RouteSeoData> = {
       'Canonical Facts, Licensing (ACL 388 279) & Results Methodology',
     ],
     paragraphs: [
-      'Founded in 2004 by CEO Scott Parry alongside Partner & Senior Finance Broker Craig Parry, Crown Money Management (Crown Lending Pty Ltd ABN 47 119 504 862, ACN 119 504 862, Australian Credit Licence 388 279) is on a mission to help Australian families escape the 30-year mortgage trap.',
+      'Founded in 2004 by CEO Scott Parry alongside Partner & Senior Finance Broker Craig Parry, Crown Money Management (Crown Lending Pty Ltd ABN 23 389 248 852, ACN 119 504 862, Australian Credit Licence 388 279) is on a mission to help Australian families escape the 30-year mortgage trap.',
       'Our multidisciplinary team includes Senior Financial Strategists, MFAA-accredited Senior Finance and Mortgage Brokers, dedicated Post-Settlement Financial Coaches, Financial Associates, Credit Assessors, and Client Care Officers servicing homeowners across Australia from our Melbourne head office (Level 19, 180 Lonsdale Street, Melbourne VIC 3000.).',
       'Canonical Verified Results: Over 7,000 Australian households coached since 2004; $29,327 average annual principal reduction (vs $12,000 national average); 24% average client household savings rate (vs 3.7% ABS national average); 1 client mortgage paid off in full every 23 days.',
     ],
@@ -348,7 +348,7 @@ const staticRoutes: Record<string, RouteSeoData> = {
       'Frequently Asked Questions About Crown Money Reviews & Legitimacy',
     ],
     paragraphs: [
-      'Crown Money Management (Crown Lending Pty Ltd, ABN 47 119 504 862, Australian Credit Licence 388 279) holds a 4.9 out of 5.0 star rating across 384+ verified Google and Trustpilot reviews from Australian homeowners. 95% of verified reviewers rate Crown Money 5 stars, 4% rate 4 stars, and 1% rate 3 stars.',
+      'Crown Money Management (Crown Lending Pty Ltd, ABN 23 389 248 852, Australian Credit Licence 388 279) holds a 4.9 out of 5.0 star rating across 384+ verified Google and Trustpilot reviews from Australian homeowners. 95% of verified reviewers rate Crown Money 5 stars, 4% rate 4 stars, and 1% rate 3 stars.',
       'Melanie & Jeffrey (NSW, 5 Stars): "We’ve been with Crown Money for just over 12 months and it’s been a real game-changer for us. Previously we were on track to pay our mortgage off in another 20 years, but now it’s looking like we could get it done in 3! Scott and the team made the entire process clear, supportive, and completely stress-free." | Natalie (VIC, 5 Stars): "When I joined Crown I paid off in my first year as much as I had in the previous 3 years!! I was amazed how the programme made me so disciplined and allowed me to actually enjoy life while staying on track." | Jemima & Brad (SA, 5 Stars): "Brad has been with Crown for 17 years. Scott’s guidance and advice has helped us progress to an amazing financial position where we are getting close to paying off our house mortgage completely at age 36." | Daniel & Carla (WA, 5 Stars): "On track to save 10 years of loan repayments with a whopping 28% savings rate." | Michael (QLD, 5 Stars): "Results have surpassed any of my wildest expectations and I am tracking for an 8-year total payoff on a single income." | Giovanni & Sarah (SA, 5 Stars): "After making a massive dent in our home loan this past year, we are now planning our first family overseas holiday all thanks to Crown Money. We highly recommend Scott and the team."',
       'Watch unedited client video testimonials including Kamani & Scott, Chris Battistuzzi, Dominic & Elisabeth Lobosso, Graham, Linda Taylor (Debt Free), Marcus & Taryn Burdett, the McColley Family, and the Monaghan Family.',
       'All reviews are from verified Australian clients coached under ACL 388 279. Read our full fee and results methodology guide at /guides/crown-money-fees-suitability-and-results-explained.',
@@ -367,7 +367,7 @@ const staticRoutes: Record<string, RouteSeoData> = {
     faqs: [
       {
         question: 'Is Crown Money legitimate or a scam?',
-        answer: 'Crown Money Management is 100% legitimate and regulated by ASIC under Australian Credit Licence (ACL) Number 388 279, operated by Crown Lending Pty Ltd (ABN 47 119 504 862, ACN 119 504 862). Founded in 2004 by Scott Parry, we have helped over 7,000 Australian families pay off their mortgages faster.',
+        answer: 'Crown Money Management is 100% legitimate and regulated by ASIC under Australian Credit Licence (ACL) Number 388 279, operated by Crown Lending Pty Ltd (ABN 23 389 248 852, ACN 119 504 862). Founded in 2004 by Scott Parry, we have helped over 7,000 Australian families pay off their mortgages faster.',
       },
       {
         question: 'What is Crown Money’s average rating on Google and Trustpilot?',
@@ -453,7 +453,7 @@ const staticRoutes: Record<string, RouteSeoData> = {
       'What Happens in Your Free Discovery Session?',
     ],
     paragraphs: [
-      'Speak with a licensed Financial Strategist at Crown Money Management (Crown Lending Pty Ltd ABN 47 119 504 862, ACN 119 504 862, Australian Credit Licence 388 279).',
+      'Speak with a licensed Financial Strategist at Crown Money Management (Crown Lending Pty Ltd ABN 23 389 248 852, ACN 119 504 862, Australian Credit Licence 388 279).',
       'Phone: 1300 882 981 (Monday to Friday, 8:30am – 5:30pm AEST). Email: admin@crown.money. Head Office: Level 19, 180 Lonsdale Street, Melbourne VIC 3000. Video and phone consultations available Australia-wide across Sydney, Melbourne, Brisbane, Adelaide, and Perth.',
       'During your free 45-minute strategy call, we model your current mortgage payoff trajectory against our Home Ownership Programme so you can see exactly how many years and how much interest you can save before making any decision.',
     ],
@@ -816,7 +816,7 @@ const staticRoutes: Record<string, RouteSeoData> = {
     h2s: guidesData.map((g) => g.title),
     paragraphs: [
       ...guidesData.map((g) => `${g.title} (Updated ${g.updatedDate}, ${g.readTime}): ${g.excerpt}`),
-      'All guides are authored and peer-reviewed by Scott Parry (Founder & CEO) and Craig Parry (Partner & Senior Finance Broker, MFAA Member) under Crown Lending Pty Ltd (ABN 47 119 504 862, Australian Credit Licence 388 279).',
+      'All guides are authored and peer-reviewed by Scott Parry (Founder & CEO) and Craig Parry (Partner & Senior Finance Broker, MFAA Member) under Crown Lending Pty Ltd (ABN 23 389 248 852, Australian Credit Licence 388 279).',
     ],
     schema: {
       '@context': 'https://schema.org',
@@ -840,7 +840,7 @@ const staticRoutes: Record<string, RouteSeoData> = {
     h2s: blogsData.map((b) => b.title),
     paragraphs: [
       ...blogsData.map((b) => `${b.clientName} (${b.highlightStat}, ${b.readTime}): ${b.aeoDirectAnswer}`),
-      'All blog articles are authored and reviewed by Scott Parry (Founder & CEO) under Crown Lending Pty Ltd (ABN 47 119 504 862, Australian Credit Licence 388 279, Level 19, 180 Lonsdale Street, Melbourne VIC 3000.).',
+      'All blog articles are authored and reviewed by Scott Parry (Founder & CEO) under Crown Lending Pty Ltd (ABN 23 389 248 852, Australian Credit Licence 388 279, Level 19, 180 Lonsdale Street, Melbourne VIC 3000.).',
     ],
     schema: {
       '@context': 'https://schema.org',
@@ -889,7 +889,7 @@ const staticRoutes: Record<string, RouteSeoData> = {
     h1: 'Privacy Policy',
     h2s: ['Respecting Your Privacy & Australian Privacy Principles Compliance'],
     paragraphs: [
-      'This Privacy Policy and Credit Reporting Policy explains how Crown Lending Pty Ltd (ABN 47 119 504 862, ACN 119 504 862, ACL 388 279) collects, uses, holds, and protects your personal and credit-related information under the Privacy Act 1988 (Cth).',
+      'This Privacy Policy and Credit Reporting Policy explains how Crown Lending Pty Ltd (ABN 23 389 248 852, ACN 119 504 862, ACL 388 279) collects, uses, holds, and protects your personal and credit-related information under the Privacy Act 1988 (Cth).',
     ],
     schema: {
       '@context': 'https://schema.org',
@@ -933,7 +933,7 @@ const staticRoutes: Record<string, RouteSeoData> = {
       'Australian Mortgage Reduction Guides Authored by Scott Parry',
     ],
     paragraphs: [
-      'Scott Parry is the Founder and Chief Executive Officer of Crown Money Management (Crown Lending Pty Ltd, ABN 47 119 504 862, ACN 119 504 862, Australian Credit Licence 388 279). With over 25 years of experience in Australian mortgage strategy and household cash-flow coaching, Scott pioneered the Home Ownership Programme (HOP) in 2004.',
+      'Scott Parry is the Founder and Chief Executive Officer of Crown Money Management (Crown Lending Pty Ltd, ABN 23 389 248 852, ACN 119 504 862, Australian Credit Licence 388 279). With over 25 years of experience in Australian mortgage strategy and household cash-flow coaching, Scott pioneered the Home Ownership Programme (HOP) in 2004.',
       'Under Scott’s leadership, Crown Money has helped over 7,000 Australian households achieve an average 24% net household savings rate and $29,327 per year in home loan principal reduction.',
     ],
     schema: {
@@ -967,7 +967,7 @@ const staticRoutes: Record<string, RouteSeoData> = {
       'Australian Mortgage Structuring & Debt Recycling Expertise',
     ],
     paragraphs: [
-      'Craig Parry is Partner and Senior Finance Broker at Crown Money Management (Crown Lending Pty Ltd, ABN 47 119 504 862, ACN 119 504 862, Australian Credit Licence 388 279) and an accredited Full Member of the Mortgage & Finance Association of Australia (MFAA).',
+      'Craig Parry is Partner and Senior Finance Broker at Crown Money Management (Crown Lending Pty Ltd, ABN 23 389 248 852, ACN 119 504 862, Australian Credit Licence 388 279) and an accredited Full Member of the Mortgage & Finance Association of Australia (MFAA).',
       'Craig oversees mortgage brokerage operations, complex loan splitting, offset vs redraw optimisation, and Best Interests Duty compliance across Australia.',
     ],
     schema: {
@@ -1479,8 +1479,9 @@ export function buildPrerenderedBodyHtml(route: RouteSeoData): string {
         </aside>
       </main>
       <footer>
-        <p>Crown Money Management — Operated by Crown Lending Pty Ltd · ABN 47 119 504 862 · ACN 119 504 862 · Australian Credit Licence (ACL) Number 388 279 · MFAA Full Member.</p>
+        <p>Crown Money Management is a trading name of Crown Lending Pty. Ltd. (ACN 119 504 862) as trustee for the Crown Lending Unit Trust · ABN 23 389 248 852 · Australian Credit Licence (ACL) Number 388 279 · MFAA Full Member.</p>
         <p>Head Office: Level 19, 180 Lonsdale Street, Melbourne VIC 3000. · Phone: <a href="tel:1300882981">1300 882 981</a> · Email: <a href="mailto:admin@crown.money">admin@crown.money</a></p>
+        <p>© 2026 Crown Lending Pty. Ltd. All rights reserved.</p>
       </footer>
     </div>`;
 }

@@ -222,7 +222,7 @@ export const Contact = () => {
                         Video & phone strategy sessions available Australia-wide across Melbourne (VIC), Sydney (NSW), Brisbane (QLD), Adelaide (SA) & Perth (WA).
                       </p>
                       <p className="text-xs text-gray-500 mt-2 font-medium">
-                        Crown Lending Pty Ltd · ABN 47 119 504 862 · ACN 119 504 862 · Australian Credit Licence (ACL) 388 279
+                        Crown Money Management is a trading name of Crown Lending Pty. Ltd. (ACN 119 504 862) as trustee for the Crown Lending Unit Trust · ABN 23 389 248 852 · Australian Credit Licence (ACL) Number 388 279
                       </p>
                     </div>
                   </div>

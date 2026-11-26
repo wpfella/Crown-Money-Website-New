@@ -262,7 +262,7 @@ export const GuideDetail: React.FC = () => {
             <ShieldCheck size={16} className="text-gold" /> General Advice Warning & Credit Licence Disclosure
           </div>
           <p>
-            This guide has been prepared by Crown Money Management (Crown Lending Pty Ltd ABN 47 119 504 862, ACN 119 504 862, Australian Credit Licence Number 388 279) for general educational and informational purposes only. It does not take into account your personal objectives, financial situation, or needs. Before acting on any information on this page, you should consider its appropriateness to your circumstances and consult a licensed credit representative or registered tax adviser.
+            This guide has been prepared by Crown Money Management (a trading name of Crown Lending Pty. Ltd. (ACN 119 504 862) as trustee for the Crown Lending Unit Trust · ABN 23 389 248 852 · Australian Credit Licence Number 388 279) for general educational and informational purposes only. It does not take into account your personal objectives, financial situation, or needs. Before acting on any information on this page, you should consider its appropriateness to your circumstances and consult a licensed credit representative or registered tax adviser.
           </p>
         </div>
 

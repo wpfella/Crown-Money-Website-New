@@ -221,7 +221,7 @@ export const HowItWorks = () => {
               Transparent Fees, Licensing & Suitability
             </h3>
             <p className="text-gray-600 leading-relaxed mb-4">
-              Crown Money Management (Crown Lending Pty Ltd ABN 47 119 504 862, Australian Credit Licence 388 279) never holds your funds—your loan and accounts remain in your own name with regulated Australian banking institutions. There are zero lock-in contracts or exit penalties. Before you make any commitment, we model your exact projected interest savings in a free discovery session.
+              Crown Money Management (Crown Lending Pty. Ltd. as trustee for the Crown Lending Unit Trust · ABN 23 389 248 852 · Australian Credit Licence 388 279) never holds your funds—your loan and accounts remain in your own name with regulated Australian banking institutions. There are zero lock-in contracts or exit penalties. Before you make any commitment, we model your exact projected interest savings in a free discovery session.
             </p>
             <div className="flex flex-wrap gap-6 text-sm font-bold">
               <Link to="/mortgage-reduction-calculator" className="text-primary underline hover:text-gold">

@@ -220,7 +220,7 @@ export const CaseStudyDetail: React.FC = () => {
 
             <div className="text-xs text-gray-500 bg-gray-50 p-4 rounded-xl border border-gray-100">
               <ShieldCheck size={14} className="inline text-gold mr-1" />
-              <strong>Results Disclaimer:</strong> Individual client outcomes vary depending on loan size, household income, living expenses, interest rates, and adherence to cash-flow coaching. Crown Lending Pty Ltd ABN 47 119 504 862 · ACL 388 279.
+              <strong>Results Disclaimer:</strong> Individual client outcomes vary depending on loan size, household income, living expenses, interest rates, and adherence to cash-flow coaching. Crown Lending Pty. Ltd. (ACN 119 504 862) as trustee for the Crown Lending Unit Trust · ABN 23 389 248 852 · ACL 388 279.
             </div>
           </div>
         </div>

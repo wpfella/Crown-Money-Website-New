@@ -505,9 +505,9 @@ export const About = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             <div className="bg-white p-8 rounded-3xl border border-gray-200 shadow-sm space-y-3 text-sm text-gray-700">
               <h3 className="text-xl font-display font-bold text-primary mb-2">Corporate & Regulatory Details</h3>
-              <p><strong>Legal Entity:</strong> Crown Lending Pty Ltd trading as Crown Money Management</p>
+              <p><strong>Legal Entity:</strong> Crown Money Management is a trading name of Crown Lending Pty. Ltd. (ACN 119 504 862) as trustee for the Crown Lending Unit Trust</p>
               <p><strong>Australian Credit Licence (ACL):</strong> 388 279 (ASIC Regulated)</p>
-              <p><strong>ABN:</strong> 47 119 504 862 · <strong>ACN:</strong> 119 504 862</p>
+              <p><strong>ABN:</strong> 23 389 248 852 · <strong>ACN:</strong> 119 504 862</p>
               <p><strong>Industry Membership:</strong> Full Member, Mortgage & Finance Association of Australia (MFAA)</p>
               <p><strong>Founded:</strong> 2004 by Scott Parry (22+ years operating in Australia)</p>
               <p><strong>Head Office Address:</strong> Level 19, 180 Lonsdale Street, Melbourne VIC 3000.</p>

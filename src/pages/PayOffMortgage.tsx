@@ -616,7 +616,7 @@ export const PayOffMortgage = () => {
 
           <div className="text-[11px] leading-relaxed text-gray-500 space-y-4 pt-8 border-t border-white/5 max-w-4xl mx-auto text-center">
             <p>
-              <strong>Compliance Disclaimer:</strong> Financial services represented here are configured under Crown Money Management Pty Ltd (ACN 119 504 862, ACL Number 388 279). Any representation of savings is calculated pursuant to historical audit samples and individual eligibility. This does not constitute legal, tax, or investment advice. Feel free to obtain independent guidance relevant to your specific personal household circumstances.
+              <strong>Compliance Disclaimer:</strong> Crown Money Management is a trading name of Crown Lending Pty. Ltd. (ACN 119 504 862) as trustee for the Crown Lending Unit Trust · ABN 23 389 248 852 · Australian Credit Licence (ACL) Number 388 279. Any representation of savings is calculated pursuant to historical audit samples and individual eligibility. This does not constitute legal, tax, or investment advice. Feel free to obtain independent guidance relevant to your specific personal household circumstances.
             </p>
             <p>
               Our 12-Month Guarantee: We guarantee to beat your current registered traditional bank debt reduction results within 12 months, or we refund our service system setup fees according to contractual terms of service. No risk, just payoff.
@@ -630,7 +630,7 @@ export const PayOffMortgage = () => {
             </div>
 
             <p className="text-gray-600 text-[11px] pt-4">
-              &copy; {new Date().getFullYear()} Crown Money Management. All rights reserved. Built with 12-Month Guarantee security.
+              &copy; {new Date().getFullYear()} Crown Lending Pty. Ltd. All rights reserved. Built with 12-Month Guarantee security.
             </p>
           </div>
         </div>

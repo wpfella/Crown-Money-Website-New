@@ -1,13 +1,13 @@
 # Crown Money Management
 
-> Crown Money Management (Crown Lending Pty Ltd, ABN 47 119 504 862, ACN 119 504 862, Australian Credit Licence 388 279) is Australia's premier home loan reduction and money coaching specialist. Founded in 2004 by Scott Parry, Crown Money helps Australian homeowners pay off their 30-year mortgages in 10–15 years without sacrificing their lifestyle.
+> Crown Money Management is a trading name of Crown Lending Pty. Ltd. (ACN 119 504 862) as trustee for the Crown Lending Unit Trust (ABN 23 389 248 852, Australian Credit Licence 388 279) and is Australia's premier home loan reduction and money coaching specialist. Founded in 2004 by Scott Parry, Crown Money helps Australian homeowners pay off their 30-year mortgages in 10–15 years without sacrificing their lifestyle.
 
 - **Full LLM Reference Documentation:** [llms-full.txt](https://crownmoney.com.au/llms-full.txt)
 
 ## Canonical Key Facts & Authority
-- **Company Name:** Crown Money Management (Crown Lending Pty Ltd)
+- **Company Name:** Crown Money Management (a trading name of Crown Lending Pty. Ltd. as trustee for the Crown Lending Unit Trust)
 - **Australian Credit Licence (ACL):** 388 279 (ASIC Regulated)
-- **ABN:** 47 119 504 862
+- **ABN:** 23 389 248 852
 - **ACN:** 119 504 862
 - **Industry Membership:** Full Member, Mortgage & Finance Association of Australia (MFAA) & AFCA Member
 - **Founder & CEO:** Scott Parry (https://crownmoney.com.au/author/scott-parry)

@@ -889,7 +889,7 @@ export const guidesData: GuideArticle[] = [
       {
         label: 'ASIC Professional Registers — Crown Lending Pty Ltd (Australian Credit Licence 388 279)',
         url: 'https://connectonline.asic.gov.au/',
-        summary: 'Official Australian Securities and Investments Commission register confirming Crown Lending Pty Ltd (ACN 119 504 862, ABN 47 119 504 862) holds ACL 388 279.'
+        summary: 'Official Australian Securities and Investments Commission register confirming Crown Lending Pty. Ltd. (ACN 119 504 862) as trustee for the Crown Lending Unit Trust (ABN 23 389 248 852) holds ACL 388 279.'
       },
       {
         label: 'Mortgage & Finance Association of Australia (MFAA) — Accredited Member Standards',
@@ -928,7 +928,7 @@ export const guidesData: GuideArticle[] = [
       {
         heading: 'How Crown Money Is Licensed and Regulated in Australia (ACL 388 279)',
         body: [
-          'Crown Money Management is the registered trading name of Crown Lending Pty Ltd (ABN 47 119 504 862, ACN 119 504 862), holder of Australian Credit Licence (ACL) Number 388 279 regulated by the Australian Securities and Investments Commission (ASIC) under the National Consumer Credit Protection Act 2009 (NCCP Act).',
+          'Crown Money Management is a trading name of Crown Lending Pty. Ltd. (ACN 119 504 862) as trustee for the Crown Lending Unit Trust (ABN 23 389 248 852), holder of Australian Credit Licence (ACL) Number 388 279 regulated by the Australian Securities and Investments Commission (ASIC) under the National Consumer Credit Protection Act 2009 (NCCP Act).',
           'We are full accredited members of the Mortgage & Finance Association of Australia (MFAA) and members of the Australian Financial Complaints Authority (AFCA). Every credit recommendation we make is bound by the statutory Best Interests Duty—meaning we are legally required to act in your best financial interests and never recommend a refinance or coaching structure unless the projected net benefit to your household clearly outweighs all switching and establishment costs.',
           'Crucially, Crown Money never holds client funds. Your mortgage and bank accounts remain 100% in your own name with regulated Australian banking institutions.'
         ]
@@ -972,7 +972,7 @@ export const guidesData: GuideArticle[] = [
     faqs: [
       {
         question: 'Is Crown Money legitimate and regulated by ASIC?',
-        answer: 'Yes. Crown Money Management is operated by Crown Lending Pty Ltd (ABN 47 119 504 862, ACN 119 504 862), which holds Australian Credit Licence (ACL) Number 388 279 issued by ASIC and has operated continuously in Australia since 2004.'
+        answer: 'Yes. Crown Money Management is a trading name of Crown Lending Pty. Ltd. (ACN 119 504 862) as trustee for the Crown Lending Unit Trust (ABN 23 389 248 852), which holds Australian Credit Licence (ACL) Number 388 279 issued by ASIC and has operated continuously in Australia since 2004.'
       },
       {
         question: 'Are there any lock-in contracts or exit penalties with Crown Money coaching?',

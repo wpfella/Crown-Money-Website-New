@@ -384,7 +384,7 @@ const Footer = ({ onBookToggle, onRatesToggle }: { onBookToggle: () => void; onR
             <a href="https://www.youtube.com/@crownmoneyAU" target="_blank" rel="noopener noreferrer" aria-label="Crown Money on YouTube" className="bg-white/10 p-3 rounded-full hover:bg-gold hover:text-primary transition-all"><Youtube size={20} /></a>
           </div>
           <p className="text-xs text-gray-300 mb-4">
-            Crown Lending Pty Ltd · ABN 47 119 504 862 · ACN 119 504 862 · Australian Credit Licence (ACL) Number 388 279 · MFAA Full Member
+            Crown Money Management is a trading name of Crown Lending Pty. Ltd. (ACN 119 504 862) as trustee for the Crown Lending Unit Trust · ABN 23 389 248 852 · Australian Credit Licence (ACL) Number 388 279 · MFAA Full Member
           </p>
           <p className="text-xs text-gray-300 mb-4">
             <a 
@@ -397,7 +397,7 @@ const Footer = ({ onBookToggle, onRatesToggle }: { onBookToggle: () => void; onR
             </a>
           </p>
           <p className="text-xs text-gray-300">
-            © {new Date().getFullYear()} Crown Money Management. All rights reserved.
+            © {new Date().getFullYear()} Crown Lending Pty. Ltd. All rights reserved.
           </p>
         </div>
       </div>

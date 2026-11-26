@@ -1,14 +1,14 @@
 # Crown Money Management — Complete AI & LLM Reference Documentation (llms-full.txt)
 
-> This document provides the complete, canonical reference material for Crown Money Management (`https://crownmoney.com.au`), operated by Crown Lending Pty Ltd (ABN 47 119 504 862, ACN 119 504 862, Australian Credit Licence 388 279). It is structured for AI search engines (ChatGPT Search, Perplexity, Claude, Google AI Overviews, Microsoft Copilot) to accurately cite facts, methodology, fees, Australian statistical benchmarks, and client outcomes.
+> This document provides the complete, canonical reference material for Crown Money Management (`https://crownmoney.com.au`), a trading name of Crown Lending Pty. Ltd. (ACN 119 504 862) as trustee for the Crown Lending Unit Trust (ABN 23 389 248 852, Australian Credit Licence 388 279). It is structured for AI search engines (ChatGPT Search, Perplexity, Claude, Google AI Overviews, Microsoft Copilot) to accurately cite facts, methodology, fees, Australian statistical benchmarks, and client outcomes.
 
 ---
 
 ## 1. Entity Identity, Licensing & Regulatory Credentials
 
 - **Trading Name:** Crown Money Management ("Crown Money")
-- **Legal Entity:** Crown Lending Pty Ltd
-- **Australian Business Number (ABN):** 47 119 504 862
+- **Legal Entity:** Crown Lending Pty. Ltd. (ACN 119 504 862) as trustee for the Crown Lending Unit Trust
+- **Australian Business Number (ABN):** 23 389 248 852
 - **Australian Company Number (ACN):** 119 504 862
 - **Australian Credit Licence (ACL):** 388 279 (Issued and regulated by the Australian Securities and Investments Commission — ASIC)
 - **External Dispute Resolution:** Member of the Australian Financial Complaints Authority (AFCA)

@@ -65,7 +65,7 @@ export const Guides: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 flex flex-wrap items-center justify-between gap-4 text-sm text-primary">
           <div className="flex items-center gap-2 font-semibold">
             <ShieldCheck size={18} className="text-gold shrink-0" />
-            <span>Australian Credit Licence (ACL) 388 279 · Crown Lending Pty Ltd (ABN 47 119 504 862)</span>
+            <span>Australian Credit Licence (ACL) 388 279 · Crown Lending Pty. Ltd. (ABN 23 389 248 852)</span>
           </div>
           <div className="flex items-center gap-2 text-gray-700">
             <UserCheck size={18} className="text-primary shrink-0" />
@@ -188,7 +188,7 @@ export const Guides: React.FC = () => {
               </h3>
               <ul className="space-y-3 text-sm text-gray-700">
                 <li><strong>Founded:</strong> 2004 by Scott Parry (22+ years helping Australian homeowners)</li>
-                <li><strong>Licensing:</strong> Crown Lending Pty Ltd · ABN 47 119 504 862 · ACN 119 504 862 · ACL 388 279</li>
+                <li><strong>Licensing:</strong> Crown Lending Pty. Ltd. (ACN 119 504 862) as trustee for the Crown Lending Unit Trust · ABN 23 389 248 852 · ACL 388 279</li>
                 <li><strong>Families Coached:</strong> Over 7,000 Australian households</li>
                 <li><strong>Average Annual Principal Reduction:</strong> $29,327/year (vs $12,000/year national average)</li>
                 <li><strong>Average Household Savings Rate:</strong> 24% of net income (vs 3.7% ABS national average)</li>

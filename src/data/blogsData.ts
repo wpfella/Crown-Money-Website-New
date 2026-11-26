@@ -1500,7 +1500,7 @@ export const blogsData: BlogPost[] = [
       {
         heading: 'Inside the 4 Pillars of the Crown Money Financial System',
         paragraphs: [
-          'Founded in 2004 by Scott Parry, Crown Money Management (Crown Lending Pty Ltd ABN 47 119 504 862, ACN 119 504 862, ACL 388 279) built the Home Ownership Programme around a simple insight: financial education without structural automation and ongoing accountability rarely changes long-term results.',
+          'Founded in 2004 by Scott Parry, Crown Money Management (a trading name of Crown Lending Pty. Ltd. (ACN 119 504 862) as trustee for the Crown Lending Unit Trust · ABN 23 389 248 852 · ACL 388 279) built the Home Ownership Programme around a simple insight: financial education without structural automation and ongoing accountability rarely changes long-term results.',
           'That is why our system integrates four pillars under one roof: (1) Strategic Credit & Loan Structuring, (2) 52-Week Automated Bill Provisioning, (3) Ring-Fenced Weekly Lifestyle Allowances, and (4) Quarterly 90-Day Personal Financial Coaching.',
         ],
       },
