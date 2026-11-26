@@ -3,9 +3,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import express, { type Request, type Response, type NextFunction } from 'express';
-import { createServer as createViteServer } from 'vite';
-import { GoogleGenAI } from '@google/genai';
-import { renderRouteHtml, LEGACY_REDIRECTS } from './src/seo/routeMeta';
+import type { ViteDevServer } from 'vite';
+import type { GoogleGenAI } from '@google/genai';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -71,13 +70,14 @@ Guidelines:
 - If asked about specific rates or products, explain that a personalised strategy session is needed to provide accurate information for their situation.
 - Always mention the free strategy call as the next logical step.`;
 
-// Lazy server-only Gemini client
+// Lazy server-only Gemini client (avoids loading SDK on initial cold boot)
 let geminiClient: GoogleGenAI | null = null;
-function getGeminiClient(): GoogleGenAI | null {
+async function getGeminiClient(): Promise<GoogleGenAI | null> {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) return null;
   if (!geminiClient) {
-    geminiClient = new GoogleGenAI({
+    const { GoogleGenAI: GoogleGenAIClass } = await import('@google/genai');
+    geminiClient = new GoogleGenAIClass({
       apiKey,
       httpOptions: {
         headers: {
@@ -87,6 +87,19 @@ function getGeminiClient(): GoogleGenAI | null {
     });
   }
   return geminiClient;
+}
+
+// Lazy route metadata loader so server.ts binds port 3000 immediately (<150ms)
+type RouteMetaModule = typeof import('./src/seo/routeMeta');
+let routeMetaPromise: Promise<RouteMetaModule> | null = null;
+function getRouteMeta(): Promise<RouteMetaModule> {
+  if (!routeMetaPromise) {
+    routeMetaPromise = import('./src/seo/routeMeta').catch((err) => {
+      routeMetaPromise = null;
+      throw err;
+    });
+  }
+  return routeMetaPromise;
 }
 
 // Lightweight sliding-window IP rate limiter
@@ -171,27 +184,34 @@ function isSafeRelativeRedirect(target: string): boolean {
   return target.startsWith('/') && !target.startsWith('//') && !target.startsWith('/\\');
 }
 
-async function startServer() {
+function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = Number(process.env.PORT) || 3000;
   const isProd = process.env.NODE_ENV === 'production';
 
   app.disable('x-powered-by');
   app.set('trust proxy', 1);
 
   // 0. Comprehensive HTTP Security Headers
+  // Note: In dev/preview (!isProd), AI Studio's reverse-proxy Nginx injects its own
+  // environment-specific `Content-Security-Policy: frame-ancestors ...` header.
+  // Omitting `frame-ancestors` in dev prevents intersecting CSP conflicts across preview hosts.
   const cspDirectives = [
     "default-src 'self'",
     "base-uri 'self'",
     "object-src 'none'",
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.google-analytics.com https://*.crownmoney.com.au https://*.posthog.com https://cdn.oncehub.com https://*.oncehub.com https://paperform.co https://*.paperform.co https://elfsightcdn.com https://*.elfsight.com https://*.elfsightcdn.com",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://*.doubleclick.net https://www.google.com https://www.gstatic.com https://*.crownmoney.com.au https://*.posthog.com https://cdn.oncehub.com https://*.oncehub.com https://paperform.co https://*.paperform.co https://elfsightcdn.com https://*.elfsight.com https://*.elfsightcdn.com",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.oncehub.com https://*.paperform.co https://*.elfsight.com https://*.elfsightcdn.com",
     "img-src 'self' data: blob: https:",
     "media-src 'self' blob: https://storage.googleapis.com",
     "font-src 'self' data: https://fonts.gstatic.com https://*.elfsight.com https://*.elfsightcdn.com https://*.oncehub.com",
     isProd ? "connect-src 'self' https: wss:" : "connect-src 'self' https: wss: ws:",
-    "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.googletagmanager.com https://*.crownmoney.com.au https://*.oncehub.com https://go.oncehub.com https://paperform.co https://*.paperform.co https://*.elfsight.com",
-    "frame-ancestors 'self' https://crownmoney.com.au https://*.crownmoney.com.au https://*.google.com https://*.googleapis.com https://*.googleusercontent.com",
+    "frame-src 'self' https://www.youtube.com https://www.youtube-nocookie.com https://www.googletagmanager.com https://*.googletagmanager.com https://td.doubleclick.net https://*.doubleclick.net https://*.crownmoney.com.au https://*.oncehub.com https://go.oncehub.com https://paperform.co https://*.paperform.co https://*.elfsight.com",
+    ...(isProd
+      ? [
+          "frame-ancestors 'self' https://crownmoney.com.au https://*.crownmoney.com.au https://*.google.com https://*.googleapis.com https://*.googleusercontent.com",
+        ]
+      : []),
     "form-action 'self' https://*.paperform.co https://*.oncehub.com",
     ...(isProd ? ['upgrade-insecure-requests'] : []),
   ].join('; ');
@@ -224,9 +244,10 @@ async function startServer() {
 
   app.use((req, res, next) => {
     const reqPath = (req.path || '/').toLowerCase();
+    const isAllowedDevViteDeps = !isProd && reqPath.startsWith('/node_modules/.vite/');
     if (
       blockedExactPaths.has(reqPath) ||
-      (/\/\.[^/]/.test(reqPath) && !reqPath.startsWith('/.well-known/'))
+      (/\/\.[^/]/.test(reqPath) && !reqPath.startsWith('/.well-known/') && !isAllowedDevViteDeps)
     ) {
       return res.status(404).type('text/plain').send('Not Found');
     }
@@ -256,7 +277,7 @@ async function startServer() {
       return res.status(400).json({ error: 'Message is required.' });
     }
 
-    const ai = getGeminiClient();
+    const ai = await getGeminiClient();
     if (!ai) {
       return res.status(503).json({
         error: 'Assistant is temporarily unavailable. Please book a free strategy session on our Contact page.',
@@ -420,7 +441,7 @@ async function startServer() {
   });
 
   // 2. Canonical URL normalization & legacy 301 redirects (hardened against Open Redirects & CRLF)
-  app.use((req, res, next) => {
+  app.use(async (req, res, next) => {
     if (req.method !== 'GET' && req.method !== 'HEAD') {
       return next();
     }
@@ -437,34 +458,58 @@ async function startServer() {
       return next();
     }
 
-    // Normalize multiple slashes and backslashes to prevent protocol-relative //evil.com open redirects
-    const normalizedSlashes = rawPath
-      .replace(/[\x00-\x1F\x7F]/g, '')
-      .replace(/\\+/g, '/')
-      .replace(/\/{2,}/g, '/');
+    try {
+      const { LEGACY_REDIRECTS } = await getRouteMeta();
 
-    const cleanPath = normalizedSlashes === '/' ? '/' : normalizedSlashes.replace(/\/+$/, '');
-    const lowerPath = cleanPath.toLowerCase();
+      // Normalize multiple slashes and backslashes to prevent protocol-relative //evil.com open redirects
+      const normalizedSlashes = rawPath
+        .replace(/[\x00-\x1F\x7F]/g, '')
+        .replace(/\\+/g, '/')
+        .replace(/\/{2,}/g, '/');
 
-    const rawQuery = req.url.includes('?') ? req.url.split('?').slice(1).join('?') : '';
-    const safeQuery = rawQuery.replace(/[\r\n\x00-\x1F\x7F]/g, '').slice(0, 2048);
-    const querySuffix = safeQuery ? `?${safeQuery}` : '';
+      const cleanPath = normalizedSlashes === '/' ? '/' : normalizedSlashes.replace(/\/+$/, '');
+      const lowerPath = cleanPath.toLowerCase();
 
-    // Legacy 301 redirects
-    if (LEGACY_REDIRECTS[lowerPath]) {
-      const target = `${LEGACY_REDIRECTS[lowerPath]}${querySuffix}`;
-      if (isSafeRelativeRedirect(target)) {
-        return res.redirect(301, target);
+      const rawQuery = req.url.includes('?') ? req.url.split('?').slice(1).join('?') : '';
+      const safeQuery = rawQuery.replace(/[\r\n\x00-\x1F\x7F]/g, '').slice(0, 2048);
+      const querySuffix = safeQuery ? `?${safeQuery}` : '';
+
+      // Legacy 301 redirects
+      if (LEGACY_REDIRECTS[lowerPath]) {
+        const target = `${LEGACY_REDIRECTS[lowerPath]}${querySuffix}`;
+        if (isSafeRelativeRedirect(target)) {
+          return res.redirect(301, target);
+        }
       }
-    }
 
-    // Enforce canonical single-slash & no-trailing-slash URLs (e.g. //about/ or /about/ -> 301 -> /about)
-    if (rawPath !== cleanPath && isSafeRelativeRedirect(cleanPath)) {
-      return res.redirect(301, `${cleanPath}${querySuffix}`);
-    }
+      // Enforce canonical single-slash & no-trailing-slash URLs (e.g. //about/ or /about/ -> 301 -> /about)
+      if (rawPath !== cleanPath && isSafeRelativeRedirect(cleanPath)) {
+        return res.redirect(301, `${cleanPath}${querySuffix}`);
+      }
 
-    next();
+      next();
+    } catch (err) {
+      next(err);
+    }
   });
+
+  let vitePromise: Promise<ViteDevServer> | null = null;
+  function getViteServer(): Promise<ViteDevServer> {
+    if (!vitePromise) {
+      vitePromise = import('vite')
+        .then(({ createServer }) =>
+          createServer({
+            server: { middlewareMode: true },
+            appType: 'custom',
+          })
+        )
+        .catch((err) => {
+          vitePromise = null;
+          throw err;
+        });
+    }
+    return vitePromise;
+  }
 
   if (!isProd) {
     // Serve public files (robots.txt, sitemap.xml, llms.txt, llms-full.txt, assets) with redirect: false
@@ -477,12 +522,15 @@ async function startServer() {
       })
     );
 
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: 'custom',
+    // Delegate module & asset transforms to Vite middleware once warm
+    app.use(async (req, res, next) => {
+      try {
+        const vite = await getViteServer();
+        vite.middlewares(req, res, next);
+      } catch (err) {
+        next(err);
+      }
     });
-
-    app.use(vite.middlewares);
 
     app.use('*', async (req, res, next) => {
       try {
@@ -501,6 +549,7 @@ async function startServer() {
           .replace(/\\+/g, '/')
           .replace(/\/{2,}/g, '/');
 
+        const [vite, { renderRouteHtml }] = await Promise.all([getViteServer(), getRouteMeta()]);
         const rawTemplate = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
         const transformedTemplate = await vite.transformIndexHtml(safeUrlPath, rawTemplate);
         const { status, redirectTo, html } = renderRouteHtml(transformedTemplate, safeUrlPath);
@@ -509,16 +558,11 @@ async function startServer() {
           return res.redirect(301, redirectTo);
         }
 
-        const cacheControl =
-          status === 200
-            ? 'public, max-age=300, s-maxage=3600, stale-while-revalidate=86400'
-            : 'no-store, no-cache, must-revalidate';
-
         res
           .status(status)
           .set({
             'Content-Type': 'text/html; charset=utf-8',
-            'Cache-Control': cacheControl,
+            'Cache-Control': 'no-cache',
           })
           .end(html);
       } catch (err) {
@@ -555,30 +599,35 @@ async function startServer() {
       ? fs.readFileSync(cleanTemplatePath, 'utf-8')
       : fs.readFileSync(path.join(distPath, 'index.html'), 'utf-8');
 
-    app.get('*', (req, res) => {
-      const safeUrlPath = (req.path || '/')
-        .replace(/[\x00-\x1F\x7F]/g, '')
-        .replace(/\\+/g, '/')
-        .replace(/\/{2,}/g, '/');
+    app.get('*', async (req, res, next) => {
+      try {
+        const safeUrlPath = (req.path || '/')
+          .replace(/[\x00-\x1F\x7F]/g, '')
+          .replace(/\\+/g, '/')
+          .replace(/\/{2,}/g, '/');
 
-      const { status, redirectTo, html } = renderRouteHtml(rawTemplate, safeUrlPath);
+        const { renderRouteHtml } = await getRouteMeta();
+        const { status, redirectTo, html } = renderRouteHtml(rawTemplate, safeUrlPath);
 
-      if (status === 301 && redirectTo && isSafeRelativeRedirect(redirectTo)) {
-        return res.redirect(301, redirectTo);
+        if (status === 301 && redirectTo && isSafeRelativeRedirect(redirectTo)) {
+          return res.redirect(301, redirectTo);
+        }
+
+        const cacheControl =
+          status === 200
+            ? 'public, max-age=300, s-maxage=3600, stale-while-revalidate=86400'
+            : 'no-store, no-cache, must-revalidate';
+
+        res
+          .status(status)
+          .set({
+            'Content-Type': 'text/html; charset=utf-8',
+            'Cache-Control': cacheControl,
+          })
+          .send(html);
+      } catch (err) {
+        next(err);
       }
-
-      const cacheControl =
-        status === 200
-          ? 'public, max-age=300, s-maxage=3600, stale-while-revalidate=86400'
-          : 'no-store, no-cache, must-revalidate';
-
-      res
-        .status(status)
-        .set({
-          'Content-Type': 'text/html; charset=utf-8',
-          'Cache-Control': cacheControl,
-        })
-        .send(html);
     });
   }
 
@@ -595,6 +644,15 @@ async function startServer() {
 
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`Crown Money server running on http://0.0.0.0:${PORT}`);
+    // Pre-warm route metadata and Vite dev server asynchronously right after port 3000 is open
+    void getRouteMeta().catch((err) => {
+      console.error('Failed to pre-warm route metadata:', err instanceof Error ? err.message : err);
+    });
+    if (!isProd) {
+      void getViteServer().catch((err) => {
+        console.error('Failed to pre-warm Vite dev server:', err instanceof Error ? err.message : err);
+      });
+    }
   });
 }
 

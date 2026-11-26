@@ -90,6 +90,7 @@ export const About = () => {
         { name: "Key Cadungog", role: "Sales VA", image: "https://storage.googleapis.com/crown_money/Website/About/People/Key_BW.jpg" },
         { name: "Michael Allere", role: "Executive VA", image: "https://storage.googleapis.com/crown_money/Website/About/People/michael-allere-v2.png" },
         { name: "Melinda Allere", role: "Loan Application Associate", image: "https://storage.googleapis.com/crown_money/Website/About/People/melinda-allere.png" },
+        { name: "Denais Princillo (Ney)", role: "Offshore Sales VA", image: "https://storage.googleapis.com/crown_money/Website/About/People/denais-princillo.png" },
       ]
     },
     {
